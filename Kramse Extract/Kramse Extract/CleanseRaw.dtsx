@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="LAPTOP-ROBIN"
   DTS:CreatorName="LAPTOP-ROBIN\robin"
-  DTS:DTSID="{DC898EA9-04C7-4AAA-B57E-5DAFE5EF331D}"
+  DTS:DTSID="{F14D56F7-FD51-43A7-92C0-F7D8D262076A}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5035.3"
   DTS:LocaleID="1043"
   DTS:ObjectName="CleanseRaw"
   DTS:PackageType="5"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{A791840F-25FE-4760-958E-A8B33DFA72BE}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{ABA104B1-6741-4801-BB61-3787803B5171}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -21,7 +21,7 @@
       DTS:refId="Package\Data Flow Task"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{D771DC4A-AA12-43A9-B88F-6DF128CE4962}"
+      DTS:DTSID="{B440CBC3-C886-468A-B50F-75854559E361}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Data Flow Task"
@@ -49,7 +49,7 @@
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Consignors] SET Country = ? WHERE id = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Consignor] SET Country = ? WHERE id = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -58,8 +58,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\Clean Country names.Connections[OleDbConnection]"
-                  connectionManagerID="{D46FA703-C1E5-4DF0-924E-C5D8DD91A8B5}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[RawDB]"
+                  connectionManagerID="{6AAC6174-86D9-4DB9-A142-7CA31760DFE6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost DB Kramse CM]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -73,7 +73,7 @@
                   <inputColumns>
                     <inputColumn
                       refId="Package\Data Flow Task\Clean Country names.Inputs[OLE DB Command Input].Columns[Id]"
-                      cachedDataType="i4"
+                      cachedDataType="r8"
                       cachedName="Id"
                       externalMetadataColumnId="Package\Data Flow Task\Clean Country names.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                       lineageId="Package\Data Flow Task\Fuzzy Lookup Clean Countries.Outputs[Fuzzy Lookup Output].Columns[Id]" />
@@ -101,7 +101,7 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Clean Country names.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      dataType="i4"
+                      dataType="r8"
                       name="Param_1">
                       <properties>
                         <property
@@ -288,8 +288,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\Fuzzy Lookup Clean Countries.Connections[OleDbConnection]"
-                  connectionManagerID="{D46FA703-C1E5-4DF0-924E-C5D8DD91A8B5}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[RawDB]"
+                  connectionManagerID="{6AAC6174-86D9-4DB9-A142-7CA31760DFE6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost DB Kramse CM]"
                   description="Microsoft SQL Server connection and database in which the fuzzy lookup reference table is located and where the fuzzy match index table will be stored and accessed."
                   name="OleDbConnection" />
               </connections>
@@ -333,10 +333,8 @@
                     </inputColumn>
                     <inputColumn
                       refId="Package\Data Flow Task\Fuzzy Lookup Clean Countries.Inputs[Fuzzy Lookup Input].Columns[Discount]"
-                      cachedDataType="numeric"
+                      cachedDataType="r8"
                       cachedName="Discount"
-                      cachedPrecision="18"
-                      cachedScale="1"
                       lineageId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Output].Columns[Discount]">
                       <properties>
                         <property
@@ -367,7 +365,7 @@
                     </inputColumn>
                     <inputColumn
                       refId="Package\Data Flow Task\Fuzzy Lookup Clean Countries.Inputs[Fuzzy Lookup Input].Columns[Id]"
-                      cachedDataType="i4"
+                      cachedDataType="r8"
                       cachedName="Id"
                       lineageId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Output].Columns[Id]">
                       <properties>
@@ -432,11 +430,9 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\Data Flow Task\Fuzzy Lookup Clean Countries.Outputs[Fuzzy Lookup Output].Columns[Discount]"
-                      dataType="numeric"
+                      dataType="r8"
                       lineageId="Package\Data Flow Task\Fuzzy Lookup Clean Countries.Outputs[Fuzzy Lookup Output].Columns[Discount]"
-                      name="Discount"
-                      precision="18"
-                      scale="1">
+                      name="Discount">
                       <properties>
                         <property
                           dataType="System.Null"
@@ -457,7 +453,7 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\Data Flow Task\Fuzzy Lookup Clean Countries.Outputs[Fuzzy Lookup Output].Columns[Id]"
-                      dataType="i4"
+                      dataType="r8"
                       lineageId="Package\Data Flow Task\Fuzzy Lookup Clean Countries.Outputs[Fuzzy Lookup Output].Columns[Id]"
                       name="Id">
                       <properties>
@@ -627,8 +623,8 @@ where [refTable].[Country] = ?</property>
               <connections>
                 <connection
                   refId="Package\Data Flow Task\get Uncleaned countries.Connections[OleDbConnection]"
-                  connectionManagerID="{D46FA703-C1E5-4DF0-924E-C5D8DD91A8B5}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[RawDB]"
+                  connectionManagerID="{6AAC6174-86D9-4DB9-A142-7CA31760DFE6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost DB Kramse CM]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -715,7 +711,7 @@ where [refTable].[Country] = ?</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[Consignors]</property>
+                  name="OpenRowset">[dbo].[Consignor]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -750,8 +746,8 @@ where [refTable].[Country] = ?</property>
               <connections>
                 <connection
                   refId="Package\Data Flow Task\Raw Source country.Connections[OleDbConnection]"
-                  connectionManagerID="{D46FA703-C1E5-4DF0-924E-C5D8DD91A8B5}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[RawDB]"
+                  connectionManagerID="{6AAC6174-86D9-4DB9-A142-7CA31760DFE6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost DB Kramse CM]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -762,19 +758,21 @@ where [refTable].[Country] = ?</property>
                   <outputColumns>
                     <outputColumn
                       refId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Output].Columns[Consignor]"
-                      dataType="nText"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Output].ExternalColumns[Consignor]"
+                      length="255"
                       lineageId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Output].Columns[Consignor]"
                       name="Consignor"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Output].Columns[City]"
-                      dataType="nText"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                      length="255"
                       lineageId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Output].Columns[City]"
                       name="City"
                       truncationRowDisposition="FailComponent" />
@@ -790,18 +788,16 @@ where [refTable].[Country] = ?</property>
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Output].Columns[Discount]"
-                      dataType="numeric"
+                      dataType="r8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Output].ExternalColumns[Discount]"
                       lineageId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Output].Columns[Discount]"
                       name="Discount"
-                      precision="18"
-                      scale="1"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Output].Columns[Id]"
-                      dataType="i4"
+                      dataType="r8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Output].ExternalColumns[Id]"
@@ -813,15 +809,17 @@ where [refTable].[Country] = ?</property>
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Output].ExternalColumns[Id]"
-                      dataType="i4"
+                      dataType="r8"
                       name="Id" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Output].ExternalColumns[Consignor]"
-                      dataType="nText"
+                      dataType="wstr"
+                      length="255"
                       name="Consignor" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Output].ExternalColumns[City]"
-                      dataType="nText"
+                      dataType="wstr"
+                      length="255"
                       name="City" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Output].ExternalColumns[Country]"
@@ -830,10 +828,8 @@ where [refTable].[Country] = ?</property>
                       name="Country" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Output].ExternalColumns[Discount]"
-                      dataType="numeric"
-                      name="Discount"
-                      precision="18"
-                      scale="1" />
+                      dataType="r8"
+                      name="Discount" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -849,12 +845,14 @@ where [refTable].[Country] = ?</property>
                       specialFlags="1" />
                     <outputColumn
                       refId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Error Output].Columns[Consignor]"
-                      dataType="nText"
+                      dataType="wstr"
+                      length="255"
                       lineageId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Error Output].Columns[Consignor]"
                       name="Consignor" />
                     <outputColumn
                       refId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Error Output].Columns[City]"
-                      dataType="nText"
+                      dataType="wstr"
+                      length="255"
                       lineageId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Error Output].Columns[City]"
                       name="City" />
                     <outputColumn
@@ -865,11 +863,9 @@ where [refTable].[Country] = ?</property>
                       name="Country" />
                     <outputColumn
                       refId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Error Output].Columns[Discount]"
-                      dataType="numeric"
+                      dataType="r8"
                       lineageId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Error Output].Columns[Discount]"
-                      name="Discount"
-                      precision="18"
-                      scale="1" />
+                      name="Discount" />
                     <outputColumn
                       refId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
@@ -878,7 +874,7 @@ where [refTable].[Country] = ?</property>
                       specialFlags="2" />
                     <outputColumn
                       refId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Error Output].Columns[Id]"
-                      dataType="i4"
+                      dataType="r8"
                       lineageId="Package\Data Flow Task\Raw Source country.Outputs[OLE DB Source Error Output].Columns[Id]"
                       name="Id" />
                   </outputColumns>
@@ -926,7 +922,7 @@ where [refTable].[Country] = ?</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="150.4,41.6"
+          Size="150.666666666667,41.3333333333334"
           Id="Package\Data Flow Task"
           TopLeft="120.000000255449,148.352941046434" />
       </GraphLayout>
@@ -938,13 +934,47 @@ where [refTable].[Country] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="172.8,41.6"
+          Size="192,41.3333333333334"
+          Id="Package\Data Flow Task\get Uncleaned countries"
+          TopLeft="19.1,107.1" />
+        <NodeLayout
+          Size="219.333333333334,41.3333333333334"
+          Id="Package\Data Flow Task\Fuzzy Lookup Clean Countries"
+          TopLeft="5.50000000000003,208.7" />
+        <NodeLayout
+          Size="172.666666666667,41.3333333333334"
           Id="Package\Data Flow Task\Raw Source country"
           TopLeft="28.7,5.49999999999995" />
         <NodeLayout
-          Size="192,41.6"
-          Id="Package\Data Flow Task\get Uncleaned countries"
-          TopLeft="19.1,107.1" />
+          Size="178.666666666667,41.3333333333334"
+          Id="Package\Data Flow Task\Clean Country names"
+          TopLeft="25.9,411.9" />
+        <NodeLayout
+          Size="180,41.3333333333334"
+          Id="Package\Data Flow Task\Format country string"
+          TopLeft="25.1,310.3" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="115.1,351.9">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
           TopLeft="115.1,47.1">
@@ -967,18 +997,6 @@ where [refTable].[Country] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="180,41.6"
-          Id="Package\Data Flow Task\Format country string"
-          TopLeft="25.1,310.3" />
-        <NodeLayout
-          Size="178.4,41.6"
-          Id="Package\Data Flow Task\Clean Country names"
-          TopLeft="25.9,411.9" />
-        <NodeLayout
-          Size="219.2,41.6"
-          Id="Package\Data Flow Task\Fuzzy Lookup Clean Countries"
-          TopLeft="5.50000000000003,208.7" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Lookup No Match Output]"
           TopLeft="115.1,148.7">
@@ -1025,33 +1043,32 @@ where [refTable].[Country] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
-          TopLeft="115.1,351.9">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,59.9999999999999"
-              Start="0,0"
-              End="0,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-8,18.2499999999999,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\get Uncleaned countries">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[CountryCleaning]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\Raw Source country">
     <Properties>
@@ -1062,29 +1079,6 @@ where [refTable].[Country] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\get Uncleaned countries">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[CountryCleaning]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

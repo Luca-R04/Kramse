@@ -1,3 +1,5 @@
+CREATE DATABASE [Kramse_Raw]
+GO
 USE [Kramse_Raw]
 GO
 /****** Object:  Table [dbo].[Consignors]    Script Date: 14-3-2023 10:40:02 ******/

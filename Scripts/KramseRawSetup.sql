@@ -1,4 +1,4 @@
-USE [KramseRaw]
+USE [Kramse_Raw]
 GO
 /****** Object:  Table [dbo].[Consignors]    Script Date: 14-3-2023 10:40:02 ******/
 SET ANSI_NULLS ON
@@ -27,8 +27,6 @@ CREATE TABLE [dbo].[CountryCleaning](
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
-GO
-SET IDENTITY_INSERT [dbo].[CountryCleaning] ON 
 GO
 INSERT [dbo].[CountryCleaning] ( [Country], [InCorrectCountry]) VALUES ( N'Netherlands', N'Holland')
 GO

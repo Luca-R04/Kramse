@@ -1,16 +1,18 @@
-USE [KramseRaw]
+CREATE DATABASE [Kramse_Raw]
+GO
+USE [Kramse_Raw]
 GO
 /****** Object:  Table [dbo].[Consignors]    Script Date: 14-3-2023 10:40:02 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[Consignors](
-	[Id] [int] NOT NULL,
-	[Consignor] [nvarchar](max) NOT NULL,
+CREATE TABLE [dbo].[Consignor](
+	[Id] [int] NULL,
+	[Consignor] [nvarchar](max) NULL,
 	[City] [nvarchar](max) NULL,
-	[Country] [nvarchar](90) NOT NULL,
-	[Discount] [decimal](18, 1) NOT NULL
+	[Country] [nvarchar](90) NULL,
+	[Discount] [decimal](18, 1) NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
 /****** Object:  Table [dbo].[CountryCleaning]    Script Date: 14-3-2023 10:40:02 ******/
@@ -27,8 +29,6 @@ CREATE TABLE [dbo].[CountryCleaning](
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
-GO
-SET IDENTITY_INSERT [dbo].[CountryCleaning] ON 
 GO
 INSERT [dbo].[CountryCleaning] ( [Country], [InCorrectCountry]) VALUES ( N'Netherlands', N'Holland')
 GO

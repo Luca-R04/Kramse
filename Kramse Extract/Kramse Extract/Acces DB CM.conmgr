@@ -3,8 +3,10 @@
   DTS:ObjectName="Acces DB CM"
   DTS:DTSID="{E0C43A7D-9BC0-4F13-B42B-F80069BF6E7D}"
   DTS:CreationName="ADO.NET:System.Data.OleDb.OleDbConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:PropertyExpression
+    DTS:Name="ServerName">@[$Project::LocalSourcePath] + "KramseTPS v7.mdb"</DTS:PropertyExpression>
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Data Source=C:\SchoolRoot\Jaar 2\Kramse\Databronnen\KramseTPS v7.mdb;Provider=Microsoft.ACE.OLEDB.16.0;" />
+      DTS:ConnectionString="Data Source=C:\Users\robin\OneDrive\Documenten\GitHub\Kramse\Databronnen\KramseTPS v7.mdb;Provider=Microsoft.ACE.OLEDB.16.0;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>

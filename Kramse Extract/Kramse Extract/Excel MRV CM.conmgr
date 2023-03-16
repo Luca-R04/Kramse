@@ -3,10 +3,12 @@
   DTS:ObjectName="Excel MRV CM"
   DTS:DTSID="{8A647A88-499F-4524-B313-C9343F0050EC}"
   DTS:CreationName="EXCEL">
+  <DTS:PropertyExpression
+    DTS:Name="ExcelFilePath">@[$Project::LocalSourcePath] + "2016-EU MRV Publication of information v5.xlsx"</DTS:PropertyExpression>
   <DTS:ObjectData>
     <DTS:ConnectionManager
       DTS:ConnectRetryCount="0"
       DTS:ConnectRetryInterval="0"
-      DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\SchoolRoot\Jaar 2\Kramse\Databronnen\2016-EU MRV Publication of information v5.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\robin\OneDrive\Documenten\GitHub\Kramse\Databronnen\2016-EU MRV Publication of information v5.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>

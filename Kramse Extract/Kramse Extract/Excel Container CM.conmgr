@@ -3,10 +3,12 @@
   DTS:ObjectName="Excel Container CM"
   DTS:DTSID="{E4EEEC20-4AF5-45E2-878D-7743004D315C}"
   DTS:CreationName="EXCEL">
+  <DTS:PropertyExpression
+    DTS:Name="ExcelFilePath">@[$Project::LocalSourcePath] + "Containers.xlsx"</DTS:PropertyExpression>
   <DTS:ObjectData>
     <DTS:ConnectionManager
       DTS:ConnectRetryCount="0"
       DTS:ConnectRetryInterval="0"
-      DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\SchoolRoot\Jaar 2\Kramse\Databronnen\Containers.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\robin\OneDrive\Documenten\GitHub\Kramse\Databronnen\Containers.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>

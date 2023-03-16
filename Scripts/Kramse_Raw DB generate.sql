@@ -1,12 +1,12 @@
 USE [master]
 GO
-/****** Object:  Database [Kramse_raw]    Script Date: 14-3-2023 10:37:13 ******/
+/****** Object:  Database [Kramse_raw]    Script Date: 16-3-2023 09:37:45 ******/
 CREATE DATABASE [Kramse_raw]
  CONTAINMENT = NONE
  ON  PRIMARY 
-( NAME = N'Kramse_raw', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLDEV2019\MSSQL\DATA\Kramse_raw.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+( NAME = N'Kramse_raw', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLDEV2019\MSSQL\DATA\Kramse_raw.mdf' , SIZE = 73728KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
  LOG ON 
-( NAME = N'Kramse_raw_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLDEV2019\MSSQL\DATA\Kramse_raw_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+( NAME = N'Kramse_raw_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLDEV2019\MSSQL\DATA\Kramse_raw_log.ldf' , SIZE = 73728KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
  WITH CATALOG_COLLATION = DATABASE_DEFAULT
 GO
 ALTER DATABASE [Kramse_raw] SET COMPATIBILITY_LEVEL = 150
@@ -82,7 +82,20 @@ ALTER DATABASE [Kramse_raw] SET QUERY_STORE = OFF
 GO
 USE [Kramse_raw]
 GO
-/****** Object:  Table [dbo].[Container]    Script Date: 14-3-2023 10:37:13 ******/
+/****** Object:  Table [dbo].[Consignor]    Script Date: 16-3-2023 09:37:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Consignor](
+	[Id] [float] NULL,
+	[Consignor] [nvarchar](255) NULL,
+	[City] [nvarchar](255) NULL,
+	[Country] [nvarchar](90) NULL,
+	[Discount] [float] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Container]    Script Date: 16-3-2023 09:37:45 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -97,20 +110,22 @@ CREATE TABLE [dbo].[Container](
 	[EuroPricePerKm] [float] NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Cosignor]    Script Date: 14-3-2023 10:37:13 ******/
+/****** Object:  Table [dbo].[CountryCleaning]    Script Date: 16-3-2023 09:37:45 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[Cosignor](
-	[Id] [float] NULL,
-	[Consignor] [nvarchar](255) NULL,
-	[City] [nvarchar](255) NULL,
-	[Country] [nvarchar](255) NULL,
-	[Discount] [float] NULL
+CREATE TABLE [dbo].[CountryCleaning](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Country] [nvarchar](90) NOT NULL,
+	[InCorrectCountry] [nvarchar](90) NOT NULL,
+ CONSTRAINT [PK_Cleaning] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Item]    Script Date: 14-3-2023 10:37:13 ******/
+/****** Object:  Table [dbo].[Item]    Script Date: 16-3-2023 09:37:45 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -124,7 +139,7 @@ CREATE TABLE [dbo].[Item](
 	[item_hazard_flag] [nvarchar](50) NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[MRV]    Script Date: 14-3-2023 10:37:13 ******/
+/****** Object:  Table [dbo].[MRV]    Script Date: 16-3-2023 09:37:45 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -191,7 +206,7 @@ CREATE TABLE [dbo].[MRV](
 	[Average density of the cargo transported (m tonnes / m³)] [nvarchar](255) NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Port]    Script Date: 14-3-2023 10:37:13 ******/
+/****** Object:  Table [dbo].[Port]    Script Date: 16-3-2023 09:37:45 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -205,7 +220,7 @@ CREATE TABLE [dbo].[Port](
 	[P_DistanceFromPiraeus] [int] NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Ship]    Script Date: 14-3-2023 10:37:13 ******/
+/****** Object:  Table [dbo].[Ship]    Script Date: 16-3-2023 09:37:45 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -222,7 +237,7 @@ CREATE TABLE [dbo].[Ship](
 	[Sh_Width] [int] NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Shipment]    Script Date: 14-3-2023 10:37:13 ******/
+/****** Object:  Table [dbo].[Shipment]    Script Date: 16-3-2023 09:37:45 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -237,7 +252,7 @@ CREATE TABLE [dbo].[Shipment](
 	[NumberContainers] [int] NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Shipment_Detail]    Script Date: 14-3-2023 10:37:13 ******/
+/****** Object:  Table [dbo].[Shipment_Detail]    Script Date: 16-3-2023 09:37:45 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -249,7 +264,7 @@ CREATE TABLE [dbo].[Shipment_Detail](
 	[ContainertypeId] [int] NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Voyage]    Script Date: 14-3-2023 10:37:13 ******/
+/****** Object:  Table [dbo].[Voyage]    Script Date: 16-3-2023 09:37:45 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -262,7 +277,7 @@ CREATE TABLE [dbo].[Voyage](
 	[V_PortIdEnd] [int] NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Voyage_Port]    Script Date: 14-3-2023 10:37:13 ******/
+/****** Object:  Table [dbo].[Voyage_Port]    Script Date: 16-3-2023 09:37:45 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

@@ -106,21 +106,6 @@ CREATE TABLE [dbo].[Container](
 	[EuroPricePerKm] [float] NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CountryCleaning]    Script Date: 16-3-2023 09:37:45 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[CountryCleaning](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Country] [nvarchar](90) NOT NULL,
-	[InCorrectCountry] [nvarchar](90) NOT NULL,
- CONSTRAINT [PK_Cleaning] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
 /****** Object:  Table [dbo].[Item]    Script Date: 16-3-2023 09:37:45 ******/
 SET ANSI_NULLS ON
 GO

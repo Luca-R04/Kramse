@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="RDBMS_Raw"
+  DTS:DTSID="{9F017315-4785-4271-B0F5-015CE365C8C5}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=.;Initial Catalog=Kramse_RDBMS_Raw;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{9F017315-4785-4271-B0F5-015CE365C8C5}LocalHost;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

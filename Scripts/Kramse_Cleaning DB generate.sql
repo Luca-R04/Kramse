@@ -34,6 +34,8 @@ INSERT [dbo].[CountryCleaning] ( [Country], [InCorrectCountry]) VALUES ( N'Belgi
 GO
 INSERT [dbo].[CountryCleaning] ( [Country], [InCorrectCountry]) VALUES ( N'Belgium', N'Belgie')
 GO
+INSERT [dbo].[CountryCleaning] ( [Country], [InCorrectCountry]) VALUES ( N'Belgium', N'België')
+GO
 INSERT [dbo].[CountryCleaning] ( [Country], [InCorrectCountry]) VALUES ( N'Belgium', N'Belgique')
 GO
 INSERT [dbo].[CountryCleaning] ( [Country], [InCorrectCountry]) VALUES ( N'Brazil', N'Brazilië')
@@ -87,6 +89,8 @@ GO
 INSERT [dbo].[CountryCleaning] ( [Country], [InCorrectCountry]) VALUES ( N'Portugal', N'Portugal')
 GO
 INSERT [dbo].[CountryCleaning] ( [Country], [InCorrectCountry]) VALUES ( N'Rusia', N'Rusland')
+GO
+INSERT [dbo].[CountryCleaning] ( [Country], [InCorrectCountry]) VALUES ( N'Scotland', N'Scotland')
 GO
 INSERT [dbo].[CountryCleaning] ( [Country], [InCorrectCountry]) VALUES ( N'Spain', N'Spain')
 GO

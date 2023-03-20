@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Cleaning"
+  DTS:DTSID="{D9F11CC8-E7F7-4808-8FAF-AFDBF9B4DFEA}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=.;Initial Catalog=Kramse_Cleaning;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Kramse Extract-{D9F11CC8-E7F7-4808-8FAF-AFDBF9B4DFEA}LocalHost.Kramse_Cleaning;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

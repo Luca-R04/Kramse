@@ -20,6 +20,10 @@ CREATE TABLE [dbo].[CountryCleaning](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+CREATE TABLE [dbo].[Log](
+	[message] [nvarchar](255) NOT NULL
+) ON [PRIMARY]
+GO
 INSERT [dbo].[CountryCleaning] ( [Country], [InCorrectCountry]) VALUES ( N'Netherlands', N'Holland')
 GO
 INSERT [dbo].[CountryCleaning] ( [Country], [InCorrectCountry]) VALUES ( N'Netherlands', N'Nederland')

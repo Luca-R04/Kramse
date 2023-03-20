@@ -7,12 +7,12 @@
   DTS:CreatorName="LAPTOP-ROBIN\robin"
   DTS:DTSID="{F14D56F7-FD51-43A7-92C0-F7D8D262076A}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LastModifiedProductVersion="16.0.5131.0"
   DTS:LocaleID="1043"
   DTS:ObjectName="CleanseRaw"
   DTS:PackageType="5"
-  DTS:VersionBuild="18"
-  DTS:VersionGUID="{ABA104B1-6741-4801-BB61-3787803B5171}">
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{42165166-0FC2-40E4-9D04-BF0F75AEE6BE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -59,7 +59,7 @@
                 <connection
                   refId="Package\Data Flow Task\Clean Country names.Connections[OleDbConnection]"
                   connectionManagerID="{6AAC6174-86D9-4DB9-A142-7CA31760DFE6}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[LocalHost DB Kramse CM]"
+                  connectionManagerRefId="Project.ConnectionManagers[Raw]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -289,7 +289,7 @@
                 <connection
                   refId="Package\Data Flow Task\Fuzzy Lookup Clean Countries.Connections[OleDbConnection]"
                   connectionManagerID="{6AAC6174-86D9-4DB9-A142-7CA31760DFE6}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[LocalHost DB Kramse CM]"
+                  connectionManagerRefId="Project.ConnectionManagers[Raw]"
                   description="Microsoft SQL Server connection and database in which the fuzzy lookup reference table is located and where the fuzzy match index table will be stored and accessed."
                   name="OleDbConnection" />
               </connections>
@@ -624,7 +624,7 @@ where [refTable].[Country] = ?</property>
                 <connection
                   refId="Package\Data Flow Task\get Uncleaned countries.Connections[OleDbConnection]"
                   connectionManagerID="{6AAC6174-86D9-4DB9-A142-7CA31760DFE6}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[LocalHost DB Kramse CM]"
+                  connectionManagerRefId="Project.ConnectionManagers[Raw]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -747,7 +747,7 @@ where [refTable].[Country] = ?</property>
                 <connection
                   refId="Package\Data Flow Task\Raw Source country.Connections[OleDbConnection]"
                   connectionManagerID="{6AAC6174-86D9-4DB9-A142-7CA31760DFE6}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[LocalHost DB Kramse CM]"
+                  connectionManagerRefId="Project.ConnectionManagers[Raw]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -922,7 +922,7 @@ where [refTable].[Country] = ?</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="150.666666666667,41.3333333333334"
+          Size="151,41"
           Id="Package\Data Flow Task"
           TopLeft="120.000000255449,148.352941046434" />
       </GraphLayout>
@@ -934,23 +934,23 @@ where [refTable].[Country] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="192,41.3333333333334"
+          Size="192,41"
           Id="Package\Data Flow Task\get Uncleaned countries"
           TopLeft="19.1,107.1" />
         <NodeLayout
-          Size="219.333333333334,41.3333333333334"
+          Size="219,41"
           Id="Package\Data Flow Task\Fuzzy Lookup Clean Countries"
           TopLeft="5.50000000000003,208.7" />
         <NodeLayout
-          Size="172.666666666667,41.3333333333334"
+          Size="173,41"
           Id="Package\Data Flow Task\Raw Source country"
           TopLeft="28.7,5.49999999999995" />
         <NodeLayout
-          Size="178.666666666667,41.3333333333334"
+          Size="179,41"
           Id="Package\Data Flow Task\Clean Country names"
           TopLeft="25.9,411.9" />
         <NodeLayout
-          Size="180,41.3333333333334"
+          Size="180,41"
           Id="Package\Data Flow Task\Format country string"
           TopLeft="25.1,310.3" />
         <EdgeLayout

@@ -7,12 +7,12 @@
   DTS:CreatorName="MSI\lucar"
   DTS:DTSID="{00872BD9-B0BA-4A3B-81D5-8A110846EF13}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LastModifiedProductVersion="16.0.5131.0"
   DTS:LocaleID="1043"
   DTS:ObjectName="Extract Data"
   DTS:PackageType="5"
-  DTS:VersionBuild="33"
-  DTS:VersionGUID="{5960EFBE-AFE6-43C7-B397-79F949C31EFA}">
+  DTS:VersionBuild="35"
+  DTS:VersionGUID="{DAB2017B-FC56-4068-8827-FC51B7EA44C4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -5746,47 +5746,47 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="164,42.4"
+          Size="164,42"
           Id="Package\Execute SQL Task"
           TopLeft="338.870520811462,6.1398799284583" />
         <NodeLayout
-          Size="161.6,42.4"
+          Size="162,42"
           Id="Package\Extract Container"
           TopLeft="576.660690093946,212.76070666773" />
         <NodeLayout
-          Size="156,42.4"
+          Size="156,42"
           Id="Package\Extract Cosignor"
           TopLeft="573.714262995337,157.703567866428" />
         <NodeLayout
-          Size="137.6,42.4"
+          Size="138,42"
           Id="Package\Extract MRV"
           TopLeft="576.035688780781,99.3749963581564" />
         <NodeLayout
-          Size="158.4,42.4"
+          Size="158,42"
           Id="Package\Extract TPS Item"
           TopLeft="23.714288923357,43.5892890240464" />
         <NodeLayout
-          Size="156,42.4"
+          Size="156,42"
           Id="Package\Extract TPS Port"
           TopLeft="25.4107174189494,108.363098924217" />
         <NodeLayout
-          Size="157.6,42.4"
+          Size="158,42"
           Id="Package\Extract TPS Ship"
           TopLeft="25.6785758909368,166.167856038128" />
         <NodeLayout
-          Size="181.6,42.4"
+          Size="182,42"
           Id="Package\Extract TPS Shipment"
           TopLeft="24.4285772879207,277.139280748538" />
         <NodeLayout
-          Size="208,42.4"
+          Size="208,42"
           Id="Package\Extract TPS ShipmentDetail"
           TopLeft="27.8214356202097,400.667852008854" />
         <NodeLayout
-          Size="172,42.4"
+          Size="172,42"
           Id="Package\Extract TPS Voyage"
           TopLeft="27.6428628585166,223.741674864689" />
         <NodeLayout
-          Size="204,42.4"
+          Size="204,42"
           Id="Package\Extract TPS VoyageDetails"
           TopLeft="28.0892914099884,337.365483866022" />
         <EdgeLayout
@@ -6136,13 +6136,13 @@
     design-time-name="Package\Extract Container">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="139.333333333334,42.6666666666667"
+          Size="139,43"
           Id="Package\Extract Container\Excel Source"
           TopLeft="236.192300817141,49.8846140618508" />
         <NodeLayout
-          Size="172,42.6666666666667"
+          Size="172,43"
           Id="Package\Extract Container\OLE DB Destination"
           TopLeft="217.038455234124,132.423073140475" />
         <EdgeLayout
@@ -6164,9 +6164,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6204,11 +6202,11 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="172,42.4"
+          Size="172,42"
           Id="Package\Extract Cosignor\OLE DB Destination"
           TopLeft="206.499994903803,139.499996900559" />
         <NodeLayout
-          Size="139.2,42.4"
+          Size="139,42"
           Id="Package\Extract Cosignor\Excel Source"
           TopLeft="224.499993473292,52.4999985992909" />
         <EdgeLayout
@@ -6334,11 +6332,11 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="174.4,42.4"
+          Size="174,42"
           Id="Package\Extract TPS Item\DB Item Destination"
           TopLeft="258.73077241274,142.730775869809" />
         <NodeLayout
-          Size="166.4,42.4"
+          Size="166,42"
           Id="Package\Extract TPS Item\Acces Item Source"
           TopLeft="261.499992370606,37.4999990463257" />
         <EdgeLayout
@@ -6391,13 +6389,13 @@
     design-time-name="Package\Extract TPS Port">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="172,42.6666666666667"
+          Size="172,43"
           Id="Package\Extract TPS Port\DB Port Destination"
           TopLeft="21.5000004172325,99.4999980926514" />
         <NodeLayout
-          Size="164,42.6666666666667"
+          Size="164,43"
           Id="Package\Extract TPS Port\Acces Port Source"
           TopLeft="29.4999992847443,9.49999988079071" />
         <EdgeLayout
@@ -6419,9 +6417,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6452,7 +6448,7 @@
     design-time-name="Package\Extract TPS Ship">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="173.6,42.4"
           Id="Package\Extract TPS Ship\DB Ship Destination"
@@ -6480,7 +6476,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6572,13 +6570,13 @@
     design-time-name="Package\Extract TPS ShipmentDetail">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="229.333333333334,42.6666666666667"
+          Size="229,43"
           Id="Package\Extract TPS ShipmentDetail\DB Shipment_Detail Destination"
           TopLeft="30.8333334724108,99.4999980926514" />
         <NodeLayout
-          Size="216,42.6666666666667"
+          Size="216,43"
           Id="Package\Extract TPS ShipmentDetail\Acces ShipmentDetail Source"
           TopLeft="37.4999990463257,7.49999994039536" />
         <EdgeLayout
@@ -6600,9 +6598,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

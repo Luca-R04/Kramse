@@ -7,12 +7,12 @@
   DTS:CreatorName="MSI\lucar"
   DTS:DTSID="{D8DCCF88-92F7-434C-94F9-7FD4B6FD45D9}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LastModifiedProductVersion="16.0.5131.0"
   DTS:LocaleID="1043"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{0FB0F3A8-740F-4EF5-AA6A-6DF30D8C6C92}">
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{F8523CC9-BBE5-4FD3-876B-DDBC544F2709}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -30,7 +30,7 @@
       <DTS:ObjectData>
         <ExecutePackageTask>
           <UseProjectReference>True</UseProjectReference>
-          <PackageName>CleanseRaw.dtsx</PackageName>
+          <PackageName>Cleanse Raw.dtsx</PackageName>
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -75,13 +75,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="112,42.6666666666667"
-          Id="Package\Extract"
-          TopLeft="193.624991590157,43.199998202324" />
-        <NodeLayout
-          Size="140,42.6666666666667"
+          Size="140,43"
           Id="Package\Cleanse Raw"
           TopLeft="182.374993434176,112.849996311665" />
+        <NodeLayout
+          Size="112,43"
+          Id="Package\Extract"
+          TopLeft="193.624991590157,43.199998202324" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="250.999992512167,85.8666648689907">

@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="Raw to Staging"
   DTS:PackageType="5"
-  DTS:VersionBuild="45"
-  DTS:VersionGUID="{73AAF12F-A09C-47AD-A328-A9A6528EAF87}">
+  DTS:VersionBuild="58"
+  DTS:VersionGUID="{48648186-CA8E-447A-96F3-9C1485DC1677}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -45,7 +45,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{4BD61BF3-0AF1-4C2E-8D52-9E899D0C0989}"
-          SQLTask:SqlStatementSource="DELETE FROM F_Shipment;&#xA;DELETE FROM F_Voyage_Port;&#xA;DELETE FROM Dim_Consignor;&#xA;DELETE FROM Dim_item;&#xA;DELETE FROM Dim_Container;&#xA;DELETE FROM Dim_Port;&#xA;DELETE FROM Dim_Ship;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="DELETE FROM F_Shipment;&#xA;DELETE FROM F_Voyage_Port;&#xA;DELETE FROM Dim_Consignor;&#xA;DELETE FROM Dim_item;&#xA;DELETE FROM Dim_Container;&#xA;DELETE FROM Dim_Waiting_Time;&#xA;DELETE FROM Dim_Port;&#xA;DELETE FROM Dim_Ship;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -2649,7 +2649,7 @@ where [refTable].[VV_VoyageId] = ?</property>
                       refId="Package\Load VoyagePort\VoyagePort Destination.Inputs[OLE DB Destination Input].Columns[VV_VoyageId]"
                       cachedDataType="i4"
                       cachedName="VV_VoyageId"
-                      externalMetadataColumnId="Package\Load VoyagePort\VoyagePort Destination.Inputs[OLE DB Destination Input].ExternalColumns[Voyage_Port_Id]"
+                      externalMetadataColumnId="Package\Load VoyagePort\VoyagePort Destination.Inputs[OLE DB Destination Input].ExternalColumns[Voyage_Id]"
                       lineageId="Package\Load VoyagePort\VoyagePort Source.Outputs[OLE DB Source Output].Columns[VV_VoyageId]" />
                   </inputColumns>
                   <externalMetadataColumns
@@ -2690,6 +2690,10 @@ where [refTable].[VV_VoyageId] = ?</property>
                       refId="Package\Load VoyagePort\VoyagePort Destination.Inputs[OLE DB Destination Input].ExternalColumns[Leg_Date_Arrival]"
                       dataType="dbTimeStamp"
                       name="Leg_Date_Arrival" />
+                    <externalMetadataColumn
+                      refId="Package\Load VoyagePort\VoyagePort Destination.Inputs[OLE DB Destination Input].ExternalColumns[Voyage_Id]"
+                      dataType="i4"
+                      name="Voyage_Id" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2930,6 +2934,617 @@ where [refTable].[VV_VoyageId] = ?</property>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load WaitingTime"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{8345CD4C-6164-4DEF-A96B-B70040C58999}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load WaitingTime"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load WaitingTime\Derived Waiting Time"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Waiting Time"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load WaitingTime\Derived Waiting Time.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load WaitingTime\Derived Waiting Time.Inputs[Derived Column Input].Columns[Vp_LegDateDepart]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Vp_LegDateDepart"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Vp_LegDateDepart]" />
+                    <inputColumn
+                      refId="Package\Load WaitingTime\Derived Waiting Time.Inputs[Derived Column Input].Columns[Vp_LegDateArrival]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Vp_LegDateArrival"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Vp_LegDateArrival]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load WaitingTime\Derived Waiting Time.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load WaitingTime\Derived Waiting Time.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load WaitingTime\Derived Waiting Time.Outputs[Derived Column Output].Columns[Waiting_Time]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load WaitingTime\Derived Waiting Time.Outputs[Derived Column Output].Columns[Waiting_Time]"
+                      name="Waiting_Time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[DATEDIFF]("Hh",#{Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Vp_LegDateDepart]},#{Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Vp_LegDateArrival]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DATEDIFF("Hh",Vp_LegDateDepart,Vp_LegDateArrival)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load WaitingTime\Derived Waiting Time.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load WaitingTime\Derived Waiting Time.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load WaitingTime\Derived Waiting Time.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load WaitingTime\Derived Waiting Time.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load WaitingTime\Derived Waiting Time.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load WaitingTime\Derived Waiting Time.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load WaitingTime\Lookup Ship Id"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Ship Id"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Voyage]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Voyage]) [refTable]
+where [refTable].[VV_VoyageId] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="VV_VoyageId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="VS_ShipId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="V_DateDepartVoyage" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="VPS_PortIdStart" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="V_PortIdEnd" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[VV_VoyageId]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load WaitingTime\Lookup Ship Id.Connections[OleDbConnection]"
+                  connectionManagerID="{9F017315-4785-4271-B0F5-015CE365C8C5}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[RDBMS_Raw]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load WaitingTime\Lookup Ship Id.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load WaitingTime\Lookup Ship Id.Inputs[Lookup Input].Columns[VV_VoyageId]"
+                      cachedDataType="i4"
+                      cachedName="VV_VoyageId"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[VV_VoyageId]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">VV_VoyageId</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load WaitingTime\Lookup Ship Id.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load WaitingTime\Lookup Ship Id.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load WaitingTime\Lookup Ship Id.Outputs[Lookup Match Output].Columns[VS_ShipId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load WaitingTime\Lookup Ship Id.Outputs[Lookup Match Output].Columns[VS_ShipId]"
+                      name="VS_ShipId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">VS_ShipId</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load WaitingTime\Lookup Ship Id.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load WaitingTime\Lookup Ship Id.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load WaitingTime\Lookup Ship Id.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load WaitingTime\Lookup Ship Id.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load WaitingTime\Lookup Ship Id.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load WaitingTime\Lookup Ship Id.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load WaitingTime\Lookup Ship Id.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load WaitingTime\Lookup Ship Id.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load WaitingTime\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dim_Waiting_Time]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load WaitingTime\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Waiting_Time]"
+                      cachedDataType="i4"
+                      cachedName="Waiting_Time"
+                      externalMetadataColumnId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Waiting_Time]"
+                      lineageId="Package\Load WaitingTime\Derived Waiting Time.Outputs[Derived Column Output].Columns[Waiting_Time]" />
+                    <inputColumn
+                      refId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[VP_PortIdCurrent]"
+                      cachedDataType="i4"
+                      cachedName="VP_PortIdCurrent"
+                      externalMetadataColumnId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Port_Id]"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[VP_PortIdCurrent]" />
+                    <inputColumn
+                      refId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[VS_ShipId]"
+                      cachedDataType="i4"
+                      cachedName="VS_ShipId"
+                      externalMetadataColumnId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ship_Id]"
+                      lineageId="Package\Load WaitingTime\Lookup Ship Id.Outputs[Lookup Match Output].Columns[VS_ShipId]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Waiting_Time_Id]"
+                      dataType="i4"
+                      name="Waiting_Time_Id" />
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Port_Id]"
+                      dataType="i4"
+                      name="Port_Id" />
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ship_Id]"
+                      dataType="i4"
+                      name="Ship_Id" />
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Waiting_Time]"
+                      dataType="wstr"
+                      length="10"
+                      name="Waiting_Time" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load WaitingTime\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load WaitingTime\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load WaitingTime\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load WaitingTime\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load WaitingTime\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load WaitingTime\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[VoyagePort]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load WaitingTime\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{9F017315-4785-4271-B0F5-015CE365C8C5}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[RDBMS_Raw]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[VV_VoyageId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[VV_VoyageId]"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[VV_VoyageId]"
+                      name="VV_VoyageId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[VP_PortIdCurrent]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[VP_PortIdCurrent]"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[VP_PortIdCurrent]"
+                      name="VP_PortIdCurrent"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Vp_PortIdNext]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Vp_PortIdNext]"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Vp_PortIdNext]"
+                      name="Vp_PortIdNext"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Vp_LegDateDepart]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Vp_LegDateDepart]"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Vp_LegDateDepart]"
+                      name="Vp_LegDateDepart"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Vp_LegDateArrival]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Vp_LegDateArrival]"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Vp_LegDateArrival]"
+                      name="Vp_LegDateArrival"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Vp_Traject_Distance]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Vp_Traject_Distance]"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Vp_Traject_Distance]"
+                      name="Vp_Traject_Distance"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[VV_VoyageId]"
+                      dataType="i4"
+                      name="VV_VoyageId" />
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[VP_PortIdCurrent]"
+                      dataType="i4"
+                      name="VP_PortIdCurrent" />
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Vp_PortIdNext]"
+                      dataType="i4"
+                      name="Vp_PortIdNext" />
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Vp_LegDateDepart]"
+                      dataType="dbTimeStamp"
+                      name="Vp_LegDateDepart" />
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Vp_LegDateArrival]"
+                      dataType="dbTimeStamp"
+                      name="Vp_LegDateArrival" />
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Vp_Traject_Distance]"
+                      dataType="i4"
+                      name="Vp_Traject_Distance" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[VV_VoyageId]"
+                      dataType="i4"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[VV_VoyageId]"
+                      name="VV_VoyageId" />
+                    <outputColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[VP_PortIdCurrent]"
+                      dataType="i4"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[VP_PortIdCurrent]"
+                      name="VP_PortIdCurrent" />
+                    <outputColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Vp_PortIdNext]"
+                      dataType="i4"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Vp_PortIdNext]"
+                      name="Vp_PortIdNext" />
+                    <outputColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Vp_LegDateDepart]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Vp_LegDateDepart]"
+                      name="Vp_LegDateDepart" />
+                    <outputColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Vp_LegDateArrival]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Vp_LegDateArrival]"
+                      name="Vp_LegDateArrival" />
+                    <outputColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Vp_Traject_Distance]"
+                      dataType="i4"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Vp_Traject_Distance]"
+                      name="Vp_Traject_Distance" />
+                    <outputColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load WaitingTime.Paths[Derived Column Output]"
+              endId="Package\Load WaitingTime\Lookup Ship Id.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\Load WaitingTime\Derived Waiting Time.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load WaitingTime.Paths[Lookup Match Output]"
+              endId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\Load WaitingTime\Lookup Ship Id.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load WaitingTime.Paths[OLE DB Source Output]"
+              endId="Package\Load WaitingTime\Derived Waiting Time.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -2951,10 +3566,18 @@ where [refTable].[VV_VoyageId] = ?</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 10]"
       DTS:CreationName=""
-      DTS:DTSID="{094383D1-DB31-482D-9753-B15FF70169E9}"
+      DTS:DTSID="{455F903C-7519-46C6-A861-3A91B7CBB35F}"
       DTS:From="Package\Load Ship"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 10"
+      DTS:To="Package\Load WaitingTime" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 12]"
+      DTS:CreationName=""
+      DTS:DTSID="{6A687681-651D-4EAA-B5E3-72033097AB60}"
+      DTS:From="Package\Load WaitingTime"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 12"
       DTS:To="Package\Load VoyagePort" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
@@ -3015,11 +3638,11 @@ where [refTable].[VV_VoyageId] = ?</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 9]"
       DTS:CreationName=""
-      DTS:DTSID="{BFEA366A-DE71-490D-A5B7-5697DF25BED7}"
+      DTS:DTSID="{81FE8607-1DE1-41FE-A511-D311EAD5CE14}"
       DTS:From="Package\Load Port"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 9"
-      DTS:To="Package\Load VoyagePort" />
+      DTS:To="Package\Load WaitingTime" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -3056,15 +3679,19 @@ where [refTable].[VV_VoyageId] = ?</property>
         <NodeLayout
           Size="125.333333333334,42.6666666666667"
           Id="Package\Load Ship"
-          TopLeft="730.499970272184,155.983329273064" />
+          TopLeft="744.874969629572,156.63332924207" />
         <NodeLayout
           Size="149.333333333334,42.6666666666667"
           Id="Package\Load Shipment"
-          TopLeft="199.874991310761,383.93331554254" />
+          TopLeft="247.374989187346,381.983315635523" />
         <NodeLayout
           Size="166,42.6666666666667"
           Id="Package\Load VoyagePort"
-          TopLeft="659.874970747159,371.333316906295" />
+          TopLeft="667.374970411883,379.133316534362" />
+        <NodeLayout
+          Size="164,42.6666666666667"
+          Id="Package\Load WaitingTime"
+          TopLeft="665.958304136373,286.949986579418" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="484.624979631976,65.4333319695791">
@@ -3101,30 +3728,30 @@ where [refTable].[VV_VoyageId] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="595.124979631976,65.4333319695791">
+          TopLeft="595.124979631976,65.4333319695792">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="198.041657306874,90.5499973034849"
+              EndConnector="212.416656664262,91.1999972724904"
               Start="0,0"
-              End="198.041657306874,83.0499973034849">
+              End="212.416656664262,83.6999972724904">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.2544635634335" />
+                    End="0,20.4285706979885" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.2544635634335"
-                    Point2="0,24.2544635634335"
-                    Point3="4,24.2544635634335" />
+                    Point1="0,20.4285706979885"
+                    Point2="0,24.4285706979885"
+                    Point3="4,24.4285706979885" />
                   <mssgle:LineSegment
-                    End="194.041657306874,24.2544635634335" />
+                    End="208.416656664262,24.4285706979885" />
                   <mssgle:CubicBezierSegment
-                    Point1="194.041657306874,24.2544635634335"
-                    Point2="198.041657306874,24.2544635634335"
-                    Point3="198.041657306874,28.2544635634335" />
+                    Point1="208.416656664262,24.4285706979885"
+                    Point2="212.416656664262,24.4285706979885"
+                    Point3="212.416656664262,28.4285706979885" />
                   <mssgle:LineSegment
-                    End="198.041657306874,83.0499973034849" />
+                    End="212.416656664262,83.6999972724904" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3135,30 +3762,52 @@ where [refTable].[VV_VoyageId] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 10]"
-          TopLeft="793.16663693885,198.649995939731">
+          TopLeft="807.541636296238,199.299995908736">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-23.9583328583582,172.683320966564"
+              EndConnector="-33.5833321598656,87.6499906706822"
               Start="0,0"
-              End="-23.9583328583582,165.183320966564">
+              End="-33.5833321598656,80.1499906706822">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,98.6208757056669" />
+                    End="0,48.0818785144634" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,98.6208757056669"
-                    Point2="0,102.620875705667"
-                    Point3="-4,102.620875705667" />
+                    Point1="0,48.0818785144634"
+                    Point2="0,52.0818785144634"
+                    Point3="-4,52.0818785144634" />
                   <mssgle:LineSegment
-                    End="-19.9583328583582,102.620875705667" />
+                    End="-29.5833321598656,52.0818785144634" />
                   <mssgle:CubicBezierSegment
-                    Point1="-19.9583328583582,102.620875705667"
-                    Point2="-23.9583328583582,102.620875705667"
-                    Point3="-23.9583328583582,106.620875705667" />
+                    Point1="-29.5833321598656,52.0818785144634"
+                    Point2="-33.5833321598656,52.0818785144634"
+                    Point3="-33.5833321598656,56.0818785144634" />
                   <mssgle:LineSegment
-                    End="-23.9583328583582,165.183320966564" />
+                    End="-33.5833321598656,80.1499906706822" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 12]"
+          TopLeft="749.166637274128,329.616653246085">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.5166632882769"
+              Start="0,0"
+              End="0,42.0166632882769">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.0166632882769" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3275,26 +3924,26 @@ where [refTable].[VV_VoyageId] = ?</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-169.699997206032,188.33331659635"
+              EndConnector="-122.199999329447,186.383316689334"
               Start="0,0"
-              End="-169.699997206032,180.83331659635">
+              End="-122.199999329447,178.883316689334">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,100.01051015183" />
+                    End="0,98.9335871262592" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,100.01051015183"
-                    Point2="0,104.01051015183"
-                    Point3="-4,104.01051015183" />
+                    Point1="0,98.9335871262592"
+                    Point2="0,102.933587126259"
+                    Point3="-4,102.933587126259" />
                   <mssgle:LineSegment
-                    End="-165.699997206032,104.01051015183" />
+                    End="-118.199999329447,102.933587126259" />
                   <mssgle:CubicBezierSegment
-                    Point1="-165.699997206032,104.01051015183"
-                    Point2="-169.699997206032,104.01051015183"
-                    Point3="-169.699997206032,108.01051015183" />
+                    Point1="-118.199999329447,102.933587126259"
+                    Point2="-122.199999329447,102.933587126259"
+                    Point3="-122.199999329447,106.933587126259" />
                   <mssgle:LineSegment
-                    End="-169.699997206032,180.83331659635" />
+                    End="-122.199999329447,178.883316689334" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3305,30 +3954,18 @@ where [refTable].[VV_VoyageId] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="306.374993434176,190.949997737408">
+          TopLeft="307.141657977427,190.949997737408">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-45.966668790082,192.983317805132"
+              EndConnector="0,191.033317898116"
               Start="0,0"
-              End="-45.966668790082,185.483317805132">
+              End="0,183.533317898116">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,102.57855815668" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,102.57855815668"
-                    Point2="0,106.57855815668"
-                    Point3="-4,106.57855815668" />
-                  <mssgle:LineSegment
-                    End="-41.966668790082,106.57855815668" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-41.966668790082,106.57855815668"
-                    Point2="-45.966668790082,106.57855815668"
-                    Point3="-45.966668790082,110.57855815668" />
-                  <mssgle:LineSegment
-                    End="-45.966668790082,185.483317805132" />
+                    End="0,183.533317898116" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3343,60 +3980,26 @@ where [refTable].[VV_VoyageId] = ?</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="77.5583265998713,193.183320656618"
+              EndConnector="125.058324476456,191.233320749602"
               Start="0,0"
-              End="77.5583265998713,185.683320656618">
+              End="125.058324476456,183.733320749602">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,130.891096717838" />
+                    End="0,129.529500772789" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,130.891096717838"
-                    Point2="0,134.891096717838"
-                    Point3="4,134.891096717838" />
+                    Point1="0,129.529500772789"
+                    Point2="0,133.529500772789"
+                    Point3="4,133.529500772789" />
                   <mssgle:LineSegment
-                    End="73.5583265998713,134.891096717838" />
+                    End="121.058324476456,133.529500772789" />
                   <mssgle:CubicBezierSegment
-                    Point1="73.5583265998713,134.891096717838"
-                    Point2="77.5583265998713,134.891096717838"
-                    Point3="77.5583265998713,138.891096717838" />
+                    Point1="121.058324476456,133.529500772789"
+                    Point2="125.058324476456,133.529500772789"
+                    Point3="125.058324476456,137.529500772789" />
                   <mssgle:LineSegment
-                    End="77.5583265998713,185.683320656618" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 9]"
-          TopLeft="637.097197663247,196.368175867254">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="79.4444397505781,174.965141039041"
-              Start="0,0"
-              End="79.4444397505781,167.465141039041">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,83.8152453403978" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,83.8152453403978"
-                    Point2="0,87.8152453403978"
-                    Point3="4,87.8152453403978" />
-                  <mssgle:LineSegment
-                    End="75.4444397505781,87.8152453403978" />
-                  <mssgle:CubicBezierSegment
-                    Point1="75.4444397505781,87.8152453403978"
-                    Point2="79.4444397505781,87.8152453403978"
-                    Point3="79.4444397505781,91.8152453403978" />
-                  <mssgle:LineSegment
-                    End="79.4444397505781,167.465141039041" />
+                    End="125.058324476456,183.733320749602" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3411,26 +4014,60 @@ where [refTable].[VV_VoyageId] = ?</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-281.044428574709,187.565139675286"
+              EndConnector="-233.544430698124,185.61513976827"
               Start="0,0"
-              End="-281.044428574709,180.065139675286">
+              End="-233.544430698124,178.11513976827">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,111.200225991741" />
+                    End="0,110.002559781692" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,111.200225991741"
-                    Point2="0,115.200225991741"
-                    Point3="-4,115.200225991741" />
+                    Point1="0,110.002559781692"
+                    Point2="0,114.002559781692"
+                    Point3="-4,114.002559781692" />
                   <mssgle:LineSegment
-                    End="-277.044428574709,115.200225991741" />
+                    End="-229.544430698124,114.002559781692" />
                   <mssgle:CubicBezierSegment
-                    Point1="-277.044428574709,115.200225991741"
-                    Point2="-281.044428574709,115.200225991741"
-                    Point3="-281.044428574709,119.200225991741" />
+                    Point1="-229.544430698124,114.002559781692"
+                    Point2="-233.544430698124,114.002559781692"
+                    Point3="-233.544430698124,118.002559781692" />
                   <mssgle:LineSegment
-                    End="-281.044428574709,180.065139675286" />
+                    End="-233.544430698124,178.11513976827" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 9]"
+          TopLeft="637.097197663247,196.368175867254">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="84.8611064731256,90.5818107121648"
+              Start="0,0"
+              End="84.8611064731256,83.0818107121648">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.4566386375116" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.4566386375116"
+                    Point2="0,45.4566386375116"
+                    Point3="4,45.4566386375116" />
+                  <mssgle:LineSegment
+                    End="80.8611064731256,45.4566386375116" />
+                  <mssgle:CubicBezierSegment
+                    Point1="80.8611064731256,45.4566386375116"
+                    Point2="84.8611064731256,45.4566386375116"
+                    Point3="84.8611064731256,49.4566386375116" />
+                  <mssgle:LineSegment
+                    End="84.8611064731256,83.0818107121648" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3778,39 +4415,17 @@ where [refTable].[VV_VoyageId] = ?</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="180,42.6666666666667"
-          Id="Package\Load Shipment\Shipment Destination"
-          TopLeft="161.525636375715,195.448712287805" />
-        <NodeLayout
           Size="160,42.6666666666667"
           Id="Package\Load Shipment\Shipment Source"
           TopLeft="171.499995946884,26.5000002682209" />
         <NodeLayout
+          Size="180,42.6666666666667"
+          Id="Package\Load Shipment\Shipment Destination"
+          TopLeft="161.525636375715,195.448712287805" />
+        <NodeLayout
           Size="188,42.6666666666667"
           Id="Package\Load Shipment\Lookup ShipmentDetail"
           TopLeft="157.499995470047,114.166663428148" />
-        <EdgeLayout
-          Id="Package\Load Shipment.Paths[OLE DB Source Output]"
-          TopLeft="251.499995708466,69.1666669348876">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,44.9999964932602"
-              Start="0,0"
-              End="0,37.4999964932602">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.4999964932602" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Shipment.Paths[Lookup Match Output]"
           TopLeft="251.512815922881,156.833330094814">
@@ -3835,9 +4450,46 @@ where [refTable].[VV_VoyageId] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Shipment.Paths[OLE DB Source Output]"
+          TopLeft="251.499995708466,69.1666669348876">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44.9999964932602"
+              Start="0,0"
+              End="0,37.4999964932602">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.4999964932602" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Shipment\Shipment Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load Shipment\Shipment Destination">
     <Properties>
@@ -3852,15 +4504,25 @@ where [refTable].[VV_VoyageId] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Shipment\Shipment Source">
+    design-time-name="Package\Load Shipment\Lookup ShipmentDetail">
     <Properties>
       <Property>
-        <Name>DataSourceViewID</Name>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[ShipmentDetail]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -3900,7 +4562,9 @@ where [refTable].[VV_VoyageId] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3930,29 +4594,6 @@ where [refTable].[VV_VoyageId] = ?</property>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Shipment\Lookup ShipmentDetail">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[ShipmentDetail]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load VoyagePort\VoyagePort Source">
     <Properties>
@@ -3985,7 +4626,7 @@ where [refTable].[VV_VoyageId] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -3995,10 +4636,155 @@ where [refTable].[VV_VoyageId] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load WaitingTime">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\Load WaitingTime\Lookup Ship Id"
+          TopLeft="86.1249990779906,187.049994204045" />
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\Load WaitingTime\OLE DB Source"
+          TopLeft="80.4999966472388,26.9499989771843" />
+        <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\Load WaitingTime\OLE DB Destination"
+          TopLeft="81.1249979604036,275.349988563061" />
+        <NodeLayout
+          Size="181.333333333334,42.6666666666667"
+          Id="Package\Load WaitingTime\Derived Waiting Time"
+          TopLeft="68.1249969545753,107.899994854927" />
+        <EdgeLayout
+          Id="Package\Load WaitingTime.Paths[OLE DB Source Output]"
+          TopLeft="157.312496800907,69.616665643851">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.2833292110763"
+              Start="0,0"
+              End="0,30.7833292110763">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.7833292110763" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load WaitingTime.Paths[Lookup Match Output]"
+          TopLeft="164.291665185864,229.716660870711">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.6333276923502"
+              Start="0,0"
+              End="0,38.1333276923502">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.1333276923502" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,13.2619763461751,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load WaitingTime.Paths[Derived Column Output]"
+          TopLeft="160.124998016283,150.566661521594">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.4833326824506"
+              Start="0,0"
+              End="0,28.9833326824506">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.9833326824506" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load WaitingTime\Lookup Ship Id">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Voyage]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load WaitingTime\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load WaitingTime\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

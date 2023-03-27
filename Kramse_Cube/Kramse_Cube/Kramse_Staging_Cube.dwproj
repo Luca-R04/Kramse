@@ -43,6 +43,10 @@
       <Name>Dim Waiting Time.dim</Name>
       <FullPath>Dim Waiting Time.dim</FullPath>
     </ProjectItem>
+    <ProjectItem>
+      <Name>Dim Time.dim</Name>
+      <FullPath>Dim Time.dim</FullPath>
+    </ProjectItem>
   </Dimensions>
   <DataSources>
     <ProjectItem>

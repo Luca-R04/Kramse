@@ -7,12 +7,12 @@
   DTS:CreatorName="DESKTOP-KOKBI2K\Martijn"
   DTS:DTSID="{965071DA-2265-40B8-8FF5-7270E6AACE9D}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LastModifiedProductVersion="16.0.5131.0"
   DTS:LocaleID="1043"
-  DTS:ObjectName="Package1"
+  DTS:ObjectName="Raw to RDBMS"
   DTS:PackageType="5"
-  DTS:VersionBuild="61"
-  DTS:VersionGUID="{E5498EEC-D164-4705-9065-517396A618BA}">
+  DTS:VersionBuild="62"
+  DTS:VersionGUID="{9BE7082F-DB68-4DF8-9FAD-3F5083A320F5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -226,12 +226,6 @@
                       cachedName="EuroPricePerKm"
                       externalMetadataColumnId="Package\Load Container\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EuroPricePerKm]"
                       lineageId="Package\Load Container\OLE DB Source.Outputs[OLE DB Source Output].Columns[EuroPricePerKm]" />
-                    <inputColumn
-                      refId="Package\Load Container\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Refrigeration]"
-                      cachedDataType="bool"
-                      cachedName="Refrigeration"
-                      externalMetadataColumnId="Package\Load Container\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Refrigeration]"
-                      lineageId="Package\Load Container\Derived Column.Outputs[Derived Column Output].Columns[Refrigeration]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -253,9 +247,10 @@
                       dataType="r8"
                       name="EuroPricePerKm" />
                     <externalMetadataColumn
-                      refId="Package\Load Container\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Refrigeration]"
-                      dataType="bool"
-                      name="Refrigeration" />
+                      refId="Package\Load Container\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RefrigerationFlag]"
+                      dataType="wstr"
+                      length="255"
+                      name="RefrigerationFlag" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -5323,7 +5318,7 @@ where [refTable].[Shipname] = ?</property>
           Id="Package\Load Cosignor"
           TopLeft="436.99997407198,168.56368793797" />
         <NodeLayout
-          Size="126.666666666667,42"
+          Size="127,42"
           Id="Package\Load Item"
           TopLeft="789,170.449409095588" />
         <NodeLayout
@@ -5335,11 +5330,11 @@ where [refTable].[Shipname] = ?</property>
           Id="Package\Load Port"
           TopLeft="116.696428495592,170.223218995759" />
         <NodeLayout
-          Size="125.333333333334,42"
+          Size="125,42"
           Id="Package\Load Ship"
           TopLeft="282.96428696758,89.02797610967" />
         <NodeLayout
-          Size="149.333333333334,42"
+          Size="149,42"
           Id="Package\Load Shipment"
           TopLeft="434.714288364564,407.99940082008" />
         <NodeLayout
@@ -5351,7 +5346,7 @@ where [refTable].[Shipname] = ?</property>
           Id="Package\Load Voyage"
           TopLeft="219.92857393516,276.601794936231" />
         <NodeLayout
-          Size="158.666666666667,42"
+          Size="159,42"
           Id="Package\Load VoyagePort"
           TopLeft="21.3750024866314,274.225603937564" />
         <EdgeLayout
@@ -5835,7 +5830,7 @@ where [refTable].[Shipname] = ?</property>
     design-time-name="Package\Load Container">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="172,42.6666666666667"
           Id="Package\Load Container\OLE DB Destination"
@@ -5867,7 +5862,9 @@ where [refTable].[Shipname] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5889,7 +5886,9 @@ where [refTable].[Shipname] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

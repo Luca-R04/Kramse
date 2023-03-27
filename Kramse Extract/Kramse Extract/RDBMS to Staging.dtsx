@@ -7,28 +7,14 @@
   DTS:CreatorName="DESKTOP-KOKBI2K\Martijn"
   DTS:DTSID="{EB622D34-52B7-431B-B7C4-71B10E539A07}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LastModifiedProductVersion="16.0.5131.0"
   DTS:LocaleID="1043"
   DTS:ObjectName="Raw to Staging"
   DTS:PackageType="5"
-  DTS:VersionBuild="58"
-  DTS:VersionGUID="{48648186-CA8E-447A-96F3-9C1485DC1677}">
+  DTS:VersionBuild="63"
+  DTS:VersionGUID="{B6201891-4FDE-404E-B711-8F6F9A57F93D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Staging]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{4BD61BF3-0AF1-4C2E-8D52-9E899D0C0989}"
-      DTS:ObjectName="Staging">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=.;Initial Catalog=Kramse_Staging;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Raw to Staging-{4BD61BF3-0AF1-4C2E-8D52-9E899D0C0989}Staging;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -121,8 +107,8 @@
               <connections>
                 <connection
                   refId="Package\Load Consignor\Consignor Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Staging]"
-                  connectionManagerRefId="Package.ConnectionManagers[Staging]"
+                  connectionManagerID="{4BD61BF3-0AF1-4C2E-8D52-9E899D0C0989}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -383,7 +369,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[Dim_Container]</property>
+                  name="OpenRowset">[dbo].[Dim_Container]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -426,8 +412,8 @@
               <connections>
                 <connection
                   refId="Package\Load Container\Container Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Staging]"
-                  connectionManagerRefId="Package.ConnectionManagers[Staging]"
+                  connectionManagerID="{4BD61BF3-0AF1-4C2E-8D52-9E899D0C0989}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -447,12 +433,6 @@
                       externalMetadataColumnId="Package\Load Container\Container Destination.Inputs[OLE DB Destination Input].ExternalColumns[Type]"
                       lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[Type]" />
                     <inputColumn
-                      refId="Package\Load Container\Container Destination.Inputs[OLE DB Destination Input].Columns[Refrigeration]"
-                      cachedDataType="bool"
-                      cachedName="Refrigeration"
-                      externalMetadataColumnId="Package\Load Container\Container Destination.Inputs[OLE DB Destination Input].ExternalColumns[Refrigeration]"
-                      lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[Refrigeration]" />
-                    <inputColumn
                       refId="Package\Load Container\Container Destination.Inputs[OLE DB Destination Input].Columns[Cubes]"
                       cachedDataType="r8"
                       cachedName="Cubes"
@@ -470,6 +450,13 @@
                       cachedName="Id"
                       externalMetadataColumnId="Package\Load Container\Container Destination.Inputs[OLE DB Destination Input].ExternalColumns[Container_Id]"
                       lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\Load Container\Container Destination.Inputs[OLE DB Destination Input].Columns[RefrigerationFlag]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="RefrigerationFlag"
+                      externalMetadataColumnId="Package\Load Container\Container Destination.Inputs[OLE DB Destination Input].ExternalColumns[Refrigeration]"
+                      lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[RefrigerationFlag]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -603,15 +590,6 @@
                       name="Type"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[Refrigeration]"
-                      dataType="bool"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].ExternalColumns[Refrigeration]"
-                      lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[Refrigeration]"
-                      name="Refrigeration"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[Cubes]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversion"
@@ -629,6 +607,16 @@
                       lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[EuroPricePerKm]"
                       name="EuroPricePerKm"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[RefrigerationFlag]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].ExternalColumns[RefrigerationFlag]"
+                      length="255"
+                      lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[RefrigerationFlag]"
+                      name="RefrigerationFlag"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -642,10 +630,6 @@
                       length="255"
                       name="Type" />
                     <externalMetadataColumn
-                      refId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].ExternalColumns[Refrigeration]"
-                      dataType="bool"
-                      name="Refrigeration" />
-                    <externalMetadataColumn
                       refId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].ExternalColumns[Cubes]"
                       dataType="r8"
                       name="Cubes" />
@@ -653,6 +637,11 @@
                       refId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].ExternalColumns[EuroPricePerKm]"
                       dataType="r8"
                       name="EuroPricePerKm" />
+                    <externalMetadataColumn
+                      refId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].ExternalColumns[RefrigerationFlag]"
+                      dataType="wstr"
+                      length="255"
+                      name="RefrigerationFlag" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -672,10 +661,11 @@
                       lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Error Output].Columns[Type]"
                       name="Type" />
                     <outputColumn
-                      refId="Package\Load Container\Container Source.Outputs[OLE DB Source Error Output].Columns[Refrigeration]"
-                      dataType="bool"
-                      lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Error Output].Columns[Refrigeration]"
-                      name="Refrigeration" />
+                      refId="Package\Load Container\Container Source.Outputs[OLE DB Source Error Output].Columns[RefrigerationFlag]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Error Output].Columns[RefrigerationFlag]"
+                      name="RefrigerationFlag" />
                     <outputColumn
                       refId="Package\Load Container\Container Source.Outputs[OLE DB Source Error Output].Columns[Cubes]"
                       dataType="r8"
@@ -787,8 +777,8 @@
               <connections>
                 <connection
                   refId="Package\Load Item\Item Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Staging]"
-                  connectionManagerRefId="Package.ConnectionManagers[Staging]"
+                  connectionManagerID="{4BD61BF3-0AF1-4C2E-8D52-9E899D0C0989}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1097,8 +1087,8 @@
               <connections>
                 <connection
                   refId="Package\Load Port\Port Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Staging]"
-                  connectionManagerRefId="Package.ConnectionManagers[Staging]"
+                  connectionManagerID="{4BD61BF3-0AF1-4C2E-8D52-9E899D0C0989}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1407,8 +1397,8 @@
               <connections>
                 <connection
                   refId="Package\Load Ship\Ship Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Staging]"
-                  connectionManagerRefId="Package.ConnectionManagers[Staging]"
+                  connectionManagerID="{4BD61BF3-0AF1-4C2E-8D52-9E899D0C0989}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1936,8 +1926,8 @@ where [refTable].[ShipmentId] = ?</property>
               <connections>
                 <connection
                   refId="Package\Load Shipment\Shipment Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Staging]"
-                  connectionManagerRefId="Package.ConnectionManagers[Staging]"
+                  connectionManagerID="{4BD61BF3-0AF1-4C2E-8D52-9E899D0C0989}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2584,8 +2574,8 @@ where [refTable].[VV_VoyageId] = ?</property>
               <connections>
                 <connection
                   refId="Package\Load VoyagePort\VoyagePort Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Staging]"
-                  connectionManagerRefId="Package.ConnectionManagers[Staging]"
+                  connectionManagerID="{4BD61BF3-0AF1-4C2E-8D52-9E899D0C0989}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3249,8 +3239,8 @@ where [refTable].[VV_VoyageId] = ?</property>
               <connections>
                 <connection
                   refId="Package\Load WaitingTime\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Staging]"
-                  connectionManagerRefId="Package.ConnectionManagers[Staging]"
+                  connectionManagerID="{4BD61BF3-0AF1-4C2E-8D52-9E899D0C0989}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3657,39 +3647,39 @@ where [refTable].[VV_VoyageId] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="164,42.6666666666667"
+          Size="164,43"
           Id="Package\Execute SQL Task"
           TopLeft="461.124979631976,22.7666653029125" />
         <NodeLayout
-          Size="152,42.6666666666667"
+          Size="152,43"
           Id="Package\Load Consignor"
           TopLeft="382.374988516793,152.933332279523" />
         <NodeLayout
-          Size="150.666666666667,42.6666666666667"
+          Size="151,43"
           Id="Package\Load Container"
           TopLeft="79.2499980442227,148.083328219255" />
         <NodeLayout
-          Size="128,42.6666666666667"
+          Size="128,43"
           Id="Package\Load Item"
           TopLeft="242.374993434176,148.283331070741" />
         <NodeLayout
-          Size="125.333333333334,42.6666666666667"
+          Size="125,43"
           Id="Package\Load Port"
           TopLeft="554.874975441025,153.701509200587" />
         <NodeLayout
-          Size="125.333333333334,42.6666666666667"
+          Size="125,43"
           Id="Package\Load Ship"
           TopLeft="744.874969629572,156.63332924207" />
         <NodeLayout
-          Size="149.333333333334,42.6666666666667"
+          Size="149,43"
           Id="Package\Load Shipment"
           TopLeft="247.374989187346,381.983315635523" />
         <NodeLayout
-          Size="166,42.6666666666667"
+          Size="166,43"
           Id="Package\Load VoyagePort"
           TopLeft="667.374970411883,379.133316534362" />
         <NodeLayout
-          Size="164,42.6666666666667"
+          Size="164,43"
           Id="Package\Load WaitingTime"
           TopLeft="665.958304136373,286.949986579418" />
         <EdgeLayout
@@ -4149,37 +4139,35 @@ where [refTable].[VV_VoyageId] = ?</property>
     design-time-name="Package\Load Container">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="181.333333333334,42.6666666666667"
+          Size="181,43"
           Id="Package\Load Container\Container Destination"
-          TopLeft="33.0000001117587,86.1999975824357" />
+          TopLeft="30.0000001117587,100.199997582436" />
         <NodeLayout
-          Size="160,42.6666666666667"
+          Size="160,43"
           Id="Package\Load Container\Container Source"
-          TopLeft="36.1249986309559,11.3499997210503" />
+          TopLeft="48.1249986309559,5.3499997210503" />
         <EdgeLayout
           Id="Package\Load Container.Paths[OLE DB Source Output]"
-          TopLeft="119.895832704691,54.0166663877169">
+          TopLeft="124.312499371357,48.3499997210503">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,32.1833311947187"
+              EndConnector="0,51.8499978613854"
               Start="0,0"
-              End="0,24.6833311947187">
+              End="0,44.3499978613854">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.6833311947187" />
+                    End="0,44.3499978613854" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4649,19 +4637,19 @@ where [refTable].[VV_VoyageId] = ?</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="150.666666666667,42.6666666666667"
+          Size="151,43"
           Id="Package\Load WaitingTime\Lookup Ship Id"
           TopLeft="86.1249990779906,187.049994204045" />
         <NodeLayout
-          Size="150.666666666667,42.6666666666667"
+          Size="151,43"
           Id="Package\Load WaitingTime\OLE DB Source"
           TopLeft="80.4999966472388,26.9499989771843" />
         <NodeLayout
-          Size="172,42.6666666666667"
+          Size="172,43"
           Id="Package\Load WaitingTime\OLE DB Destination"
           TopLeft="81.1249979604036,275.349988563061" />
         <NodeLayout
-          Size="181.333333333334,42.6666666666667"
+          Size="181,43"
           Id="Package\Load WaitingTime\Derived Waiting Time"
           TopLeft="68.1249969545753,107.899994854927" />
         <EdgeLayout
@@ -4683,9 +4671,7 @@ where [refTable].[VV_VoyageId] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -4731,9 +4717,7 @@ where [refTable].[VV_VoyageId] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

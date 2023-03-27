@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Staging"
+  DTS:DTSID="{4BD61BF3-0AF1-4C2E-8D52-9E899D0C0989}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=.;Initial Catalog=Kramse_Staging;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Raw to Staging-{4BD61BF3-0AF1-4C2E-8D52-9E899D0C0989}Staging;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

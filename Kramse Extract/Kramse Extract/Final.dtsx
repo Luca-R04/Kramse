@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{49A9ECD3-3F3E-4223-AC14-FE837585FFE0}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{BF29420C-4567-4FB1-9436-74E0C6A8A186}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -165,6 +165,10 @@
           Size="165.6,42.4"
           Id="Package\RDBMS to Staging"
           TopLeft="5.50000000000004,311.9" />
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Staging to ODS"
+          TopLeft="13.1,414.3" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="88.3,47.9">
@@ -231,10 +235,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="150.4,41.6"
-          Id="Package\Staging to ODS"
-          TopLeft="13.1,414.3" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="88.3,354.3">

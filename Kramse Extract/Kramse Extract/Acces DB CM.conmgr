@@ -7,6 +7,6 @@
     DTS:Name="ServerName">@[$Project::LocalSourcePath] + "KramseTPS v7.mdb"</DTS:PropertyExpression>
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Data Source=C:\Users\robin\OneDrive\Documenten\GitHub\Kramse\Databronnen\KramseTPS v7.mdb;Provider=Microsoft.ACE.OLEDB.16.0;" />
+      DTS:ConnectionString="Data Source=C:\code\avans\kramse\Kramse\DatabronnenKramseTPS v7.mdb;Provider=Microsoft.ACE.OLEDB.16.0;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>

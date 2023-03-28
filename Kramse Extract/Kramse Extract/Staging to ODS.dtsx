@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="Staging to ODS"
   DTS:PackageType="5"
-  DTS:VersionBuild="36"
-  DTS:VersionGUID="{C0B4B4AD-F2A7-4853-B210-B532E89954AF}">
+  DTS:VersionBuild="37"
+  DTS:VersionGUID="{1DC23F97-2BD1-4D11-9807-52848F259406}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />

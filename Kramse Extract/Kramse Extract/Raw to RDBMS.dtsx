@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="Raw to RDBMS"
   DTS:PackageType="5"
-  DTS:VersionBuild="64"
-  DTS:VersionGUID="{1D610DBB-EBAC-4ACA-9D62-0406ED21CC46}">
+  DTS:VersionBuild="65"
+  DTS:VersionGUID="{B7EC2160-5AD8-4B73-B998-5F663DB7EAAC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -5311,47 +5311,47 @@ where [refTable].[Shipname] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="164,42"
+          Size="164,41.6"
           Id="Package\Execute SQL Task"
           TopLeft="418.156231888105,0" />
         <NodeLayout
-          Size="150,42"
+          Size="150.4,41.6"
           Id="Package\Load Container"
           TopLeft="604.946401170589,170.620826739272" />
         <NodeLayout
-          Size="146,42"
+          Size="145.6,41.6"
           Id="Package\Load Cosignor"
           TopLeft="436.99997407198,168.56368793797" />
         <NodeLayout
-          Size="126.666666666667,42"
+          Size="126.4,41.6"
           Id="Package\Load Item"
           TopLeft="789,170.449409095588" />
         <NodeLayout
-          Size="126,42"
+          Size="126.4,41.6"
           Id="Package\Load MRV"
           TopLeft="281.321399857424,170.235116429698" />
         <NodeLayout
-          Size="124,42"
+          Size="124,41.6"
           Id="Package\Load Port"
           TopLeft="116.696428495592,170.223218995759" />
         <NodeLayout
-          Size="125.333333333334,42"
+          Size="125.6,41.6"
           Id="Package\Load Ship"
           TopLeft="282.96428696758,89.02797610967" />
         <NodeLayout
-          Size="149.333333333334,42"
+          Size="149.6,41.6"
           Id="Package\Load Shipment"
           TopLeft="434.714288364564,407.99940082008" />
         <NodeLayout
-          Size="176,42"
+          Size="176,41.6"
           Id="Package\Load ShipmentDetail"
           TopLeft="422.898823952657,506.761301508433" />
         <NodeLayout
-          Size="140,42"
+          Size="140,41.6"
           Id="Package\Load Voyage"
           TopLeft="219.92857393516,276.601794936231" />
         <NodeLayout
-          Size="158.666666666667,42"
+          Size="158.4,41.6"
           Id="Package\Load VoyagePort"
           TopLeft="21.3750024866314,274.225603937564" />
         <EdgeLayout
@@ -5837,15 +5837,15 @@ where [refTable].[Shipname] = ?</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="172,42.6666666666667"
+          Size="172,42.4"
           Id="Package\Load Container\OLE DB Destination"
           TopLeft="218.913455373822,186.323070474955" />
         <NodeLayout
-          Size="150,42"
+          Size="150.4,41.6"
           Id="Package\Load Container\OLE DB Source"
           TopLeft="232,30" />
         <NodeLayout
-          Size="154.666666666667,42.6666666666667"
+          Size="154.4,42.4"
           Id="Package\Load Container\Derived Column"
           TopLeft="226.874989857898,109.849994761944" />
         <EdgeLayout

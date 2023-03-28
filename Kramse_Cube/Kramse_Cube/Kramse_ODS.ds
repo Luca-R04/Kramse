@@ -6,8 +6,9 @@
   <ConnectionString>Provider=SQLNCLI11.1;Data Source=.;Integrated Security=SSPI;Initial Catalog=Kramse_ODS</ConnectionString>
   <ConnectionStringSecurity>Unchanged</ConnectionStringSecurity>
   <ImpersonationInfo>
-    <ImpersonationMode>Default</ImpersonationMode>
-    <ImpersonationInfoSecurity>Unchanged</ImpersonationInfoSecurity>
+    <ImpersonationMode>ImpersonateAccount</ImpersonationMode>
+    <Account>laure</Account>
+    <ImpersonationInfoSecurity>PasswordRemoved</ImpersonationInfoSecurity>
   </ImpersonationInfo>
   <Timeout>PT0S</Timeout>
 </DataSource>

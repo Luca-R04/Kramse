@@ -47,6 +47,10 @@
       <Name>F Shipment.dim</Name>
       <FullPath>F Shipment.dim</FullPath>
     </ProjectItem>
+    <ProjectItem>
+      <Name>Dim Time.dim</Name>
+      <FullPath>Dim Time.dim</FullPath>
+    </ProjectItem>
   </Dimensions>
   <DataSources>
     <ProjectItem>

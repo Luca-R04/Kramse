@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="Staging to ODS"
   DTS:PackageType="5"
-  DTS:VersionBuild="37"
-  DTS:VersionGUID="{1DC23F97-2BD1-4D11-9807-52848F259406}">
+  DTS:VersionBuild="38"
+  DTS:VersionGUID="{7B3AF198-B9A6-4F2C-999E-CC0595470543}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2635,6 +2635,18 @@
                       dataType="wstr"
                       length="50"
                       name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Load Port\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Port_Row_Id]"
+                      dataType="i4"
+                      name="Port_Row_Id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Port\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Start_Date]"
+                      dataType="dbTimeStamp"
+                      name="Start_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Load Port\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[End_Date]"
+                      dataType="dbTimeStamp"
+                      name="End_Date" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2835,7 +2847,7 @@
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
-                  name="FailOnFixedAttributeChange">true</property>
+                  name="FailOnFixedAttributeChange">false</property>
                 <property
                   dataType="System.String"
                   description="Specifies the column name for the inferred member."
@@ -2861,8 +2873,8 @@
               <connections>
                 <connection
                   refId="Package\Load Port\Slowly Changing Dimension.Connections[LookupConnection]"
-                  connectionManagerID="{4BD61BF3-0AF1-4C2E-8D52-9E899D0C0989}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Staging]"
+                  connectionManagerID="{12973B65-8439-43D3-93CF-162FDA5DCB08}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ODS]"
                   description="Defines the connection to use for lookups in the dimension table"
                   name="LookupConnection" />
               </connections>
@@ -8664,42 +8676,40 @@ AND [refTable].[END_DATE] IS NULL;</property>
         <NodeLayout
           Size="134.4,42.4"
           Id="Package\Load Port\Port Source"
-          TopLeft="236,5.5" />
-        <NodeLayout
-          Size="162.4,41.6"
-          Id="Package\Load Port\Insert Destination"
-          TopLeft="221.5,211" />
+          TopLeft="43.1,5.50000000000005" />
         <NodeLayout
           Size="209.6,41.6"
           Id="Package\Load Port\Slowly Changing Dimension"
-          TopLeft="198.5,108.5" />
+          TopLeft="5.50000000000003,107.9" />
         <EdgeLayout
-          Id="Package\Load Port.Paths[New Output]"
-          TopLeft="303,150.5">
+          Id="Package\Load Port.Paths[OLE DB Source Output]"
+          TopLeft="110.3,47.9">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60.5"
+              EndConnector="0,60.0000000000001"
               Start="0,0"
-              End="0,53">
+              End="0,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,53" />
+                    End="0,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-27.09138671875,20.783203125,54.1827734375,11.43359375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Load Port\Insert Destination"
+          TopLeft="29.1,209.5" />
         <EdgeLayout
-          Id="Package\Load Port.Paths[OLE DB Source Output]"
-          TopLeft="303,48.5">
+          Id="Package\Load Port.Paths[New Output]"
+          TopLeft="110.3,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -8717,7 +8727,7 @@ AND [refTable].[END_DATE] IS NULL;</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="-27.09138671875,20.533203125,54.1827734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -8738,19 +8748,6 @@ AND [refTable].[END_DATE] IS NULL;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Port\Insert Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Load Port\Slowly Changing Dimension">
     <Properties>
       <Property>
@@ -8758,7 +8755,7 @@ AND [refTable].[END_DATE] IS NULL;</property>
         <Value
           type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SCDWizardMetadata xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;ConnectionID&gt;{4BD61BF3-0AF1-4C2E-8D52-9E899D0C0989}&lt;/ConnectionID&gt;
+  &lt;ConnectionID&gt;{12973B65-8439-43D3-93CF-162FDA5DCB08}&lt;/ConnectionID&gt;
   &lt;TableName&gt;[dbo].[Dim_Port]&lt;/TableName&gt;
   &lt;InputToColumnsCollection&gt;
     &lt;InputColumnToDBColumn&gt;
@@ -8783,7 +8780,7 @@ AND [refTable].[END_DATE] IS NULL;</property>
   &lt;GeneratedComponentsIdentificationStrings&gt;
     &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
   &lt;/GeneratedComponentsIdentificationStrings&gt;
-  &lt;FailFixedAttribute&gt;true&lt;/FailFixedAttribute&gt;
+  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
   &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
   &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
   &lt;CurrentIndicatorColumn /&gt;

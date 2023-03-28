@@ -7,12 +7,12 @@
   DTS:CreatorName="DESKTOP-KOKBI2K\Martijn"
   DTS:DTSID="{8D0CDD4D-4FA1-4273-BEC2-EDDE49B2F073}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="16.0.5131.0"
+  DTS:LastModifiedProductVersion="16.0.5035.3"
   DTS:LocaleID="1043"
   DTS:ObjectName="Staging to ODS"
   DTS:PackageType="5"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{BCA1E9DD-3A17-40DB-84F0-D1BE293AEA7B}">
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{3D466ACF-6E34-4DD6-BFFE-EA136E22ACAC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -121,22 +121,22 @@
                       name="Consignor_Id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Output].Columns[StartDate]"
+                      refId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Output].Columns[Start_Date]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Output].ExternalColumns[StartDate]"
-                      lineageId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Output].Columns[StartDate]"
-                      name="StartDate"
+                      externalMetadataColumnId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Output].ExternalColumns[Start_Date]"
+                      lineageId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Output].Columns[Start_Date]"
+                      name="Start_Date"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Output].Columns[EndDate]"
+                      refId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Output].Columns[End_Date]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Output].ExternalColumns[EndDate]"
-                      lineageId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Output].Columns[EndDate]"
-                      name="EndDate"
+                      externalMetadataColumnId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Output].ExternalColumns[End_Date]"
+                      lineageId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Output].Columns[End_Date]"
+                      name="End_Date"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -155,13 +155,13 @@
                       dataType="i4"
                       name="Consignor_Id" />
                     <externalMetadataColumn
-                      refId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Output].ExternalColumns[StartDate]"
+                      refId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Output].ExternalColumns[Start_Date]"
                       dataType="dbTimeStamp"
-                      name="StartDate" />
+                      name="Start_Date" />
                     <externalMetadataColumn
-                      refId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Output].ExternalColumns[EndDate]"
+                      refId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Output].ExternalColumns[End_Date]"
                       dataType="dbTimeStamp"
-                      name="EndDate" />
+                      name="End_Date" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -186,15 +186,15 @@
                       lineageId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Error Output].Columns[Discount]"
                       name="Discount" />
                     <outputColumn
-                      refId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Error Output].Columns[StartDate]"
+                      refId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Error Output].Columns[Start_Date]"
                       dataType="dbTimeStamp"
-                      lineageId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Error Output].Columns[StartDate]"
-                      name="StartDate" />
+                      lineageId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Error Output].Columns[Start_Date]"
+                      name="Start_Date" />
                     <outputColumn
-                      refId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Error Output].Columns[EndDate]"
+                      refId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Error Output].Columns[End_Date]"
                       dataType="dbTimeStamp"
-                      lineageId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Error Output].Columns[EndDate]"
-                      name="EndDate" />
+                      lineageId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Error Output].Columns[End_Date]"
+                      name="End_Date" />
                     <outputColumn
                       refId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -224,26 +224,16 @@
                   refId="Package\Load Consignor\Derived Column.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Load Consignor\Derived Column.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Load Consignor\Derived Column.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Consignor\Derived Column.Outputs[Derived Column Output].Columns[EndDate]"
-                      dataType="dbTimeStamp"
-                      description="EndDate"
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Consignor\Derived Column.Inputs[Derived Column Input].Columns[End_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="End_Date"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Load Consignor\Derived Column.Outputs[Derived Column Output].Columns[EndDate]"
-                      name="EndDate"
-                      truncationRowDisposition="FailComponent">
+                      lineageId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Output].Columns[End_Date]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
                       <properties>
                         <property
                           containsID="true"
@@ -257,8 +247,18 @@
                           expressionType="Notify"
                           name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
                       </properties>
-                    </outputColumn>
-                  </outputColumns>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Consignor\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Consignor\Derived Column.Inputs[Derived Column Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
@@ -298,26 +298,16 @@
                   refId="Package\Load Consignor\Derived Column 1.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Load Consignor\Derived Column 1.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Load Consignor\Derived Column 1.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Consignor\Derived Column 1.Outputs[Derived Column Output].Columns[StartDate]"
-                      dataType="dbTimeStamp"
-                      description="StartDate"
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Consignor\Derived Column 1.Inputs[Derived Column Input].Columns[Start_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Start_Date"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Load Consignor\Derived Column 1.Outputs[Derived Column Output].Columns[StartDate]"
-                      name="StartDate"
-                      truncationRowDisposition="FailComponent">
+                      lineageId="Package\Load Consignor\Union All.Outputs[Union All Output 1].Columns[Start_Date]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
                       <properties>
                         <property
                           containsID="true"
@@ -331,8 +321,18 @@
                           expressionType="Notify"
                           name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
                       </properties>
-                    </outputColumn>
-                  </outputColumns>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Consignor\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Consignor\Derived Column 1.Inputs[Derived Column Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
@@ -419,8 +419,8 @@
               <connections>
                 <connection
                   refId="Package\Load Consignor\Insert Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{12973B65-8439-43D3-93CF-162FDA5DCB08}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ODS]"
+                  connectionManagerID="{4BD61BF3-0AF1-4C2E-8D52-9E899D0C0989}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -451,9 +451,25 @@
                       cachedName="Discount"
                       externalMetadataColumnId="Package\Load Consignor\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Discount]"
                       lineageId="Package\Load Consignor\Union All.Outputs[Union All Output 1].Columns[Discount]" />
+                    <inputColumn
+                      refId="Package\Load Consignor\Insert Destination.Inputs[OLE DB Destination Input].Columns[Start_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Start_Date"
+                      externalMetadataColumnId="Package\Load Consignor\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Start_Date]"
+                      lineageId="Package\Load Consignor\Union All.Outputs[Union All Output 1].Columns[Start_Date]" />
+                    <inputColumn
+                      refId="Package\Load Consignor\Insert Destination.Inputs[OLE DB Destination Input].Columns[End_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="End_Date"
+                      externalMetadataColumnId="Package\Load Consignor\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[End_Date]"
+                      lineageId="Package\Load Consignor\Union All.Outputs[Union All Output 1].Columns[End_Date]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Consignor\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Consignor_Row_Id]"
+                      dataType="i4"
+                      name="Consignor_Row_Id" />
                     <externalMetadataColumn
                       refId="Package\Load Consignor\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Consignor_Id]"
                       dataType="i4"
@@ -467,6 +483,14 @@
                       refId="Package\Load Consignor\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Discount]"
                       dataType="r8"
                       name="Discount" />
+                    <externalMetadataColumn
+                      refId="Package\Load Consignor\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Start_Date]"
+                      dataType="dbTimeStamp"
+                      name="Start_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Load Consignor\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[End_Date]"
+                      dataType="dbTimeStamp"
+                      name="End_Date" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -513,7 +537,7 @@
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Dim_Consignor] SET [EndDate] = ? WHERE [Consignor_Id] = ? AND [EndDate] IS NULL</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Dim_Consignor] SET [End_Date] = ? WHERE [Consignor_Id] = ? AND [End_Date] IS NULL</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -542,11 +566,11 @@
                       externalMetadataColumnId="Package\Load Consignor\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                       lineageId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Output].Columns[Consignor_Id]" />
                     <inputColumn
-                      refId="Package\Load Consignor\OLE DB Command.Inputs[OLE DB Command Input].Columns[EndDate]"
+                      refId="Package\Load Consignor\OLE DB Command.Inputs[OLE DB Command Input].Columns[End_Date]"
                       cachedDataType="dbTimeStamp"
-                      cachedName="EndDate"
+                      cachedName="End_Date"
                       externalMetadataColumnId="Package\Load Consignor\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                      lineageId="Package\Load Consignor\Derived Column.Outputs[Derived Column Output].Columns[EndDate]" />
+                      lineageId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Output].Columns[End_Date]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -569,7 +593,7 @@
                         <property
                           dataType="System.Int32"
                           description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">17</property>
+                          name="DBParamInfoFlags">81</property>
                       </properties>
                     </externalMetadataColumn>
                   </externalMetadataColumns>
@@ -619,11 +643,11 @@
                   dataType="System.String"
                   description="Specifies the SELECT statement used to create a schema rowset."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Consignor], [Consignor_Id], [Discount],[StartDate],[EndDate] FROM [dbo].[Dim_Consignor]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Consignor], [Consignor_Id], [Discount], [End_Date], [Start_Date] FROM [dbo].[Dim_Consignor]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
-                  name="CurrentRowWhere">[StartDate] IS NOT NULL AND [EndDate] IS NULL</property>
+                  name="CurrentRowWhere">[Start_Date] IS NOT NULL AND [End_Date] IS NULL</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
@@ -724,13 +748,13 @@
                       dataType="r8"
                       name="Discount" />
                     <externalMetadataColumn
-                      refId="Package\Load Consignor\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[StartDate]"
+                      refId="Package\Load Consignor\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[End_Date]"
                       dataType="dbTimeStamp"
-                      name="StartDate" />
+                      name="End_Date" />
                     <externalMetadataColumn
-                      refId="Package\Load Consignor\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[EndDate]"
+                      refId="Package\Load Consignor\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Start_Date]"
                       dataType="dbTimeStamp"
-                      name="EndDate" />
+                      name="Start_Date" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -837,6 +861,32 @@
                           name="OutputColumnLineageID">#{Package\Load Consignor\Union All.Outputs[Union All Output 1].Columns[Consignor_Id]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Consignor\Union All.Inputs[Union All Input 1].Columns[Start_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Start_Date"
+                      lineageId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Output].Columns[Start_Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Consignor\Union All.Outputs[Union All Output 1].Columns[Start_Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Consignor\Union All.Inputs[Union All Input 1].Columns[End_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="End_Date"
+                      lineageId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Output].Columns[End_Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Consignor\Union All.Outputs[Union All Output 1].Columns[End_Date]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -885,6 +935,32 @@
                           name="OutputColumnLineageID">#{Package\Load Consignor\Union All.Outputs[Union All Output 1].Columns[Consignor_Id]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Consignor\Union All.Inputs[Union All Input 2].Columns[Start_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Start_Date"
+                      lineageId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Output].Columns[Start_Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Consignor\Union All.Outputs[Union All Output 1].Columns[Start_Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Consignor\Union All.Inputs[Union All Input 2].Columns[End_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="End_Date"
+                      lineageId="Package\Load Consignor\Consignor Source.Outputs[OLE DB Source Output].Columns[End_Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Consignor\Union All.Outputs[Union All Output 1].Columns[End_Date]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -917,6 +993,16 @@
                       dataType="i4"
                       lineageId="Package\Load Consignor\Union All.Outputs[Union All Output 1].Columns[Consignor_Id]"
                       name="Consignor_Id" />
+                    <outputColumn
+                      refId="Package\Load Consignor\Union All.Outputs[Union All Output 1].Columns[Start_Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Consignor\Union All.Outputs[Union All Output 1].Columns[Start_Date]"
+                      name="Start_Date" />
+                    <outputColumn
+                      refId="Package\Load Consignor\Union All.Outputs[Union All Output 1].Columns[End_Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Consignor\Union All.Outputs[Union All Output 1].Columns[End_Date]"
+                      name="End_Date" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -1085,22 +1171,31 @@
                       name="Refrigeration"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[StartDate]"
+                      refId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[Start_Date]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].ExternalColumns[StartDate]"
-                      lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[StartDate]"
-                      name="StartDate"
+                      externalMetadataColumnId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].ExternalColumns[Start_Date]"
+                      lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[Start_Date]"
+                      name="Start_Date"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[EndDate]"
+                      refId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[End_Date]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].ExternalColumns[EndDate]"
-                      lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[EndDate]"
-                      name="EndDate"
+                      externalMetadataColumnId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].ExternalColumns[End_Date]"
+                      lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[End_Date]"
+                      name="End_Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[Container_Row_Id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].ExternalColumns[Container_Row_Id]"
+                      lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[Container_Row_Id]"
+                      name="Container_Row_Id"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -1127,13 +1222,17 @@
                       dataType="bool"
                       name="Refrigeration" />
                     <externalMetadataColumn
-                      refId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].ExternalColumns[StartDate]"
+                      refId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].ExternalColumns[Start_Date]"
                       dataType="dbTimeStamp"
-                      name="StartDate" />
+                      name="Start_Date" />
                     <externalMetadataColumn
-                      refId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].ExternalColumns[EndDate]"
+                      refId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].ExternalColumns[End_Date]"
                       dataType="dbTimeStamp"
-                      name="EndDate" />
+                      name="End_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].ExternalColumns[Container_Row_Id]"
+                      dataType="i4"
+                      name="Container_Row_Id" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1141,6 +1240,11 @@
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Container\Container Source.Outputs[OLE DB Source Error Output].Columns[Container_Row_Id]"
+                      dataType="i4"
+                      lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Error Output].Columns[Container_Row_Id]"
+                      name="Container_Row_Id" />
                     <outputColumn
                       refId="Package\Load Container\Container Source.Outputs[OLE DB Source Error Output].Columns[Container_Id]"
                       dataType="i4"
@@ -1168,15 +1272,15 @@
                       lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Error Output].Columns[EuroPricePerKm]"
                       name="EuroPricePerKm" />
                     <outputColumn
-                      refId="Package\Load Container\Container Source.Outputs[OLE DB Source Error Output].Columns[StartDate]"
+                      refId="Package\Load Container\Container Source.Outputs[OLE DB Source Error Output].Columns[Start_Date]"
                       dataType="dbTimeStamp"
-                      lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Error Output].Columns[StartDate]"
-                      name="StartDate" />
+                      lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Error Output].Columns[Start_Date]"
+                      name="Start_Date" />
                     <outputColumn
-                      refId="Package\Load Container\Container Source.Outputs[OLE DB Source Error Output].Columns[EndDate]"
+                      refId="Package\Load Container\Container Source.Outputs[OLE DB Source Error Output].Columns[End_Date]"
                       dataType="dbTimeStamp"
-                      lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Error Output].Columns[EndDate]"
-                      name="EndDate" />
+                      lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Error Output].Columns[End_Date]"
+                      name="End_Date" />
                     <outputColumn
                       refId="Package\Load Container\Container Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -1206,26 +1310,16 @@
                   refId="Package\Load Container\Derived Column.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Load Container\Derived Column.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Load Container\Derived Column.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Container\Derived Column.Outputs[Derived Column Output].Columns[EndDate]"
-                      dataType="dbTimeStamp"
-                      description="EndDate"
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Container\Derived Column.Inputs[Derived Column Input].Columns[End_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="End_Date"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Load Container\Derived Column.Outputs[Derived Column Output].Columns[EndDate]"
-                      name="EndDate"
-                      truncationRowDisposition="FailComponent">
+                      lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[End_Date]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
                       <properties>
                         <property
                           containsID="true"
@@ -1239,8 +1333,18 @@
                           expressionType="Notify"
                           name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
                       </properties>
-                    </outputColumn>
-                  </outputColumns>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Container\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Container\Derived Column.Inputs[Derived Column Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
@@ -1280,26 +1384,16 @@
                   refId="Package\Load Container\Derived Column 1.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Load Container\Derived Column 1.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Load Container\Derived Column 1.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Container\Derived Column 1.Outputs[Derived Column Output].Columns[StartDate]"
-                      dataType="dbTimeStamp"
-                      description="StartDate"
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Container\Derived Column 1.Inputs[Derived Column Input].Columns[Start_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Start_Date"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Load Container\Derived Column 1.Outputs[Derived Column Output].Columns[StartDate]"
-                      name="StartDate"
-                      truncationRowDisposition="FailComponent">
+                      lineageId="Package\Load Container\Union All.Outputs[Union All Output 1].Columns[Start_Date]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
                       <properties>
                         <property
                           containsID="true"
@@ -1313,8 +1407,18 @@
                           expressionType="Notify"
                           name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
                       </properties>
-                    </outputColumn>
-                  </outputColumns>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Container\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Container\Derived Column 1.Inputs[Derived Column Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
@@ -1401,8 +1505,8 @@
               <connections>
                 <connection
                   refId="Package\Load Container\Insert Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{12973B65-8439-43D3-93CF-162FDA5DCB08}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ODS]"
+                  connectionManagerID="{4BD61BF3-0AF1-4C2E-8D52-9E899D0C0989}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1445,9 +1549,25 @@
                       cachedName="EuroPricePerKm"
                       externalMetadataColumnId="Package\Load Container\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[EuroPricePerKm]"
                       lineageId="Package\Load Container\Union All.Outputs[Union All Output 1].Columns[EuroPricePerKm]" />
+                    <inputColumn
+                      refId="Package\Load Container\Insert Destination.Inputs[OLE DB Destination Input].Columns[Start_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Start_Date"
+                      externalMetadataColumnId="Package\Load Container\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Start_Date]"
+                      lineageId="Package\Load Container\Union All.Outputs[Union All Output 1].Columns[Start_Date]" />
+                    <inputColumn
+                      refId="Package\Load Container\Insert Destination.Inputs[OLE DB Destination Input].Columns[End_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="End_Date"
+                      externalMetadataColumnId="Package\Load Container\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[End_Date]"
+                      lineageId="Package\Load Container\Union All.Outputs[Union All Output 1].Columns[End_Date]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Container\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Container_Row_Id]"
+                      dataType="i4"
+                      name="Container_Row_Id" />
                     <externalMetadataColumn
                       refId="Package\Load Container\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Container_Id]"
                       dataType="i4"
@@ -1469,6 +1589,14 @@
                       refId="Package\Load Container\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[EuroPricePerKm]"
                       dataType="r8"
                       name="EuroPricePerKm" />
+                    <externalMetadataColumn
+                      refId="Package\Load Container\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Start_Date]"
+                      dataType="dbTimeStamp"
+                      name="Start_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Load Container\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[End_Date]"
+                      dataType="dbTimeStamp"
+                      name="End_Date" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1515,7 +1643,7 @@
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Dim_Container] SET [EndDate] = ? WHERE [Container_Id] = ? AND [EndDate] IS NULL</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Dim_Container] SET [End_Date] = ? WHERE [Container_Id] = ? AND [End_Date] IS NULL</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1544,11 +1672,11 @@
                       externalMetadataColumnId="Package\Load Container\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                       lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[Container_Id]" />
                     <inputColumn
-                      refId="Package\Load Container\OLE DB Command.Inputs[OLE DB Command Input].Columns[EndDate]"
+                      refId="Package\Load Container\OLE DB Command.Inputs[OLE DB Command Input].Columns[End_Date]"
                       cachedDataType="dbTimeStamp"
-                      cachedName="EndDate"
+                      cachedName="End_Date"
                       externalMetadataColumnId="Package\Load Container\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                      lineageId="Package\Load Container\Derived Column.Outputs[Derived Column Output].Columns[EndDate]" />
+                      lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[End_Date]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1571,7 +1699,7 @@
                         <property
                           dataType="System.Int32"
                           description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">17</property>
+                          name="DBParamInfoFlags">81</property>
                       </properties>
                     </externalMetadataColumn>
                   </externalMetadataColumns>
@@ -1621,11 +1749,11 @@
                   dataType="System.String"
                   description="Specifies the SELECT statement used to create a schema rowset."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Container_Id], [EuroPricePerKm],[StartDate],[EndDate] FROM [dbo].[Dim_Container]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Container_Id], [End_Date], [EuroPricePerKm], [Start_Date] FROM [dbo].[Dim_Container]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
-                  name="CurrentRowWhere">[StartDate] IS NOT NULL AND [EndDate] IS NULL</property>
+                  name="CurrentRowWhere">[Start_Date] IS NOT NULL AND [End_Date] IS NULL</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
@@ -1703,17 +1831,17 @@
                       dataType="i4"
                       name="Container_Id" />
                     <externalMetadataColumn
+                      refId="Package\Load Container\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[End_Date]"
+                      dataType="dbTimeStamp"
+                      name="End_Date" />
+                    <externalMetadataColumn
                       refId="Package\Load Container\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[EuroPricePerKm]"
                       dataType="r8"
                       name="EuroPricePerKm" />
                     <externalMetadataColumn
-                      refId="Package\Load Container\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[StartDate]"
+                      refId="Package\Load Container\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Start_Date]"
                       dataType="dbTimeStamp"
-                      name="StartDate" />
-                    <externalMetadataColumn
-                      refId="Package\Load Container\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[EndDate]"
-                      dataType="dbTimeStamp"
-                      name="EndDate" />
+                      name="Start_Date" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1846,6 +1974,45 @@
                           name="OutputColumnLineageID">#{Package\Load Container\Union All.Outputs[Union All Output 1].Columns[Refrigeration]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Container\Union All.Inputs[Union All Input 1].Columns[Start_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Start_Date"
+                      lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[Start_Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Container\Union All.Outputs[Union All Output 1].Columns[Start_Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Container\Union All.Inputs[Union All Input 1].Columns[End_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="End_Date"
+                      lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[End_Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Container\Union All.Outputs[Union All Output 1].Columns[End_Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Container\Union All.Inputs[Union All Input 1].Columns[Container_Row_Id]"
+                      cachedDataType="i4"
+                      cachedName="Container_Row_Id"
+                      lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[Container_Row_Id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Container\Union All.Outputs[Union All Output 1].Columns[Container_Row_Id]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1920,6 +2087,45 @@
                           name="OutputColumnLineageID">#{Package\Load Container\Union All.Outputs[Union All Output 1].Columns[Refrigeration]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Container\Union All.Inputs[Union All Input 2].Columns[Start_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Start_Date"
+                      lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[Start_Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Container\Union All.Outputs[Union All Output 1].Columns[Start_Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Container\Union All.Inputs[Union All Input 2].Columns[End_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="End_Date"
+                      lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[End_Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Container\Union All.Outputs[Union All Output 1].Columns[End_Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Container\Union All.Inputs[Union All Input 2].Columns[Container_Row_Id]"
+                      cachedDataType="i4"
+                      cachedName="Container_Row_Id"
+                      lineageId="Package\Load Container\Container Source.Outputs[OLE DB Source Output].Columns[Container_Row_Id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Container\Union All.Outputs[Union All Output 1].Columns[Container_Row_Id]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1962,6 +2168,21 @@
                       dataType="bool"
                       lineageId="Package\Load Container\Union All.Outputs[Union All Output 1].Columns[Refrigeration]"
                       name="Refrigeration" />
+                    <outputColumn
+                      refId="Package\Load Container\Union All.Outputs[Union All Output 1].Columns[Start_Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Container\Union All.Outputs[Union All Output 1].Columns[Start_Date]"
+                      name="Start_Date" />
+                    <outputColumn
+                      refId="Package\Load Container\Union All.Outputs[Union All Output 1].Columns[End_Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Container\Union All.Outputs[Union All Output 1].Columns[End_Date]"
+                      name="End_Date" />
+                    <outputColumn
+                      refId="Package\Load Container\Union All.Outputs[Union All Output 1].Columns[Container_Row_Id]"
+                      dataType="i4"
+                      lineageId="Package\Load Container\Union All.Outputs[Union All Output 1].Columns[Container_Row_Id]"
+                      name="Container_Row_Id" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -3008,26 +3229,16 @@
                   refId="Package\Load Ship\Derived Column.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Load Ship\Derived Column.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Load Ship\Derived Column.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Ship\Derived Column.Outputs[Derived Column Output].Columns[EndDate]"
-                      dataType="dbTimeStamp"
-                      description="EndDate"
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Ship\Derived Column.Inputs[Derived Column Input].Columns[End_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="End_Date"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Load Ship\Derived Column.Outputs[Derived Column Output].Columns[EndDate]"
-                      name="EndDate"
-                      truncationRowDisposition="FailComponent">
+                      lineageId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Output].Columns[End_Date]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
                       <properties>
                         <property
                           containsID="true"
@@ -3041,8 +3252,18 @@
                           expressionType="Notify"
                           name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
                       </properties>
-                    </outputColumn>
-                  </outputColumns>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Ship\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Ship\Derived Column.Inputs[Derived Column Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
@@ -3082,26 +3303,16 @@
                   refId="Package\Load Ship\Derived Column 1.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Load Ship\Derived Column 1.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Load Ship\Derived Column 1.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Ship\Derived Column 1.Outputs[Derived Column Output].Columns[StartDate]"
-                      dataType="dbTimeStamp"
-                      description="StartDate"
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Ship\Derived Column 1.Inputs[Derived Column Input].Columns[Start_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Start_Date"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Load Ship\Derived Column 1.Outputs[Derived Column Output].Columns[StartDate]"
-                      name="StartDate"
-                      truncationRowDisposition="FailComponent">
+                      lineageId="Package\Load Ship\Union All.Outputs[Union All Output 1].Columns[Start_Date]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
                       <properties>
                         <property
                           containsID="true"
@@ -3115,8 +3326,18 @@
                           expressionType="Notify"
                           name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
                       </properties>
-                    </outputColumn>
-                  </outputColumns>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Ship\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Ship\Derived Column 1.Inputs[Derived Column Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
@@ -3203,8 +3424,8 @@
               <connections>
                 <connection
                   refId="Package\Load Ship\Insert Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{12973B65-8439-43D3-93CF-162FDA5DCB08}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ODS]"
+                  connectionManagerID="{4BD61BF3-0AF1-4C2E-8D52-9E899D0C0989}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3243,6 +3464,18 @@
                       cachedScale="19"
                       externalMetadataColumnId="Package\Load Ship\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Yearcost]"
                       lineageId="Package\Load Ship\Union All.Outputs[Union All Output 1].Columns[Yearcost]" />
+                    <inputColumn
+                      refId="Package\Load Ship\Insert Destination.Inputs[OLE DB Destination Input].Columns[Start_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Start_Date"
+                      externalMetadataColumnId="Package\Load Ship\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Start_Date]"
+                      lineageId="Package\Load Ship\Union All.Outputs[Union All Output 1].Columns[Start_Date]" />
+                    <inputColumn
+                      refId="Package\Load Ship\Insert Destination.Inputs[OLE DB Destination Input].Columns[End_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="End_Date"
+                      externalMetadataColumnId="Package\Load Ship\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[End_Date]"
+                      lineageId="Package\Load Ship\Union All.Outputs[Union All Output 1].Columns[End_Date]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3265,6 +3498,14 @@
                       name="Yearcost"
                       precision="38"
                       scale="19" />
+                    <externalMetadataColumn
+                      refId="Package\Load Ship\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Start_Date]"
+                      dataType="dbTimeStamp"
+                      name="Start_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Load Ship\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[End_Date]"
+                      dataType="dbTimeStamp"
+                      name="End_Date" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -3311,7 +3552,7 @@
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Dim_Ship] SET [EndDate] = ? WHERE [Ship_Id] = ? AND [EndDate] IS NULL</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Dim_Ship] SET [End_Date] = ? WHERE [Ship_Id] = ? AND [End_Date] IS NULL</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -3334,17 +3575,17 @@
                   name="OLE DB Command Input">
                   <inputColumns>
                     <inputColumn
+                      refId="Package\Load Ship\OLE DB Command.Inputs[OLE DB Command Input].Columns[End_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="End_Date"
+                      externalMetadataColumnId="Package\Load Ship\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Output].Columns[End_Date]" />
+                    <inputColumn
                       refId="Package\Load Ship\OLE DB Command.Inputs[OLE DB Command Input].Columns[Ship_Id]"
                       cachedDataType="i4"
                       cachedName="Ship_Id"
                       externalMetadataColumnId="Package\Load Ship\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                       lineageId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Output].Columns[Ship_Id]" />
-                    <inputColumn
-                      refId="Package\Load Ship\OLE DB Command.Inputs[OLE DB Command Input].Columns[EndDate]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="EndDate"
-                      externalMetadataColumnId="Package\Load Ship\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                      lineageId="Package\Load Ship\Derived Column.Outputs[Derived Column Output].Columns[EndDate]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3506,22 +3747,22 @@
                       name="Ship_Id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Output].Columns[StartDate]"
+                      refId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Output].Columns[Start_Date]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Output].ExternalColumns[StartDate]"
-                      lineageId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Output].Columns[StartDate]"
-                      name="StartDate"
+                      externalMetadataColumnId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Output].ExternalColumns[Start_Date]"
+                      lineageId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Output].Columns[Start_Date]"
+                      name="Start_Date"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Output].Columns[EndDate]"
+                      refId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Output].Columns[End_Date]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Output].ExternalColumns[EndDate]"
-                      lineageId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Output].Columns[EndDate]"
-                      name="EndDate"
+                      externalMetadataColumnId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Output].ExternalColumns[End_Date]"
+                      lineageId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Output].Columns[End_Date]"
+                      name="End_Date"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -3546,13 +3787,13 @@
                       dataType="i4"
                       name="Ship_Id" />
                     <externalMetadataColumn
-                      refId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Output].ExternalColumns[StartDate]"
+                      refId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Output].ExternalColumns[Start_Date]"
                       dataType="dbTimeStamp"
-                      name="StartDate" />
+                      name="Start_Date" />
                     <externalMetadataColumn
-                      refId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Output].ExternalColumns[EndDate]"
+                      refId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Output].ExternalColumns[End_Date]"
                       dataType="dbTimeStamp"
-                      name="EndDate" />
+                      name="End_Date" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -3584,15 +3825,15 @@
                       precision="38"
                       scale="19" />
                     <outputColumn
-                      refId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Error Output].Columns[StartDate]"
+                      refId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Error Output].Columns[Start_Date]"
                       dataType="dbTimeStamp"
-                      lineageId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Error Output].Columns[StartDate]"
-                      name="StartDate" />
+                      lineageId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Error Output].Columns[Start_Date]"
+                      name="Start_Date" />
                     <outputColumn
-                      refId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Error Output].Columns[EndDate]"
+                      refId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Error Output].Columns[End_Date]"
                       dataType="dbTimeStamp"
-                      lineageId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Error Output].Columns[EndDate]"
-                      name="EndDate" />
+                      lineageId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Error Output].Columns[End_Date]"
+                      name="End_Date" />
                     <outputColumn
                       refId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -3622,11 +3863,11 @@
                   dataType="System.String"
                   description="Specifies the SELECT statement used to create a schema rowset."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [MaxTEU], [Ship_Id], [Shipname], [Yearcost],[StartDate],[EndDate] FROM [dbo].[Dim_Ship]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [End_Date], [MaxTEU], [Ship_Id], [Shipname], [Start_Date], [Yearcost] FROM [dbo].[Dim_Ship]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
-                  name="CurrentRowWhere">[StartDate] IS NOT NULL AND [EndDate] IS NULL</property>
+                  name="CurrentRowWhere">[Start_Date] IS NOT NULL AND [End_Date] IS NULL</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
@@ -3729,6 +3970,10 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
+                      refId="Package\Load Ship\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[End_Date]"
+                      dataType="dbTimeStamp"
+                      name="End_Date" />
+                    <externalMetadataColumn
                       refId="Package\Load Ship\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[MaxTEU]"
                       dataType="i4"
                       name="MaxTEU" />
@@ -3742,19 +3987,15 @@
                       length="255"
                       name="Shipname" />
                     <externalMetadataColumn
+                      refId="Package\Load Ship\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Start_Date]"
+                      dataType="dbTimeStamp"
+                      name="Start_Date" />
+                    <externalMetadataColumn
                       refId="Package\Load Ship\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Yearcost]"
                       dataType="numeric"
                       name="Yearcost"
                       precision="38"
                       scale="19" />
-                    <externalMetadataColumn
-                      refId="Package\Load Ship\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[StartDate]"
-                      dataType="dbTimeStamp"
-                      name="StartDate" />
-                    <externalMetadataColumn
-                      refId="Package\Load Ship\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[EndDate]"
-                      dataType="dbTimeStamp"
-                      name="EndDate" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -3876,6 +4117,32 @@
                           name="OutputColumnLineageID">#{Package\Load Ship\Union All.Outputs[Union All Output 1].Columns[Ship_Id]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Ship\Union All.Inputs[Union All Input 1].Columns[Start_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Start_Date"
+                      lineageId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Output].Columns[Start_Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Ship\Union All.Outputs[Union All Output 1].Columns[Start_Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Ship\Union All.Inputs[Union All Input 1].Columns[End_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="End_Date"
+                      lineageId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Output].Columns[End_Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Ship\Union All.Outputs[Union All Output 1].Columns[End_Date]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -3939,6 +4206,32 @@
                           name="OutputColumnLineageID">#{Package\Load Ship\Union All.Outputs[Union All Output 1].Columns[Ship_Id]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Ship\Union All.Inputs[Union All Input 2].Columns[Start_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Start_Date"
+                      lineageId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Output].Columns[Start_Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Ship\Union All.Outputs[Union All Output 1].Columns[Start_Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Ship\Union All.Inputs[Union All Input 2].Columns[End_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="End_Date"
+                      lineageId="Package\Load Ship\Ship Source.Outputs[OLE DB Source Output].Columns[End_Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Ship\Union All.Outputs[Union All Output 1].Columns[End_Date]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -3978,6 +4271,16 @@
                       dataType="i4"
                       lineageId="Package\Load Ship\Union All.Outputs[Union All Output 1].Columns[Ship_Id]"
                       name="Ship_Id" />
+                    <outputColumn
+                      refId="Package\Load Ship\Union All.Outputs[Union All Output 1].Columns[Start_Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Ship\Union All.Outputs[Union All Output 1].Columns[Start_Date]"
+                      name="Start_Date" />
+                    <outputColumn
+                      refId="Package\Load Ship\Union All.Outputs[Union All Output 1].Columns[End_Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Ship\Union All.Outputs[Union All Output 1].Columns[End_Date]"
+                      name="End_Date" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -4215,6 +4518,10 @@
                       refId="Package\Load Shipment\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Number_Containers]"
                       dataType="i4"
                       name="Number_Containers" />
+                    <externalMetadataColumn
+                      refId="Package\Load Shipment\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -4395,6 +4702,15 @@
                       lineageId="Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Output].Columns[Number_Containers]"
                       name="Number_Containers"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Output].Columns[Id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      lineageId="Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4439,6 +4755,10 @@
                       refId="Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Output].ExternalColumns[Number_Containers]"
                       dataType="i4"
                       name="Number_Containers" />
+                    <externalMetadataColumn
+                      refId="Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -4446,6 +4766,11 @@
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      dataType="i4"
+                      lineageId="Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      name="Id" />
                     <outputColumn
                       refId="Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Error Output].Columns[Shipment_Id]"
                       dataType="i4"
@@ -4892,8 +5217,8 @@
               <connections>
                 <connection
                   refId="Package\Load VoyagePort\Insert Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{12973B65-8439-43D3-93CF-162FDA5DCB08}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ODS]"
+                  connectionManagerID="{4BD61BF3-0AF1-4C2E-8D52-9E899D0C0989}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -4960,11 +5285,11 @@
                       externalMetadataColumnId="Package\Load VoyagePort\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Leg_Date_Arrival]"
                       lineageId="Package\Load VoyagePort\VoyagePort Source.Outputs[OLE DB Source Output].Columns[Leg_Date_Arrival]" />
                     <inputColumn
-                      refId="Package\Load VoyagePort\Insert Destination.Inputs[OLE DB Destination Input].Columns[Voyage_Port_Id]"
+                      refId="Package\Load VoyagePort\Insert Destination.Inputs[OLE DB Destination Input].Columns[Waiting_Time_Id]"
                       cachedDataType="i4"
-                      cachedName="Voyage_Port_Id"
-                      externalMetadataColumnId="Package\Load VoyagePort\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Voyage_Port_Id]"
-                      lineageId="Package\Load VoyagePort\VoyagePort Source.Outputs[OLE DB Source Output].Columns[Voyage_Port_Id]" />
+                      cachedName="Waiting_Time_Id"
+                      externalMetadataColumnId="Package\Load VoyagePort\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Waiting_Time_Id]"
+                      lineageId="Package\Load VoyagePort\VoyagePort Source.Outputs[OLE DB Source Output].Columns[Waiting_Time_Id]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -5008,6 +5333,10 @@
                       refId="Package\Load VoyagePort\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Leg_Date_Arrival]"
                       dataType="dbTimeStamp"
                       name="Leg_Date_Arrival" />
+                    <externalMetadataColumn
+                      refId="Package\Load VoyagePort\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Waiting_Time_Id]"
+                      dataType="i4"
+                      name="Waiting_Time_Id" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -5457,6 +5786,15 @@
                       lineageId="Package\Load VoyagePort\VoyagePort Source.Outputs[OLE DB Source Output].Columns[Leg_Date_Arrival]"
                       name="Leg_Date_Arrival"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load VoyagePort\VoyagePort Source.Outputs[OLE DB Source Output].Columns[Waiting_Time_Id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load VoyagePort\VoyagePort Source.Outputs[OLE DB Source Output].ExternalColumns[Waiting_Time_Id]"
+                      lineageId="Package\Load VoyagePort\VoyagePort Source.Outputs[OLE DB Source Output].Columns[Waiting_Time_Id]"
+                      name="Waiting_Time_Id"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -5500,6 +5838,10 @@
                       refId="Package\Load VoyagePort\VoyagePort Source.Outputs[OLE DB Source Output].ExternalColumns[Leg_Date_Arrival]"
                       dataType="dbTimeStamp"
                       name="Leg_Date_Arrival" />
+                    <externalMetadataColumn
+                      refId="Package\Load VoyagePort\VoyagePort Source.Outputs[OLE DB Source Output].ExternalColumns[Waiting_Time_Id]"
+                      dataType="i4"
+                      name="Waiting_Time_Id" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -5558,6 +5900,11 @@
                       lineageId="Package\Load VoyagePort\VoyagePort Source.Outputs[OLE DB Source Error Output].Columns[Leg_Date_Arrival]"
                       name="Leg_Date_Arrival" />
                     <outputColumn
+                      refId="Package\Load VoyagePort\VoyagePort Source.Outputs[OLE DB Source Error Output].Columns[Waiting_Time_Id]"
+                      dataType="i4"
+                      lineageId="Package\Load VoyagePort\VoyagePort Source.Outputs[OLE DB Source Error Output].Columns[Waiting_Time_Id]"
+                      name="Waiting_Time_Id" />
+                    <outputColumn
                       refId="Package\Load VoyagePort\VoyagePort Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
                       lineageId="Package\Load VoyagePort\VoyagePort Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -5605,11 +5952,11 @@
           version="1">
           <components>
             <component
-              refId="Package\Load WaitingTime\OLE DB Destination"
+              refId="Package\Load WaitingTime\Insert Destination"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="OLE DB Destination"
+              name="Insert Destination"
               usesDispositions="true"
               version="4">
               <properties>
@@ -5642,7 +5989,7 @@
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">3</property>
+                  typeConverter="AccessMode">0</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
@@ -5654,7 +6001,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                  name="FastLoadOptions"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
@@ -5662,86 +6009,90 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Load WaitingTime\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{12973B65-8439-43D3-93CF-162FDA5DCB08}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ODS]"
+                  refId="Package\Load WaitingTime\Insert Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{4BD61BF3-0AF1-4C2E-8D52-9E899D0C0989}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
               <inputs>
                 <input
-                  refId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  refId="Package\Load WaitingTime\Insert Destination.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Waiting_Time]"
+                      refId="Package\Load WaitingTime\Insert Destination.Inputs[OLE DB Destination Input].Columns[Port_Id]"
+                      cachedDataType="i4"
+                      cachedName="Port_Id"
+                      externalMetadataColumnId="Package\Load WaitingTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Port_Id]"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Port_Id]" />
+                    <inputColumn
+                      refId="Package\Load WaitingTime\Insert Destination.Inputs[OLE DB Destination Input].Columns[Ship_Id]"
+                      cachedDataType="i4"
+                      cachedName="Ship_Id"
+                      externalMetadataColumnId="Package\Load WaitingTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ship_Id]"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ship_Id]" />
+                    <inputColumn
+                      refId="Package\Load WaitingTime\Insert Destination.Inputs[OLE DB Destination Input].Columns[Waiting_Time]"
                       cachedDataType="wstr"
                       cachedLength="10"
                       cachedName="Waiting_Time"
-                      externalMetadataColumnId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Waiting_Time]"
+                      externalMetadataColumnId="Package\Load WaitingTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Waiting_Time]"
                       lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Waiting_Time]" />
                     <inputColumn
-                      refId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Waiting_Time_Id]"
+                      refId="Package\Load WaitingTime\Insert Destination.Inputs[OLE DB Destination Input].Columns[Voyage_Id]"
                       cachedDataType="i4"
-                      cachedName="Waiting_Time_Id"
-                      externalMetadataColumnId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Waiting_Time_Id]"
-                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Waiting_Time_Id]" />
-                    <inputColumn
-                      refId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Port_Id]"
-                      cachedDataType="i4"
-                      cachedName="Port_Id"
-                      externalMetadataColumnId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Port_Id]"
-                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Port_Id]" />
-                    <inputColumn
-                      refId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Ship_Id]"
-                      cachedDataType="i4"
-                      cachedName="Ship_Id"
-                      externalMetadataColumnId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ship_Id]"
-                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ship_Id]" />
+                      cachedName="Voyage_Id"
+                      externalMetadataColumnId="Package\Load WaitingTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Voyage_Id]"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Voyage_Id]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Waiting_Time_Id]"
+                      refId="Package\Load WaitingTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Waiting_Time_Id]"
                       dataType="i4"
                       name="Waiting_Time_Id" />
                     <externalMetadataColumn
-                      refId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Port_Id]"
+                      refId="Package\Load WaitingTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Port_Id]"
                       dataType="i4"
                       name="Port_Id" />
                     <externalMetadataColumn
-                      refId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ship_Id]"
+                      refId="Package\Load WaitingTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ship_Id]"
                       dataType="i4"
                       name="Ship_Id" />
                     <externalMetadataColumn
-                      refId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Waiting_Time]"
+                      refId="Package\Load WaitingTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Waiting_Time]"
                       dataType="wstr"
                       length="10"
                       name="Waiting_Time" />
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Voyage_Id]"
+                      dataType="i4"
+                      name="Voyage_Id" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Load WaitingTime\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Load WaitingTime\Insert Destination.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Load WaitingTime\Insert Destination.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load WaitingTime\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Load WaitingTime\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load WaitingTime\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Load WaitingTime\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load WaitingTime\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Load WaitingTime\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load WaitingTime\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Load WaitingTime\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -5847,6 +6198,15 @@
                       lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Waiting_Time_Id]"
                       name="Waiting_Time_Id"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Voyage_Id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Voyage_Id]"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Voyage_Id]"
+                      name="Voyage_Id"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -5867,6 +6227,10 @@
                       dataType="wstr"
                       length="10"
                       name="Waiting_Time" />
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Voyage_Id]"
+                      dataType="i4"
+                      name="Voyage_Id" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -5897,6 +6261,11 @@
                       lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ship_Id]"
                       name="Ship_Id" />
                     <outputColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Voyage_Id]"
+                      dataType="i4"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Voyage_Id]"
+                      name="Voyage_Id" />
+                    <outputColumn
                       refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Waiting_Time]"
                       dataType="wstr"
                       length="10"
@@ -5924,7 +6293,7 @@
                   dataType="System.String"
                   description="Specifies the SELECT statement used to create a schema rowset."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Port_Id], [Ship_Id], [Voyage_Id], [Waiting_Time] FROM [dbo].[Dim_Waiting_Time]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
@@ -5950,7 +6319,7 @@
                   description="Indicates whether the transformation fails when a lookup of an existing record fails."
                   name="FailOnLookupFailure">false</property>
                 <property
-                  dataType="System.UInt32"
+                  dataType="System.Int32"
                   description="Specifies that all rows in the input are new or the transformation detects the change type."
                   name="IncomingRowChangeType"
                   typeConverter="IncomingRowChangeType">1</property>
@@ -5962,6 +6331,8 @@
               <connections>
                 <connection
                   refId="Package\Load WaitingTime\Slowly Changing Dimension.Connections[LookupConnection]"
+                  connectionManagerID="{4BD61BF3-0AF1-4C2E-8D52-9E899D0C0989}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging]"
                   description="Defines the connection to use for lookups in the dimension table"
                   name="LookupConnection" />
               </connections>
@@ -5969,8 +6340,81 @@
                 <input
                   refId="Package\Load WaitingTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
                   name="Slowly Changing Dimension Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load WaitingTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Port_Id]"
+                      cachedDataType="i4"
+                      cachedName="Port_Id"
+                      externalMetadataColumnId="Package\Load WaitingTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Port_Id]"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Port_Id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load WaitingTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Ship_Id]"
+                      cachedDataType="i4"
+                      cachedName="Ship_Id"
+                      externalMetadataColumnId="Package\Load WaitingTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Ship_Id]"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ship_Id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load WaitingTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Voyage_Id]"
+                      cachedDataType="i4"
+                      cachedName="Voyage_Id"
+                      externalMetadataColumnId="Package\Load WaitingTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Voyage_Id]"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Voyage_Id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load WaitingTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Waiting_Time]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Waiting_Time"
+                      externalMetadataColumnId="Package\Load WaitingTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Waiting_Time]"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Waiting_Time]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
                   <externalMetadataColumns
-                    isUsed="True" />
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Port_Id]"
+                      dataType="i4"
+                      name="Port_Id" />
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Ship_Id]"
+                      dataType="i4"
+                      name="Ship_Id" />
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Voyage_Id]"
+                      dataType="i4"
+                      name="Voyage_Id" />
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Waiting_Time]"
+                      dataType="wstr"
+                      length="10"
+                      name="Waiting_Time" />
+                  </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
@@ -6026,6 +6470,11 @@
             </component>
           </components>
           <paths>
+            <path
+              refId="Package\Load WaitingTime.Paths[New Output]"
+              endId="Package\Load WaitingTime\Insert Destination.Inputs[OLE DB Destination Input]"
+              name="New Output"
+              startId="Package\Load WaitingTime\Slowly Changing Dimension.Outputs[New Output]" />
             <path
               refId="Package\Load WaitingTime.Paths[OLE DB Source Output]"
               endId="Package\Load WaitingTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
@@ -6107,35 +6556,35 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="152,43"
+          Size="152,42.6666666666667"
           Id="Package\Load Consignor"
           TopLeft="364.12499047257,185.16666697661" />
         <NodeLayout
-          Size="151,43"
+          Size="150.666666666667,42.6666666666667"
           Id="Package\Load Container"
           TopLeft="60,185.316662916343" />
         <NodeLayout
-          Size="128,43"
+          Size="128,42.6666666666667"
           Id="Package\Load Item"
           TopLeft="223.124995389953,185.516665767829" />
         <NodeLayout
-          Size="125,43"
+          Size="125.333333333334,42.6666666666667"
           Id="Package\Load Port"
           TopLeft="538.624977396802,184.934843897675" />
         <NodeLayout
-          Size="125,43"
+          Size="125.333333333334,42.6666666666667"
           Id="Package\Load Ship"
           TopLeft="727.624971585349,185.866663939157" />
         <NodeLayout
-          Size="149,43"
+          Size="149.333333333334,42.6666666666667"
           Id="Package\Load Shipment"
           TopLeft="228.124991143123,419.216650332611" />
         <NodeLayout
-          Size="166,43"
+          Size="166,42.6666666666667"
           Id="Package\Load VoyagePort"
           TopLeft="648.12497236766,416.36665123145" />
         <NodeLayout
-          Size="164,43"
+          Size="164,42.6666666666667"
           Id="Package\Load WaitingTime"
           TopLeft="646.70830609215,324.183321276506" />
         <EdgeLayout
@@ -6361,27 +6810,27 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="161,43"
-          Id="Package\Load Consignor\Consignor Source"
-          TopLeft="250.5,5.5" />
-        <NodeLayout
-          Size="209,42"
+          Size="209.333333333334,42"
           Id="Package\Load Consignor\Slowly Changing Dimension"
-          TopLeft="226.5,108.5" />
+          TopLeft="128.166666666667,108.166666666667" />
+        <NodeLayout
+          Size="161.333333333334,42.6666666666667"
+          Id="Package\Load Consignor\Consignor Source"
+          TopLeft="152.166666666667,5.49999999999993" />
         <EdgeLayout
           Id="Package\Load Consignor.Paths[OLE DB Source Output]"
-          TopLeft="331,48.5">
+          TopLeft="232.833333333333,48.1666666666666">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,59.9999999999999"
               Start="0,0"
-              End="0,52.5">
+              End="0,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6391,63 +6840,63 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="154,42"
+          Size="154.666666666667,42.6666666666667"
           Id="Package\Load Consignor\Derived Column"
-          TopLeft="116,210.5" />
+          TopLeft="17.5,210.166666666667" />
         <EdgeLayout
           Id="Package\Load Consignor.Paths[Historical Attribute Inserts Output]"
-          TopLeft="297.5,150.5">
+          TopLeft="199.277777777778,150.166666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-104.5,60"
+              EndConnector="-104.444444444444,60"
               Start="0,0"
-              End="-104.5,52.5">
+              End="-104.444444444444,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.2735042735043" />
+                    End="0,20.2730720606827" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.2735042735043"
-                    Point2="0,24.2735042735043"
-                    Point3="-4,24.2735042735043" />
+                    Point1="0,20.2730720606827"
+                    Point2="0,24.2730720606827"
+                    Point3="-4,24.2730720606827" />
                   <mssgle:LineSegment
-                    End="-100.5,24.2735042735043" />
+                    End="-100.444444444444,24.2730720606827" />
                   <mssgle:CubicBezierSegment
-                    Point1="-100.5,24.2735042735043"
-                    Point2="-104.5,24.2735042735043"
-                    Point3="-104.5,28.2735042735043" />
+                    Point1="-100.444444444444,24.2730720606827"
+                    Point2="-104.444444444444,24.2730720606827"
+                    Point3="-104.444444444444,28.2730720606827" />
                   <mssgle:LineSegment
-                    End="-104.5,52.5" />
+                    End="-104.444444444444,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-127.30638671875,29.2735042735043,150.1127734375,11.609375"
+              BoundingBox="-127.278608940972,29.2730720606827,150.1127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="166,42"
+          Size="166.666666666667,42.6666666666667"
           Id="Package\Load Consignor\OLE DB Command"
-          TopLeft="104,312.5" />
+          TopLeft="5.50000000000001,312.833333333333" />
         <EdgeLayout
           Id="Package\Load Consignor.Paths[Derived Column Output]"
-          TopLeft="190,252.5">
+          TopLeft="91.8333333333333,252.833333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,60.0000000000001"
               Start="0,0"
-              End="0,52.5">
+              End="0,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6457,71 +6906,71 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="121,42"
+          Size="121.333333333334,42.6666666666667"
           Id="Package\Load Consignor\Union All"
-          TopLeft="270.5,414.5" />
+          TopLeft="172.166666666667,415.5" />
         <EdgeLayout
           Id="Package\Load Consignor.Paths[New Output]"
-          TopLeft="364.5,150.5">
+          TopLeft="266.388888888889,150.166666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-14.6666666666667,264"
+              EndConnector="-14.6666666666667,265.333333333334"
               Start="0,0"
-              End="-14.6666666666667,256.5">
+              End="-14.6666666666667,257.833333333334">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,127.104705383637" />
+                    End="0,127.770698319576" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,127.104705383637"
-                    Point2="0,131.104705383637"
-                    Point3="-4,131.104705383637" />
+                    Point1="0,127.770698319576"
+                    Point2="0,131.770698319576"
+                    Point3="-4,131.770698319576" />
                   <mssgle:LineSegment
-                    End="-10.6666666666667,131.104705383637" />
+                    End="-10.6666666666667,131.770698319576" />
                   <mssgle:CubicBezierSegment
-                    Point1="-10.6666666666667,131.104705383637"
-                    Point2="-14.6666666666667,131.104705383637"
-                    Point3="-14.6666666666667,135.104705383637" />
+                    Point1="-10.6666666666667,131.770698319576"
+                    Point2="-14.6666666666667,131.770698319576"
+                    Point3="-14.6666666666667,135.770698319576" />
                   <mssgle:LineSegment
-                    End="-14.6666666666667,256.5" />
+                    End="-14.6666666666667,257.833333333334" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-34.4247200520833,136.104705383637,54.1827734375,11.43359375"
+              BoundingBox="-34.4247200520833,136.770698319576,54.1827734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Consignor.Paths[OLE DB Command Output]"
-          TopLeft="187,354.5">
+          TopLeft="88.8333333333333,355.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="125.166666666667,60"
+              EndConnector="125.111111111111,60.0000000000001"
               Start="0,0"
-              End="125.166666666667,52.5">
+              End="125.111111111111,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.5301794453507" />
+                    End="0,31.531453362256" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.5301794453507"
-                    Point2="0,35.5301794453507"
-                    Point3="4,35.5301794453507" />
+                    Point1="0,31.531453362256"
+                    Point2="0,35.531453362256"
+                    Point3="4,35.531453362256" />
                   <mssgle:LineSegment
-                    End="121.166666666667,35.5301794453507" />
+                    End="121.111111111111,35.531453362256" />
                   <mssgle:CubicBezierSegment
-                    Point1="121.166666666667,35.5301794453507"
-                    Point2="125.166666666667,35.5301794453507"
-                    Point3="125.166666666667,39.5301794453507" />
+                    Point1="121.111111111111,35.531453362256"
+                    Point2="125.111111111111,35.531453362256"
+                    Point3="125.111111111111,39.531453362256" />
                   <mssgle:LineSegment
-                    End="125.166666666667,52.5" />
+                    End="125.111111111111,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6531,12 +6980,12 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="163,42"
+          Size="164,42.6666666666667"
           Id="Package\Load Consignor\Derived Column 1"
-          TopLeft="249.5,516.5" />
+          TopLeft="150.833333333333,518.166666666667" />
         <EdgeLayout
           Id="Package\Load Consignor.Paths[Union All Output 1]"
-          TopLeft="331,456.5">
+          TopLeft="232.833333333333,458.166666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6557,23 +7006,23 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="163,42"
+          Size="164,42.6666666666667"
           Id="Package\Load Consignor\Insert Destination"
-          TopLeft="249.5,619" />
+          TopLeft="150.833333333333,620.833333333333" />
         <EdgeLayout
           Id="Package\Load Consignor.Paths[Derived Column Output1]"
-          TopLeft="331,558.5">
+          TopLeft="232.833333333333,560.833333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60.5"
+              EndConnector="0,60.0000000000001"
               Start="0,0"
-              End="0,53">
+              End="0,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,53" />
+                    End="0,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6585,19 +7034,6 @@
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Consignor\Insert Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load Consignor\Slowly Changing Dimension">
     <Properties>
@@ -6627,6 +7063,18 @@
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Consignor Source.Outputs[OLE DB Source Output].Columns[End_Date]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;End_Date&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Consignor Source.Outputs[OLE DB Source Output].Columns[Start_Date]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Start_Date&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
   &lt;/InputToColumnsCollection&gt;
   &lt;GeneratedComponentsIdentificationStrings&gt;
     &lt;anyType xsi:type="xsd:string"&gt;Derived Column&lt;/anyType&gt;
@@ -6642,8 +7090,8 @@
   &lt;InferredIndicatorColumn /&gt;
   &lt;ValueCurrent /&gt;
   &lt;ValueExpired /&gt;
-  &lt;StartDateColumn&gt;StartDate&lt;/StartDateColumn&gt;
-  &lt;EndDateColumn&gt;EndDate&lt;/EndDateColumn&gt;
+  &lt;StartDateColumn&gt;Start_Date&lt;/StartDateColumn&gt;
+  &lt;EndDateColumn&gt;End_Date&lt;/EndDateColumn&gt;
   &lt;DateVariable&gt;System::StartTime&lt;/DateVariable&gt;
   &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
 &lt;/SCDWizardMetadata&gt;</Value>
@@ -6669,27 +7117,27 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="160,43"
-          Id="Package\Load Container\Container Source"
-          TopLeft="249,5.5" />
-        <NodeLayout
-          Size="209,42"
+          Size="209.333333333334,42"
           Id="Package\Load Container\Slowly Changing Dimension"
-          TopLeft="224.5,108.5" />
+          TopLeft="128.166666666667,108.166666666667" />
+        <NodeLayout
+          Size="160,42.6666666666667"
+          Id="Package\Load Container\Container Source"
+          TopLeft="152.833333333333,5.49999999999993" />
         <EdgeLayout
           Id="Package\Load Container.Paths[OLE DB Source Output]"
-          TopLeft="329,48.5">
+          TopLeft="232.833333333333,48.1666666666666">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,59.9999999999999"
               Start="0,0"
-              End="0,52.5">
+              End="0,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6699,63 +7147,63 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="154,42"
+          Size="154.666666666667,42.6666666666667"
           Id="Package\Load Container\Derived Column"
-          TopLeft="114,210.5" />
+          TopLeft="17.5,210.166666666667" />
         <EdgeLayout
           Id="Package\Load Container.Paths[Historical Attribute Inserts Output]"
-          TopLeft="295.5,150.5">
+          TopLeft="199.277777777778,150.166666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-104.5,60"
+              EndConnector="-104.444444444444,60"
               Start="0,0"
-              End="-104.5,52.5">
+              End="-104.444444444444,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.2735042735043" />
+                    End="0,20.2730720606827" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.2735042735043"
-                    Point2="0,24.2735042735043"
-                    Point3="-4,24.2735042735043" />
+                    Point1="0,20.2730720606827"
+                    Point2="0,24.2730720606827"
+                    Point3="-4,24.2730720606827" />
                   <mssgle:LineSegment
-                    End="-100.5,24.2735042735043" />
+                    End="-100.444444444444,24.2730720606827" />
                   <mssgle:CubicBezierSegment
-                    Point1="-100.5,24.2735042735043"
-                    Point2="-104.5,24.2735042735043"
-                    Point3="-104.5,28.2735042735043" />
+                    Point1="-100.444444444444,24.2730720606827"
+                    Point2="-104.444444444444,24.2730720606827"
+                    Point3="-104.444444444444,28.2730720606827" />
                   <mssgle:LineSegment
-                    End="-104.5,52.5" />
+                    End="-104.444444444444,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-127.30638671875,29.2735042735043,150.1127734375,11.609375"
+              BoundingBox="-127.278608940972,29.2730720606827,150.1127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="166,42"
+          Size="166.666666666667,42.6666666666667"
           Id="Package\Load Container\OLE DB Command"
-          TopLeft="102,312.5" />
+          TopLeft="5.50000000000001,312.833333333333" />
         <EdgeLayout
           Id="Package\Load Container.Paths[Derived Column Output]"
-          TopLeft="188,252.5">
+          TopLeft="91.8333333333333,252.833333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,60.0000000000001"
               Start="0,0"
-              End="0,52.5">
+              End="0,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6765,71 +7213,71 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="121,42"
+          Size="121.333333333334,42.6666666666667"
           Id="Package\Load Container\Union All"
-          TopLeft="268.5,414.5" />
+          TopLeft="172.166666666667,415.5" />
         <EdgeLayout
           Id="Package\Load Container.Paths[New Output]"
-          TopLeft="362.5,150.5">
+          TopLeft="266.388888888889,150.166666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-14.6666666666667,264"
+              EndConnector="-14.6666666666667,265.333333333334"
               Start="0,0"
-              End="-14.6666666666667,256.5">
+              End="-14.6666666666667,257.833333333334">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,127.104705383637" />
+                    End="0,127.770698319576" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,127.104705383637"
-                    Point2="0,131.104705383637"
-                    Point3="-4,131.104705383637" />
+                    Point1="0,127.770698319576"
+                    Point2="0,131.770698319576"
+                    Point3="-4,131.770698319576" />
                   <mssgle:LineSegment
-                    End="-10.6666666666667,131.104705383637" />
+                    End="-10.6666666666667,131.770698319576" />
                   <mssgle:CubicBezierSegment
-                    Point1="-10.6666666666667,131.104705383637"
-                    Point2="-14.6666666666667,131.104705383637"
-                    Point3="-14.6666666666667,135.104705383637" />
+                    Point1="-10.6666666666667,131.770698319576"
+                    Point2="-14.6666666666667,131.770698319576"
+                    Point3="-14.6666666666667,135.770698319576" />
                   <mssgle:LineSegment
-                    End="-14.6666666666667,256.5" />
+                    End="-14.6666666666667,257.833333333334" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-34.4247200520833,136.104705383637,54.1827734375,11.43359375"
+              BoundingBox="-34.4247200520833,136.770698319576,54.1827734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Container.Paths[OLE DB Command Output]"
-          TopLeft="185,354.5">
+          TopLeft="88.8333333333333,355.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="125.166666666667,60"
+              EndConnector="125.111111111111,60.0000000000001"
               Start="0,0"
-              End="125.166666666667,52.5">
+              End="125.111111111111,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.5301794453507" />
+                    End="0,31.531453362256" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.5301794453507"
-                    Point2="0,35.5301794453507"
-                    Point3="4,35.5301794453507" />
+                    Point1="0,31.531453362256"
+                    Point2="0,35.531453362256"
+                    Point3="4,35.531453362256" />
                   <mssgle:LineSegment
-                    End="121.166666666667,35.5301794453507" />
+                    End="121.111111111111,35.531453362256" />
                   <mssgle:CubicBezierSegment
-                    Point1="121.166666666667,35.5301794453507"
-                    Point2="125.166666666667,35.5301794453507"
-                    Point3="125.166666666667,39.5301794453507" />
+                    Point1="121.111111111111,35.531453362256"
+                    Point2="125.111111111111,35.531453362256"
+                    Point3="125.111111111111,39.531453362256" />
                   <mssgle:LineSegment
-                    End="125.166666666667,52.5" />
+                    End="125.111111111111,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6839,12 +7287,12 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="163,42"
+          Size="164,42.6666666666667"
           Id="Package\Load Container\Derived Column 1"
-          TopLeft="247.5,516.5" />
+          TopLeft="150.833333333333,518.166666666667" />
         <EdgeLayout
           Id="Package\Load Container.Paths[Union All Output 1]"
-          TopLeft="329,456.5">
+          TopLeft="232.833333333333,458.166666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6865,23 +7313,23 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="163,42"
+          Size="164,42.6666666666667"
           Id="Package\Load Container\Insert Destination"
-          TopLeft="247.5,619" />
+          TopLeft="150.833333333333,620.833333333333" />
         <EdgeLayout
           Id="Package\Load Container.Paths[Derived Column Output1]"
-          TopLeft="329,558.5">
+          TopLeft="232.833333333333,560.833333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60.5"
+              EndConnector="0,60.0000000000001"
               Start="0,0"
-              End="0,53">
+              End="0,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,53" />
+                    End="0,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6917,6 +7365,12 @@
       &lt;ChangeType&gt;None&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Container Source.Outputs[OLE DB Source Output].Columns[End_Date]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;End_Date&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;Container Source.Outputs[OLE DB Source Output].Columns[EuroPricePerKm]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;EuroPricePerKm&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
@@ -6925,6 +7379,12 @@
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;Container Source.Outputs[OLE DB Source Output].Columns[Refrigeration]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;Refrigeration&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Container Source.Outputs[OLE DB Source Output].Columns[Start_Date]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Start_Date&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;None&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
@@ -6949,24 +7409,11 @@
   &lt;InferredIndicatorColumn /&gt;
   &lt;ValueCurrent /&gt;
   &lt;ValueExpired /&gt;
-  &lt;StartDateColumn&gt;StartDate&lt;/StartDateColumn&gt;
-  &lt;EndDateColumn&gt;EndDate&lt;/EndDateColumn&gt;
+  &lt;StartDateColumn&gt;Start_Date&lt;/StartDateColumn&gt;
+  &lt;EndDateColumn&gt;End_Date&lt;/EndDateColumn&gt;
   &lt;DateVariable&gt;System::StartTime&lt;/DateVariable&gt;
   &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
 &lt;/SCDWizardMetadata&gt;</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Container\Insert Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -6989,39 +7436,17 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="137,43"
+          Size="137.333333333334,42.6666666666667"
           Id="Package\Load Item\Item Source"
           TopLeft="238.5,5.5" />
         <NodeLayout
-          Size="209,42"
-          Id="Package\Load Item\Slowly Changing Dimension"
-          TopLeft="202.5,108.5" />
-        <EdgeLayout
-          Id="Package\Load Item.Paths[OLE DB Source Output]"
-          TopLeft="307,48.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
+          Size="162.666666666667,42"
           Id="Package\Load Item\Insert Destination"
           TopLeft="225.5,211" />
+        <NodeLayout
+          Size="209.333333333334,42"
+          Id="Package\Load Item\Slowly Changing Dimension"
+          TopLeft="202.5,108.5" />
         <EdgeLayout
           Id="Package\Load Item.Paths[New Output]"
           TopLeft="307,150.5">
@@ -7044,6 +7469,28 @@
             <mssgm:EdgeLabel
               BoundingBox="-27.09138671875,20.783203125,54.1827734375,11.43359375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Item.Paths[OLE DB Source Output]"
+          TopLeft="307,48.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7129,39 +7576,17 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="134,43"
+          Size="134,42.6666666666667"
           Id="Package\Load Port\Port Source"
           TopLeft="236,5.5" />
         <NodeLayout
-          Size="209,42"
-          Id="Package\Load Port\Slowly Changing Dimension"
-          TopLeft="198.5,108.5" />
-        <EdgeLayout
-          Id="Package\Load Port.Paths[OLE DB Source Output]"
-          TopLeft="303,48.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
+          Size="162.666666666667,42"
           Id="Package\Load Port\Insert Destination"
           TopLeft="221.5,211" />
+        <NodeLayout
+          Size="209.333333333334,42"
+          Id="Package\Load Port\Slowly Changing Dimension"
+          TopLeft="198.5,108.5" />
         <EdgeLayout
           Id="Package\Load Port.Paths[New Output]"
           TopLeft="303,150.5">
@@ -7184,6 +7609,28 @@
             <mssgm:EdgeLabel
               BoundingBox="-27.09138671875,20.783203125,54.1827734375,11.43359375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Port.Paths[OLE DB Source Output]"
+          TopLeft="303,48.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7269,27 +7716,27 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="135,43"
+          Size="134.666666666667,42.6666666666667"
           Id="Package\Load Ship\Ship Source"
-          TopLeft="236,5.5" />
+          TopLeft="165.5,5.49999999999993" />
         <NodeLayout
-          Size="209,42"
+          Size="209.333333333334,42"
           Id="Package\Load Ship\Slowly Changing Dimension"
-          TopLeft="199,108.5" />
+          TopLeft="128.166666666667,108.166666666667" />
         <EdgeLayout
           Id="Package\Load Ship.Paths[OLE DB Source Output]"
-          TopLeft="303.5,48.5">
+          TopLeft="232.833333333333,48.1666666666666">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,59.9999999999999"
               Start="0,0"
-              End="0,52.5">
+              End="0,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7299,63 +7746,63 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="154,42"
+          Size="154.666666666667,42.6666666666667"
           Id="Package\Load Ship\Derived Column"
-          TopLeft="88.5000000000001,210.5" />
+          TopLeft="17.5,210.166666666667" />
         <EdgeLayout
           Id="Package\Load Ship.Paths[Historical Attribute Inserts Output]"
-          TopLeft="270,150.5">
+          TopLeft="199.277777777778,150.166666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-104.5,60"
+              EndConnector="-104.444444444444,60"
               Start="0,0"
-              End="-104.5,52.5">
+              End="-104.444444444444,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.2735042735043" />
+                    End="0,20.2730720606827" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.2735042735043"
-                    Point2="0,24.2735042735043"
-                    Point3="-4,24.2735042735043" />
+                    Point1="0,20.2730720606827"
+                    Point2="0,24.2730720606827"
+                    Point3="-4,24.2730720606827" />
                   <mssgle:LineSegment
-                    End="-100.5,24.2735042735043" />
+                    End="-100.444444444444,24.2730720606827" />
                   <mssgle:CubicBezierSegment
-                    Point1="-100.5,24.2735042735043"
-                    Point2="-104.5,24.2735042735043"
-                    Point3="-104.5,28.2735042735043" />
+                    Point1="-100.444444444444,24.2730720606827"
+                    Point2="-104.444444444444,24.2730720606827"
+                    Point3="-104.444444444444,28.2730720606827" />
                   <mssgle:LineSegment
-                    End="-104.5,52.5" />
+                    End="-104.444444444444,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-127.30638671875,29.2735042735043,150.1127734375,11.609375"
+              BoundingBox="-127.278608940972,29.2730720606827,150.1127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="166,42"
+          Size="166.666666666667,42.6666666666667"
           Id="Package\Load Ship\OLE DB Command"
-          TopLeft="76.5000000000001,312.5" />
+          TopLeft="5.50000000000001,312.833333333333" />
         <EdgeLayout
           Id="Package\Load Ship.Paths[Derived Column Output]"
-          TopLeft="162.5,252.5">
+          TopLeft="91.8333333333333,252.833333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,60.0000000000001"
               Start="0,0"
-              End="0,52.5">
+              End="0,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7365,71 +7812,71 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="121,42"
+          Size="121.333333333334,42.6666666666667"
           Id="Package\Load Ship\Union All"
-          TopLeft="243,414.5" />
+          TopLeft="172.166666666667,415.5" />
         <EdgeLayout
           Id="Package\Load Ship.Paths[New Output]"
-          TopLeft="337,150.5">
+          TopLeft="266.388888888889,150.166666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-14.6666666666667,264"
+              EndConnector="-14.6666666666667,265.333333333334"
               Start="0,0"
-              End="-14.6666666666667,256.5">
+              End="-14.6666666666667,257.833333333334">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,127.104705383637" />
+                    End="0,127.770698319576" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,127.104705383637"
-                    Point2="0,131.104705383637"
-                    Point3="-4,131.104705383637" />
+                    Point1="0,127.770698319576"
+                    Point2="0,131.770698319576"
+                    Point3="-4,131.770698319576" />
                   <mssgle:LineSegment
-                    End="-10.6666666666667,131.104705383637" />
+                    End="-10.6666666666667,131.770698319576" />
                   <mssgle:CubicBezierSegment
-                    Point1="-10.6666666666667,131.104705383637"
-                    Point2="-14.6666666666667,131.104705383637"
-                    Point3="-14.6666666666667,135.104705383637" />
+                    Point1="-10.6666666666667,131.770698319576"
+                    Point2="-14.6666666666667,131.770698319576"
+                    Point3="-14.6666666666667,135.770698319576" />
                   <mssgle:LineSegment
-                    End="-14.6666666666667,256.5" />
+                    End="-14.6666666666667,257.833333333334" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-34.4247200520833,136.104705383637,54.1827734375,11.43359375"
+              BoundingBox="-34.4247200520833,136.770698319576,54.1827734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Ship.Paths[OLE DB Command Output]"
-          TopLeft="159.5,354.5">
+          TopLeft="88.8333333333333,355.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="125.166666666667,60"
+              EndConnector="125.111111111111,60.0000000000001"
               Start="0,0"
-              End="125.166666666667,52.5">
+              End="125.111111111111,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.5301794453507" />
+                    End="0,31.531453362256" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.5301794453507"
-                    Point2="0,35.5301794453507"
-                    Point3="4,35.5301794453507" />
+                    Point1="0,31.531453362256"
+                    Point2="0,35.531453362256"
+                    Point3="4,35.531453362256" />
                   <mssgle:LineSegment
-                    End="121.166666666667,35.5301794453507" />
+                    End="121.111111111111,35.531453362256" />
                   <mssgle:CubicBezierSegment
-                    Point1="121.166666666667,35.5301794453507"
-                    Point2="125.166666666667,35.5301794453507"
-                    Point3="125.166666666667,39.5301794453507" />
+                    Point1="121.111111111111,35.531453362256"
+                    Point2="125.111111111111,35.531453362256"
+                    Point3="125.111111111111,39.531453362256" />
                   <mssgle:LineSegment
-                    End="125.166666666667,52.5" />
+                    End="125.111111111111,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7439,12 +7886,12 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="163,42"
+          Size="164,42.6666666666667"
           Id="Package\Load Ship\Derived Column 1"
-          TopLeft="222,516.5" />
+          TopLeft="150.833333333333,518.166666666667" />
         <EdgeLayout
           Id="Package\Load Ship.Paths[Union All Output 1]"
-          TopLeft="303.5,456.5">
+          TopLeft="232.833333333333,458.166666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -7465,23 +7912,23 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="163,42"
+          Size="164,42.6666666666667"
           Id="Package\Load Ship\Insert Destination"
-          TopLeft="222,619" />
+          TopLeft="150.833333333333,620.833333333333" />
         <EdgeLayout
           Id="Package\Load Ship.Paths[Derived Column Output1]"
-          TopLeft="303.5,558.5">
+          TopLeft="232.833333333333,560.833333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60.5"
+              EndConnector="0,60.0000000000001"
               Start="0,0"
-              End="0,53">
+              End="0,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,53" />
+                    End="0,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7518,6 +7965,12 @@
   &lt;TableName&gt;[dbo].[Dim_Ship]&lt;/TableName&gt;
   &lt;InputToColumnsCollection&gt;
     &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Ship Source.Outputs[OLE DB Source Output].Columns[End_Date]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;End_Date&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;Ship Source.Outputs[OLE DB Source Output].Columns[MaxTEU]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;MaxTEU&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
@@ -7534,6 +7987,12 @@
       &lt;ColumnName&gt;Shipname&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Ship Source.Outputs[OLE DB Source Output].Columns[Start_Date]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Start_Date&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;Ship Source.Outputs[OLE DB Source Output].Columns[Yearcost]&lt;/IdentificationString&gt;
@@ -7556,24 +8015,11 @@
   &lt;InferredIndicatorColumn /&gt;
   &lt;ValueCurrent /&gt;
   &lt;ValueExpired /&gt;
-  &lt;StartDateColumn&gt;StartDate&lt;/StartDateColumn&gt;
-  &lt;EndDateColumn&gt;EndDate&lt;/EndDateColumn&gt;
+  &lt;StartDateColumn&gt;Start_Date&lt;/StartDateColumn&gt;
+  &lt;EndDateColumn&gt;End_Date&lt;/EndDateColumn&gt;
   &lt;DateVariable&gt;System::StartTime&lt;/DateVariable&gt;
   &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
 &lt;/SCDWizardMetadata&gt;</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Ship\Insert Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -7583,39 +8029,17 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="160,43"
+          Size="160,42.6666666666667"
           Id="Package\Load Shipment\Shipment Source"
           TopLeft="30,5.5" />
         <NodeLayout
-          Size="209,42"
-          Id="Package\Load Shipment\Slowly Changing Dimension"
-          TopLeft="5.50000000000003,108.5" />
-        <EdgeLayout
-          Id="Package\Load Shipment.Paths[OLE DB Source Output]"
-          TopLeft="110,48.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
+          Size="162.666666666667,42"
           Id="Package\Load Shipment\Insert Destination"
           TopLeft="28.5000000000001,211" />
+        <NodeLayout
+          Size="209.333333333334,42"
+          Id="Package\Load Shipment\Slowly Changing Dimension"
+          TopLeft="5.50000000000003,108.5" />
         <EdgeLayout
           Id="Package\Load Shipment.Paths[New Output]"
           TopLeft="110,150.5">
@@ -7640,37 +8064,8 @@
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Shipment\Shipment Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Load VoyagePort">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="169,43"
-          Id="Package\Load VoyagePort\VoyagePort Source"
-          TopLeft="25.5,5.5" />
-        <NodeLayout
-          Size="209,42"
-          Id="Package\Load VoyagePort\Slowly Changing Dimension"
-          TopLeft="5.50000000000003,108.5" />
         <EdgeLayout
-          Id="Package\Load VoyagePort.Paths[OLE DB Source Output]"
+          Id="Package\Load Shipment.Paths[OLE DB Source Output]"
           TopLeft="110,48.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7691,94 +8086,11 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Load VoyagePort\Insert Destination"
-          TopLeft="28.5000000000001,211" />
-        <EdgeLayout
-          Id="Package\Load VoyagePort.Paths[New Output]"
-          TopLeft="110,150.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60.5"
-              Start="0,0"
-              End="0,53">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,53" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-27.09138671875,20.783203125,54.1827734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load VoyagePort\VoyagePort Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Load WaitingTime">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="151,43"
-          Id="Package\Load WaitingTime\OLE DB Source"
-          TopLeft="92.4999966472388,29.9499989771843" />
-        <NodeLayout
-          Size="172,43"
-          Id="Package\Load WaitingTime\OLE DB Destination"
-          TopLeft="77.1249979604036,202.349988563061" />
-        <NodeLayout
-          Size="209,42"
-          Id="Package\Load WaitingTime\Slowly Changing Dimension"
-          TopLeft="70,118" />
-        <EdgeLayout
-          Id="Package\Load WaitingTime.Paths[OLE DB Source Output]"
-          TopLeft="171.249998323619,72.9499989771843">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,45.0500010228157"
-              Start="0,0"
-              End="0,37.5500010228157">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.5500010228157" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load WaitingTime\OLE DB Destination">
+    design-time-name="Package\Load Shipment\Shipment Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -7791,7 +8103,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load WaitingTime\OLE DB Source">
+    design-time-name="Package\Load Shipment\Insert Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -7893,19 +8205,72 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Shipment\Insert Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load VoyagePort">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="209.333333333334,42"
+          Id="Package\Load VoyagePort\Slowly Changing Dimension"
+          TopLeft="5.50000000000003,108.166666666667" />
+        <NodeLayout
+          Size="169.333333333334,42.6666666666667"
+          Id="Package\Load VoyagePort\VoyagePort Source"
+          TopLeft="25.5,5.50000000000004" />
+        <EdgeLayout
+          Id="Package\Load VoyagePort.Paths[OLE DB Source Output]"
+          TopLeft="110.166666666667,48.1666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="164,42.6666666666667"
+          Id="Package\Load VoyagePort\Insert Destination"
+          TopLeft="28.1666666666667,210.166666666667" />
+        <EdgeLayout
+          Id="Package\Load VoyagePort.Paths[New Output]"
+          TopLeft="110.166666666667,150.166666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-27.09138671875,20.533203125,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Load VoyagePort\Slowly Changing Dimension">
     <Properties>
@@ -7971,6 +8336,12 @@
       &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
       &lt;ChangeType&gt;None&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;VoyagePort Source.Outputs[OLE DB Source Output].Columns[Waiting_Time_Id]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Waiting_Time_Id&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
   &lt;/InputToColumnsCollection&gt;
   &lt;GeneratedComponentsIdentificationStrings&gt;
     &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
@@ -7991,7 +8362,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load VoyagePort\Insert Destination">
+    design-time-name="Package\Load VoyagePort\VoyagePort Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -8000,6 +8371,139 @@
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load WaitingTime">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\Load WaitingTime\OLE DB Source"
+          TopLeft="34.8333333333334,5.50000000000004" />
+        <NodeLayout
+          Size="209.333333333334,42"
+          Id="Package\Load WaitingTime\Slowly Changing Dimension"
+          TopLeft="5.50000000000003,108.166666666667" />
+        <EdgeLayout
+          Id="Package\Load WaitingTime.Paths[OLE DB Source Output]"
+          TopLeft="110.166666666667,48.1666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="164,42.6666666666667"
+          Id="Package\Load WaitingTime\Insert Destination"
+          TopLeft="28.1666666666667,210.166666666667" />
+        <EdgeLayout
+          Id="Package\Load WaitingTime.Paths[New Output]"
+          TopLeft="110.166666666667,150.166666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-27.09138671875,20.533203125,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load WaitingTime\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load WaitingTime\Slowly Changing Dimension">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionID&gt;{4BD61BF3-0AF1-4C2E-8D52-9E899D0C0989}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[Dim_Waiting_Time]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Port_Id]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Port_Id&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Ship_Id]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Ship_Id&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Voyage_Id]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Voyage_Id&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Waiting_Time]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Waiting_Time&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;true&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn /&gt;
+  &lt;EndDateColumn /&gt;
+  &lt;DateVariable /&gt;
+  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

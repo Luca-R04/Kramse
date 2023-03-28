@@ -44,10 +44,6 @@
       <FullPath>Dim Waiting Time.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>F Shipment.dim</Name>
-      <FullPath>F Shipment.dim</FullPath>
-    </ProjectItem>
-    <ProjectItem>
       <Name>Dim Time.dim</Name>
       <FullPath>Dim Time.dim</FullPath>
     </ProjectItem>

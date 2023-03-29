@@ -1,13 +1,8 @@
 USE [master]
 GO
-/****** Object:  Database [Kramse_ODS]    Script Date: 28-3-2023 10:46:38 ******/
+/****** Object:  Database [Kramse_ODS]    Script Date: 28-3-2023 17:57:24 ******/
+DROP DATABASE IF EXISTS [Kramse_ODS];
 CREATE DATABASE [Kramse_ODS]
- CONTAINMENT = NONE
- ON  PRIMARY 
-( NAME = N'Kramse_ODS', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLDEV2019\MSSQL\DATA\Kramse_ODS.mdf' , SIZE = 73728KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
- LOG ON 
-( NAME = N'Kramse_ODS_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLDEV2019\MSSQL\DATA\Kramse_ODS_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
- WITH CATALOG_COLLATION = DATABASE_DEFAULT
 GO
 ALTER DATABASE [Kramse_ODS] SET COMPATIBILITY_LEVEL = 150
 GO
@@ -82,7 +77,7 @@ ALTER DATABASE [Kramse_ODS] SET QUERY_STORE = OFF
 GO
 USE [Kramse_ODS]
 GO
-/****** Object:  Table [dbo].[Dim_Consignor]    Script Date: 28-3-2023 10:46:38 ******/
+/****** Object:  Table [dbo].[Dim_Consignor]    Script Date: 28-3-2023 17:57:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -91,13 +86,16 @@ CREATE TABLE [dbo].[Dim_Consignor](
 	[Consignor_Id] [int] NOT NULL,
 	[Consignor] [nvarchar](250) NULL,
 	[Discount] [float] NULL,
+	[Consignor_Row_ID] [int] IDENTITY(1,1) NOT NULL,
+	[Start_Date] [datetime] NULL,
+	[End_Date] [datetime] NULL,
  CONSTRAINT [PK_Dim_Consignor] PRIMARY KEY CLUSTERED 
 (
-	[Consignor_Id] ASC
+	[Consignor_Row_ID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Dim_Container]    Script Date: 28-3-2023 10:46:38 ******/
+/****** Object:  Table [dbo].[Dim_Container]    Script Date: 28-3-2023 17:57:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -108,13 +106,16 @@ CREATE TABLE [dbo].[Dim_Container](
 	[Refrigeration] [bit] NULL,
 	[Cubes] [float] NULL,
 	[EuroPricePerKm] [float] NULL,
+	[Container_Row_Id] [int] IDENTITY(1,1) NOT NULL,
+	[Start_Date] [datetime] NULL,
+	[End_Date] [datetime] NULL,
  CONSTRAINT [PK_Dim_Container] PRIMARY KEY CLUSTERED 
 (
-	[Container_Id] ASC
+	[Container_Row_Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Dim_Item]    Script Date: 28-3-2023 10:46:38 ******/
+/****** Object:  Table [dbo].[Dim_Item]    Script Date: 28-3-2023 17:57:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -123,13 +124,16 @@ CREATE TABLE [dbo].[Dim_Item](
 	[Item_Id] [int] NOT NULL,
 	[Mfgr] [nvarchar](50) NULL,
 	[StorageType] [nvarchar](50) NULL,
+	[Item_Row_Id] [int] IDENTITY(1,1) NOT NULL,
+	[Start_Date] [datetime] NULL,
+	[End_Date] [datetime] NULL,
  CONSTRAINT [PK_Dim_Item] PRIMARY KEY CLUSTERED 
 (
-	[Item_Id] ASC
+	[Item_Row_Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Dim_Port]    Script Date: 28-3-2023 10:46:38 ******/
+/****** Object:  Table [dbo].[Dim_Port]    Script Date: 28-3-2023 17:57:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -138,13 +142,16 @@ CREATE TABLE [dbo].[Dim_Port](
 	[Port_Id] [int] NOT NULL,
 	[PortName] [nvarchar](50) NULL,
 	[Country] [nvarchar](50) NULL,
+	[Port_Row_Id] [int] IDENTITY(1,1) NOT NULL,
+	[Start_Date] [datetime] NULL,
+	[End_Date] [datetime] NULL,
  CONSTRAINT [PK_Dim_Port] PRIMARY KEY CLUSTERED 
 (
-	[Port_Id] ASC
+	[Port_Row_Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Dim_Ship]    Script Date: 28-3-2023 10:46:38 ******/
+/****** Object:  Table [dbo].[Dim_Ship]    Script Date: 28-3-2023 17:57:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -154,19 +161,22 @@ CREATE TABLE [dbo].[Dim_Ship](
 	[Shipname] [nvarchar](255) NULL,
 	[MaxTEU] [int] NULL,
 	[Yearcost] [numeric](38, 19) NULL,
+	[Ship_Row_Id] [int] IDENTITY(1,1) NOT NULL,
+	[Start_Date] [datetime] NULL,
+	[End_Date] [datetime] NULL,
  CONSTRAINT [PK_Dim_Ship] PRIMARY KEY CLUSTERED 
 (
-	[Ship_Id] ASC
+	[Ship_Row_Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Dim_Waiting_Time]    Script Date: 28-3-2023 10:46:38 ******/
+/****** Object:  Table [dbo].[Dim_Waiting_Time]    Script Date: 28-3-2023 17:57:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Dim_Waiting_Time](
-	[Waiting_Time_Id] [int] IDENTITY(1,1) NOT NULL,
+	[Waiting_Time_Id] [int] NOT NULL,
 	[Port_Id] [int] NULL,
 	[Ship_Id] [int] NULL,
 	[Waiting_Time] [nvarchar](10) NULL,
@@ -177,7 +187,7 @@ CREATE TABLE [dbo].[Dim_Waiting_Time](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[F_Shipment]    Script Date: 28-3-2023 10:46:38 ******/
+/****** Object:  Table [dbo].[F_Shipment]    Script Date: 28-3-2023 17:57:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -185,13 +195,13 @@ GO
 CREATE TABLE [dbo].[F_Shipment](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Shipment_Id] [int] NULL,
-	[Item_Id] [int] NULL,
-	[Consignor_Id] [int] NULL,
+	[Item_Row_Id] [int] NULL,
+	[Consignor_Row_Id] [int] NULL,
 	[Voyage_id] [int] NULL,
-	[Port_Id_From] [int] NULL,
-	[Port_Id_To] [int] NULL,
+	[Port_Row_Id_From] [int] NULL,
+	[Port_Row_Id_To] [int] NULL,
 	[Distance] [int] NULL,
-	[Container_Id] [int] NULL,
+	[Container_Row_Id] [int] NULL,
 	[Container_Range] [nvarchar](50) NULL,
 	[Number_Containers] [int] NULL,
  CONSTRAINT [PK_F_Shipment_1] PRIMARY KEY CLUSTERED 
@@ -200,7 +210,7 @@ CREATE TABLE [dbo].[F_Shipment](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[F_Voyage_Port]    Script Date: 28-3-2023 10:46:38 ******/
+/****** Object:  Table [dbo].[F_Voyage_Port]    Script Date: 28-3-2023 17:57:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -208,7 +218,7 @@ GO
 CREATE TABLE [dbo].[F_Voyage_Port](
 	[Voyage_Port_Id] [int] IDENTITY(1,1) NOT NULL,
 	[Voyage_Id] [int] NULL,
-	[Ship_Id] [int] NULL,
+	[Ship_Row_Id] [int] NULL,
 	[Port_Id_Current] [int] NULL,
 	[Port_Id_Next] [int] NULL,
 	[Port_Id_Start] [int] NULL,
@@ -223,63 +233,61 @@ CREATE TABLE [dbo].[F_Voyage_Port](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[Dim_Waiting_Time]  WITH CHECK ADD  CONSTRAINT [FK_Dim_Waiting_Time_Dim_Port] FOREIGN KEY([Port_Id])
-REFERENCES [dbo].[Dim_Port] ([Port_Id])
+ALTER TABLE [dbo].[Dim_Consignor] ADD  CONSTRAINT [DF_Dim_Consignor_Start_Date]  DEFAULT (getdate()) FOR [Start_Date]
 GO
-ALTER TABLE [dbo].[Dim_Waiting_Time] CHECK CONSTRAINT [FK_Dim_Waiting_Time_Dim_Port]
+ALTER TABLE [dbo].[Dim_Container] ADD  CONSTRAINT [DF_Dim_Container_Start_Date]  DEFAULT (getdate()) FOR [Start_Date]
 GO
-ALTER TABLE [dbo].[Dim_Waiting_Time]  WITH CHECK ADD  CONSTRAINT [FK_Dim_Waiting_Time_Dim_Ship] FOREIGN KEY([Ship_Id])
-REFERENCES [dbo].[Dim_Ship] ([Ship_Id])
+ALTER TABLE [dbo].[Dim_Item] ADD  CONSTRAINT [DF_Dim_Item_Start_Date]  DEFAULT (getdate()) FOR [Start_Date]
 GO
-ALTER TABLE [dbo].[Dim_Waiting_Time] CHECK CONSTRAINT [FK_Dim_Waiting_Time_Dim_Ship]
+ALTER TABLE [dbo].[Dim_Ship] ADD  CONSTRAINT [DF_Dim_Ship_Start_Date]  DEFAULT (getdate()) FOR [Start_Date]
 GO
-ALTER TABLE [dbo].[F_Shipment]  WITH CHECK ADD  CONSTRAINT [FK_F_Shipment_Dim_Consignor] FOREIGN KEY([Consignor_Id])
-REFERENCES [dbo].[Dim_Consignor] ([Consignor_Id])
+ALTER TABLE [dbo].[F_Shipment]  WITH CHECK ADD  CONSTRAINT [FK_F_Shipment_Dim_Consignor] FOREIGN KEY([Consignor_Row_Id])
+REFERENCES [dbo].[Dim_Consignor] ([Consignor_Row_ID])
 GO
 ALTER TABLE [dbo].[F_Shipment] CHECK CONSTRAINT [FK_F_Shipment_Dim_Consignor]
 GO
-ALTER TABLE [dbo].[F_Shipment]  WITH CHECK ADD  CONSTRAINT [FK_F_Shipment_Dim_Container] FOREIGN KEY([Container_Id])
-REFERENCES [dbo].[Dim_Container] ([Container_Id])
+ALTER TABLE [dbo].[F_Shipment]  WITH CHECK ADD  CONSTRAINT [FK_F_Shipment_Dim_Container] FOREIGN KEY([Container_Row_Id])
+REFERENCES [dbo].[Dim_Container] ([Container_Row_Id])
 GO
 ALTER TABLE [dbo].[F_Shipment] CHECK CONSTRAINT [FK_F_Shipment_Dim_Container]
 GO
-ALTER TABLE [dbo].[F_Shipment]  WITH CHECK ADD  CONSTRAINT [FK_F_Shipment_Dim_Item] FOREIGN KEY([Item_Id])
-REFERENCES [dbo].[Dim_Item] ([Item_Id])
+ALTER TABLE [dbo].[F_Shipment]  WITH CHECK ADD  CONSTRAINT [FK_F_Shipment_Dim_Item] FOREIGN KEY([Item_Row_Id])
+REFERENCES [dbo].[Dim_Item] ([Item_Row_Id])
 GO
 ALTER TABLE [dbo].[F_Shipment] CHECK CONSTRAINT [FK_F_Shipment_Dim_Item]
 GO
-ALTER TABLE [dbo].[F_Shipment]  WITH CHECK ADD  CONSTRAINT [FK_F_Shipment_Dim_Port] FOREIGN KEY([Port_Id_From])
-REFERENCES [dbo].[Dim_Port] ([Port_Id])
+ALTER TABLE [dbo].[F_Shipment]  WITH CHECK ADD  CONSTRAINT [FK_F_Shipment_Dim_Port] FOREIGN KEY([Port_Row_Id_To])
+REFERENCES [dbo].[Dim_Port] ([Port_Row_Id])
 GO
 ALTER TABLE [dbo].[F_Shipment] CHECK CONSTRAINT [FK_F_Shipment_Dim_Port]
 GO
-ALTER TABLE [dbo].[F_Shipment]  WITH CHECK ADD  CONSTRAINT [FK_F_Shipment_Dim_Port1] FOREIGN KEY([Port_Id_To])
-REFERENCES [dbo].[Dim_Port] ([Port_Id])
+ALTER TABLE [dbo].[F_Shipment]  WITH CHECK ADD  CONSTRAINT [FK_F_Shipment_Dim_Port1] FOREIGN KEY([Port_Row_Id_From])
+REFERENCES [dbo].[Dim_Port] ([Port_Row_Id])
 GO
 ALTER TABLE [dbo].[F_Shipment] CHECK CONSTRAINT [FK_F_Shipment_Dim_Port1]
 GO
 ALTER TABLE [dbo].[F_Voyage_Port]  WITH CHECK ADD  CONSTRAINT [FK_F_Voyage_Port_Dim_Port] FOREIGN KEY([Port_Id_Current])
-REFERENCES [dbo].[Dim_Port] ([Port_Id])
+REFERENCES [dbo].[Dim_Port] ([Port_Row_Id])
 GO
 ALTER TABLE [dbo].[F_Voyage_Port] CHECK CONSTRAINT [FK_F_Voyage_Port_Dim_Port]
 GO
-ALTER TABLE [dbo].[F_Voyage_Port]  WITH CHECK ADD  CONSTRAINT [FK_F_Voyage_Port_Dim_Port1] FOREIGN KEY([Port_Id_Next])
-REFERENCES [dbo].[Dim_Port] ([Port_Id])
+ALTER TABLE [dbo].[F_Voyage_Port]  WITH CHECK ADD  CONSTRAINT [FK_F_Voyage_Port_Dim_Port1] FOREIGN KEY([Port_Id_End])
+REFERENCES [dbo].[Dim_Port] ([Port_Row_Id])
 GO
 ALTER TABLE [dbo].[F_Voyage_Port] CHECK CONSTRAINT [FK_F_Voyage_Port_Dim_Port1]
 GO
-ALTER TABLE [dbo].[F_Voyage_Port]  WITH CHECK ADD  CONSTRAINT [FK_F_Voyage_Port_Dim_Port2] FOREIGN KEY([Port_Id_Start])
-REFERENCES [dbo].[Dim_Port] ([Port_Id])
+ALTER TABLE [dbo].[F_Voyage_Port]  WITH CHECK ADD  CONSTRAINT [FK_F_Voyage_Port_Dim_Port2] FOREIGN KEY([Port_Id_Next])
+REFERENCES [dbo].[Dim_Port] ([Port_Row_Id])
 GO
 ALTER TABLE [dbo].[F_Voyage_Port] CHECK CONSTRAINT [FK_F_Voyage_Port_Dim_Port2]
 GO
-ALTER TABLE [dbo].[F_Voyage_Port]  WITH CHECK ADD  CONSTRAINT [FK_F_Voyage_Port_Dim_Port3] FOREIGN KEY([Port_Id_End])
-REFERENCES [dbo].[Dim_Port] ([Port_Id])
+ALTER TABLE [dbo].[F_Voyage_Port]  WITH CHECK ADD  CONSTRAINT [FK_F_Voyage_Port_Dim_Port3] FOREIGN KEY([Port_Id_Start])
+REFERENCES [dbo].[Dim_Port] ([Port_Row_Id])
 GO
 ALTER TABLE [dbo].[F_Voyage_Port] CHECK CONSTRAINT [FK_F_Voyage_Port_Dim_Port3]
 GO
-ALTER TABLE [dbo].[F_Voyage_Port]  WITH CHECK ADD  CONSTRAINT [FK_F_Voyage_Port_Dim_Ship] FOREIGN KEY([Ship_Id])
-REFERENCES [dbo].[Dim_Ship] ([Ship_Id])
+ALTER TABLE [dbo].[F_Voyage_Port]  WITH CHECK ADD  CONSTRAINT [FK_F_Voyage_Port_Dim_Ship] FOREIGN KEY([Ship_Row_Id])
+REFERENCES [dbo].[Dim_Ship] ([Ship_Row_Id])
 GO
 ALTER TABLE [dbo].[F_Voyage_Port] CHECK CONSTRAINT [FK_F_Voyage_Port_Dim_Ship]
 GO

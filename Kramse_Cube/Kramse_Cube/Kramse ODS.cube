@@ -8,7 +8,7 @@
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
       <Value>
         <dds xmlns="">
-          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="48" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-1492" scrolltop="3404" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="75" x="20235" y="17399" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="48" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-1492" scrolltop="6197" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="75" x="20235" y="8848" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
             <font>
               <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
             </font>
@@ -415,7 +415,7 @@
     </Annotation>
     <Annotation>
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
-      <Value>3404</Value>
+      <Value>6197</Value>
     </Annotation>
     <Annotation>
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
@@ -433,31 +433,6 @@
   <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
   <State>Unprocessed</State>
   <Dimensions>
-    <Dimension dwd:design-time-name="8c40de6e-48eb-4132-a3ca-8e790ed3ea0b">
-      <ID>F Shipment</ID>
-      <Name>F Shipment</Name>
-      <DimensionID>F Shipment</DimensionID>
-      <Attributes>
-        <Attribute dwd:design-time-name="1b8c16af-393b-464b-a001-b093e34fc6a8">
-          <AttributeID>Shipment Id</AttributeID>
-        </Attribute>
-        <Attribute dwd:design-time-name="f589163a-38d8-470f-8edc-596ab06e5f1d">
-          <AttributeID>Port Row Id From</AttributeID>
-        </Attribute>
-        <Attribute dwd:design-time-name="ab316e08-a05b-40bd-8565-6bca1ca31678">
-          <AttributeID>Container Row Id</AttributeID>
-        </Attribute>
-        <Attribute dwd:design-time-name="62cbda3a-5eb8-4e91-9383-513d613e9657">
-          <AttributeID>Item Row Id</AttributeID>
-        </Attribute>
-        <Attribute dwd:design-time-name="506555c7-2078-4ed8-b646-1a37f9e9e549">
-          <AttributeID>Port Row Id To</AttributeID>
-        </Attribute>
-        <Attribute dwd:design-time-name="8105fa53-fff4-4510-8168-f44f3c7eedaf">
-          <AttributeID>Consignor Row Id</AttributeID>
-        </Attribute>
-      </Attributes>
-    </Dimension>
     <Dimension dwd:design-time-name="21542fa8-24f2-4c51-bcf8-3ebe7b0279dd">
       <ID>Port Row Id From</ID>
       <Name>Port Row Id From</Name>
@@ -657,66 +632,6 @@
       <StorageMode>Molap</StorageMode>
       <ProcessingMode>Regular</ProcessingMode>
       <Dimensions>
-        <Dimension xsi:type="DegenerateMeasureGroupDimension" dwd:design-time-name="222c0c38-73b9-49a1-91a2-8a9482086bea">
-          <CubeDimensionID>F Shipment</CubeDimensionID>
-          <Attributes>
-            <Attribute dwd:design-time-name="8ceb15e7-47cd-479f-a21e-96d28074234d">
-              <AttributeID>Shipment Id</AttributeID>
-              <KeyColumns>
-                <KeyColumn dwd:design-time-name="0ff79ea2-f6f8-4559-a894-76f5b19d623d">
-                  <DataType>Integer</DataType>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="bf8c8756-e7a6-4255-836a-6eb8e66d19c0">
-                    <TableID>dbo_F_Shipment</TableID>
-                    <ColumnID>Shipment_Id</ColumnID>
-                  </Source>
-                </KeyColumn>
-                <KeyColumn dwd:design-time-name="bb02ce72-b221-42a5-909f-97a996f4a86f">
-                  <DataType>Integer</DataType>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="4c4fb902-ee00-447f-9338-02ec3a188489">
-                    <TableID>dbo_F_Shipment</TableID>
-                    <ColumnID>Item_Row_Id</ColumnID>
-                  </Source>
-                </KeyColumn>
-                <KeyColumn dwd:design-time-name="f7982866-3a5e-4102-a7f9-c529cdb9a690">
-                  <DataType>Integer</DataType>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="1a0af5c8-9728-49f0-9331-20803b934061">
-                    <TableID>dbo_F_Shipment</TableID>
-                    <ColumnID>Consignor_Row_Id</ColumnID>
-                  </Source>
-                </KeyColumn>
-                <KeyColumn dwd:design-time-name="ba3eaf65-a309-46d6-88aa-c1f8f525519d">
-                  <DataType>Integer</DataType>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="ec64c95f-d4dd-4449-95bc-4908df1d21ff">
-                    <TableID>dbo_F_Shipment</TableID>
-                    <ColumnID>Voyage_id</ColumnID>
-                  </Source>
-                </KeyColumn>
-                <KeyColumn dwd:design-time-name="13726803-2e3f-4759-a858-dcc18966a475">
-                  <DataType>Integer</DataType>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="b691d57b-5242-4b20-bdce-9a9e9a27084e">
-                    <TableID>dbo_F_Shipment</TableID>
-                    <ColumnID>Port_Row_Id_From</ColumnID>
-                  </Source>
-                </KeyColumn>
-                <KeyColumn dwd:design-time-name="24d50806-7f68-48eb-92d1-6546c0f2023d">
-                  <DataType>Integer</DataType>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="c6d193f0-2d0c-415a-8f51-6906d43d877d">
-                    <TableID>dbo_F_Shipment</TableID>
-                    <ColumnID>Port_Row_Id_To</ColumnID>
-                  </Source>
-                </KeyColumn>
-                <KeyColumn dwd:design-time-name="3506bc28-6365-4664-a0da-ac349bc07a49">
-                  <DataType>Integer</DataType>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="89efe783-43b7-4ded-894f-18ecbd949a1f">
-                    <TableID>dbo_F_Shipment</TableID>
-                    <ColumnID>Container_Row_Id</ColumnID>
-                  </Source>
-                </KeyColumn>
-              </KeyColumns>
-              <Type>Granularity</Type>
-            </Attribute>
-          </Attributes>
-        </Dimension>
         <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="f31e8b1f-33b5-40c9-a02f-3c8498252bf3">
           <CubeDimensionID>Port Row Id From</CubeDimensionID>
           <Attributes>
@@ -1019,27 +934,30 @@ The CALCULATE command controls the aggregation of leaf cells in the cube.
 If the CALCULATE command is deleted or modified, the data within the cube is affected.
 You should edit this command only if you manually specify how the cube is aggregated.
 */
-CALCULATE; 
-CREATE MEMBER CURRENTCUBE.[Measures].[Container Amount]
- AS [Measures].[Number Containers], 
-VISIBLE = 1  ; 
+CALCULATE;  
 CREATE MEMBER CURRENTCUBE.[Measures].[TEU]
  AS [Dim Container].[Cubes] / 38.51, 
-VISIBLE = 1  ; 
+FORMAT_STRING = "#,#", 
+VISIBLE = 1  ;  
 CREATE MEMBER CURRENTCUBE.[Measures].[Max TEU]
  AS [Dim Ship].[Max TEU], 
-VISIBLE = 1  ; 
+FORMAT_STRING = "#,#", 
+VISIBLE = 1  ;  
 CREATE MEMBER CURRENTCUBE.[Measures].[Load Factor]
- AS [Measures].[TEU] * [Measures].[Container Amount] / [Measures].[Max TEU], 
-VISIBLE = 1  ; 
+ AS [Measures].[TEU] * [Measures].[Actual Container Count] / [Measures].[Max TEU], 
+FORMAT_STRING = "#,#", 
+VISIBLE = 1  ;  
 CREATE MEMBER CURRENTCUBE.[Measures].[Yield]
  AS [Dim Container].[Euro Price Per Km] * [Measures].[Distance], 
-VISIBLE = 1  ; 
+FORMAT_STRING = "#,#", 
+VISIBLE = 1  ;  
 CREATE MEMBER CURRENTCUBE.[Measures].[Shipping Cost]
  AS [Dim Ship].[Yearcost], 
-VISIBLE = 1  ; 
+FORMAT_STRING = "#,#", 
+VISIBLE = 1  ;  
 CREATE MEMBER CURRENTCUBE.[Measures].[Profit]
- AS [Measures].[Yield] - [Measures].[Profit], 
+ AS [Measures].[Yield] - [Measures].[Shipping Cost], 
+FORMAT_STRING = "#,#", 
 VISIBLE = 1  ; </Text>
         </Command>
       </Commands>

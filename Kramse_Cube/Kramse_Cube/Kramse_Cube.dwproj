@@ -8,17 +8,21 @@
   </Database>
   <Cubes>
     <ProjectItem>
-      <Name>Data Cube Kramse.cube</Name>
-      <FullPath>Data Cube Kramse.cube</FullPath>
+      <Name>Kramse ODS.cube</Name>
+      <FullPath>Kramse ODS.cube</FullPath>
       <Dependencies>
         <ProjectItem>
-          <Name>Data Cube Kramse.partitions</Name>
-          <FullPath>Data Cube Kramse.partitions</FullPath>
+          <Name>Kramse ODS.partitions</Name>
+          <FullPath>Kramse ODS.partitions</FullPath>
         </ProjectItem>
       </Dependencies>
     </ProjectItem>
   </Cubes>
   <Dimensions>
+    <ProjectItem>
+      <Name>Dim Port.dim</Name>
+      <FullPath>Dim Port.dim</FullPath>
+    </ProjectItem>
     <ProjectItem>
       <Name>Dim Container.dim</Name>
       <FullPath>Dim Container.dim</FullPath>
@@ -32,32 +36,32 @@
       <FullPath>Dim Consignor.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>Dim Port.dim</Name>
-      <FullPath>Dim Port.dim</FullPath>
+      <Name>F Shipment.dim</Name>
+      <FullPath>F Shipment.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>Dim Ship.dim</Name>
-      <FullPath>Dim Ship.dim</FullPath>
+      <Name>Dim Time.dim</Name>
+      <FullPath>Dim Time.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>Dim Waiting Time.dim</Name>
       <FullPath>Dim Waiting Time.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>Dim Time.dim</Name>
-      <FullPath>Dim Time.dim</FullPath>
+      <Name>Dim Ship.dim</Name>
+      <FullPath>Dim Ship.dim</FullPath>
     </ProjectItem>
   </Dimensions>
   <DataSources>
     <ProjectItem>
-      <Name>Kramse_ODS.ds</Name>
-      <FullPath>Kramse_ODS.ds</FullPath>
+      <Name>Kramse ODS.ds</Name>
+      <FullPath>Kramse ODS.ds</FullPath>
     </ProjectItem>
   </DataSources>
   <DataSourceViews>
     <ProjectItem>
-      <Name>DataSourceView Kramse.dsv</Name>
-      <FullPath>DataSourceView Kramse.dsv</FullPath>
+      <Name>Kramse ODS.dsv</Name>
+      <FullPath>Kramse ODS.dsv</FullPath>
     </ProjectItem>
   </DataSourceViews>
   <Configurations>
@@ -66,15 +70,15 @@
       <Options>
         <ConnectionMappings>
           <ConfigurationSetting>
-            <Id>Kramse Staging</Id>
-            <Name>Kramse Staging</Name>
-            <Value xsi:type="xsd:string">Provider=SQLNCLI11.1;Data Source=.;Integrated Security=SSPI;Initial Catalog=Kramse_ODS</Value>
+            <Id>Kramse ODS</Id>
+            <Name>Kramse ODS</Name>
+            <Value xsi:type="xsd:string">Provider=SQLOLEDB.1;Data Source=.;Integrated Security=SSPI;Initial Catalog=Kramse_ODS</Value>
           </ConfigurationSetting>
         </ConnectionMappings>
         <ConnectionSecurityMappings>
           <ConfigurationSetting>
-            <Id>Kramse Staging</Id>
-            <Name>Kramse Staging</Name>
+            <Id>Kramse ODS</Id>
+            <Name>Kramse ODS</Name>
             <Value xsi:type="xsd:int">0</Value>
           </ConfigurationSetting>
         </ConnectionSecurityMappings>

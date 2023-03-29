@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="Raw to Staging"
   DTS:PackageType="5"
-  DTS:VersionBuild="79"
-  DTS:VersionGUID="{FB9B60A3-E1C9-4698-9E52-8FD1518E67E7}">
+  DTS:VersionBuild="82"
+  DTS:VersionGUID="{1A1721A2-DB72-4224-91CD-04BF63042CBE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -3180,13 +3180,13 @@ where [refTable].[Voyage_Id] = ? and [refTable].[Port_Id] = ? and [refTable].[Sh
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[DATEDIFF]("Hh",#{Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Depart]},#{Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Arrival]})</property>
+                          name="Expression">[DATEDIFF]("dd",#{Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Arrival]},#{Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Depart]})</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">DATEDIFF("Hh",Depart,Arrival)</property>
+                          name="FriendlyExpression">DATEDIFF("dd",Arrival,Depart)</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -3210,6 +3210,165 @@ where [refTable].[Voyage_Id] = ? and [refTable].[Port_Id] = ? and [refTable].[Sh
                       refId="Package\Load WaitingTime\Derived Waiting Time.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Load WaitingTime\Derived Waiting Time.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load WaitingTime\Lookup Port_Name"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Port_Name"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Dim_Port]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Dim_Port]) [refTable]
+where [refTable].[Port_Id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Port_Id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PortName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Country" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[VP_PortIdCurrent]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load WaitingTime\Lookup Port_Name.Connections[OleDbConnection]"
+                  connectionManagerID="{4BD61BF3-0AF1-4C2E-8D52-9E899D0C0989}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load WaitingTime\Lookup Port_Name.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load WaitingTime\Lookup Port_Name.Inputs[Lookup Input].Columns[VP_PortIdCurrent]"
+                      cachedDataType="i4"
+                      cachedName="VP_PortIdCurrent"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[VP_PortIdCurrent]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Port_Id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load WaitingTime\Lookup Port_Name.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load WaitingTime\Lookup Port_Name.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load WaitingTime\Lookup Port_Name.Outputs[Lookup Match Output].Columns[Port_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\Load WaitingTime\Lookup Port_Name.Outputs[Lookup Match Output].Columns[Port_Name]"
+                      name="Port_Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">PortName</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load WaitingTime\Lookup Port_Name.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load WaitingTime\Lookup Port_Name.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load WaitingTime\Lookup Port_Name.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load WaitingTime\Lookup Port_Name.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load WaitingTime\Lookup Port_Name.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load WaitingTime\Lookup Port_Name.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load WaitingTime\Lookup Port_Name.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load WaitingTime\Lookup Port_Name.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -3375,6 +3534,165 @@ where [refTable].[VV_VoyageId] = ?</property>
               </outputs>
             </component>
             <component
+              refId="Package\Load WaitingTime\Lookup Ship_Name"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Ship_Name"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Dim_Ship]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Dim_Ship]) [refTable]
+where [refTable].[Ship_Id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Ship_Id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Shipname" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MaxTEU" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Yearcost" dataType="DT_NUMERIC" length="0" precision="38" scale="19" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load WaitingTime\Lookup Ship Id.Outputs[Lookup Match Output].Columns[VS_ShipId]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load WaitingTime\Lookup Ship_Name.Connections[OleDbConnection]"
+                  connectionManagerID="{4BD61BF3-0AF1-4C2E-8D52-9E899D0C0989}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load WaitingTime\Lookup Ship_Name.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load WaitingTime\Lookup Ship_Name.Inputs[Lookup Input].Columns[VS_ShipId]"
+                      cachedDataType="i4"
+                      cachedName="VS_ShipId"
+                      lineageId="Package\Load WaitingTime\Lookup Ship Id.Outputs[Lookup Match Output].Columns[VS_ShipId]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Ship_Id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load WaitingTime\Lookup Ship_Name.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load WaitingTime\Lookup Ship_Name.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load WaitingTime\Lookup Ship_Name.Outputs[Lookup Match Output].Columns[Ship_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="255"
+                      lineageId="Package\Load WaitingTime\Lookup Ship_Name.Outputs[Lookup Match Output].Columns[Ship_Name]"
+                      name="Ship_Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Shipname</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load WaitingTime\Lookup Ship_Name.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load WaitingTime\Lookup Ship_Name.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load WaitingTime\Lookup Ship_Name.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load WaitingTime\Lookup Ship_Name.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load WaitingTime\Lookup Ship_Name.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load WaitingTime\Lookup Ship_Name.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load WaitingTime\Lookup Ship_Name.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load WaitingTime\Lookup Ship_Name.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Load WaitingTime\OLE DB Destination"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
@@ -3470,6 +3788,20 @@ where [refTable].[VV_VoyageId] = ?</property>
                       cachedName="VV_VoyageId"
                       externalMetadataColumnId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Voyage_Id]"
                       lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[VV_VoyageId]" />
+                    <inputColumn
+                      refId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Port_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Port_Name"
+                      externalMetadataColumnId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Port_Name]"
+                      lineageId="Package\Load WaitingTime\Lookup Port_Name.Outputs[Lookup Match Output].Columns[Port_Name]" />
+                    <inputColumn
+                      refId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Ship_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Ship_Name"
+                      externalMetadataColumnId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ship_Name]"
+                      lineageId="Package\Load WaitingTime\Lookup Ship_Name.Outputs[Lookup Match Output].Columns[Ship_Name]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3494,6 +3826,16 @@ where [refTable].[VV_VoyageId] = ?</property>
                       refId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Voyage_Id]"
                       dataType="i4"
                       name="Voyage_Id" />
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Port_Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Port_Name" />
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ship_Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Ship_Name" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -3727,9 +4069,19 @@ where [refTable].[VV_VoyageId] = ?</property>
               startId="Package\Load WaitingTime\Derived Waiting Time.Outputs[Derived Column Output]" />
             <path
               refId="Package\Load WaitingTime.Paths[Lookup Match Output]"
-              endId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              endId="Package\Load WaitingTime\Lookup Ship_Name.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\Load WaitingTime\Lookup Ship Id.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load WaitingTime.Paths[Lookup Match Output1]"
+              endId="Package\Load WaitingTime\Lookup Port_Name.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Load WaitingTime\Lookup Ship_Name.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load WaitingTime.Paths[Lookup Match Output2]"
+              endId="Package\Load WaitingTime\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\Load WaitingTime\Lookup Port_Name.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Load WaitingTime.Paths[OLE DB Source Output]"
               endId="Package\Load WaitingTime\Derived Waiting Time.Inputs[Derived Column Input]"
@@ -3851,39 +4203,39 @@ where [refTable].[VV_VoyageId] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="164,42.6666666666667"
+          Size="164,42.4"
           Id="Package\Execute SQL Task"
           TopLeft="461.124979631976,22.7666653029125" />
         <NodeLayout
-          Size="152,42.6666666666667"
+          Size="152,42.4"
           Id="Package\Load Consignor"
           TopLeft="382.374988516793,152.933332279523" />
         <NodeLayout
-          Size="150.666666666667,42.6666666666667"
+          Size="150.4,42.4"
           Id="Package\Load Container"
           TopLeft="79.2499980442227,148.083328219255" />
         <NodeLayout
-          Size="128,42.6666666666667"
+          Size="128,42.4"
           Id="Package\Load Item"
           TopLeft="242.374993434176,148.283331070741" />
         <NodeLayout
-          Size="125.333333333334,42.6666666666667"
+          Size="125.6,42.4"
           Id="Package\Load Port"
           TopLeft="554.874975441025,153.701509200587" />
         <NodeLayout
-          Size="125.333333333334,42.6666666666667"
+          Size="125.6,42.4"
           Id="Package\Load Ship"
           TopLeft="744.874969629572,156.63332924207" />
         <NodeLayout
-          Size="149.333333333334,42.6666666666667"
+          Size="149.6,42.4"
           Id="Package\Load Shipment"
           TopLeft="247.374989187346,381.983315635523" />
         <NodeLayout
-          Size="166.666666666667,42.6666666666667"
+          Size="166.4,42.4"
           Id="Package\Load VoyagePort"
           TopLeft="667.374970411883,379.133316534362" />
         <NodeLayout
-          Size="164,42.6666666666667"
+          Size="164,42.4"
           Id="Package\Load WaitingTime"
           TopLeft="665.958304136373,286.949986579418" />
         <EdgeLayout
@@ -4277,15 +4629,15 @@ where [refTable].[VV_VoyageId] = ?</property>
     design-time-name="Package\Load Consignor">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="182.4,42.4"
-          Id="Package\Load Consignor\Consignor Destination"
-          TopLeft="32.4999991953373,200.499994188547" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="161.6,42.4"
           Id="Package\Load Consignor\Consignor Source"
           TopLeft="38.499999910593,89.4999983906746" />
+        <NodeLayout
+          Size="182.4,42.4"
+          Id="Package\Load Consignor\Consignor Destination"
+          TopLeft="32.4999991953373,200.499994188547" />
         <EdgeLayout
           Id="Package\Load Consignor.Paths[OLE DB Source Output]"
           TopLeft="121.499999552965,132.166665057341">
@@ -4305,7 +4657,9 @@ where [refTable].[VV_VoyageId] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4341,15 +4695,15 @@ where [refTable].[VV_VoyageId] = ?</property>
     design-time-name="Package\Load Container">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="150.4,42.4"
-          Id="Package\Load Container\OLE DB Source"
-          TopLeft="17.9999994412065,5.5" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="172,42.4"
           Id="Package\Load Container\OLE DB Destination"
           TopLeft="11.7500010617077,103.099996776581" />
+        <NodeLayout
+          Size="150.4,42.4"
+          Id="Package\Load Container\OLE DB Source"
+          TopLeft="17.9999994412065,5.5" />
         <EdgeLayout
           Id="Package\Load Container.Paths[OLE DB Source Output]"
           TopLeft="95.5416669181238,48.1666666666667">
@@ -4369,7 +4723,9 @@ where [refTable].[VV_VoyageId] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4405,7 +4761,7 @@ where [refTable].[VV_VoyageId] = ?</property>
     design-time-name="Package\Load Item">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="137.6,42.4"
           Id="Package\Load Item\Item Source"
@@ -4433,7 +4789,9 @@ where [refTable].[VV_VoyageId] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4469,7 +4827,7 @@ where [refTable].[VV_VoyageId] = ?</property>
     design-time-name="Package\Load Port">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="134.4,42.4"
           Id="Package\Load Port\Port Source"
@@ -4497,7 +4855,9 @@ where [refTable].[VV_VoyageId] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4533,7 +4893,7 @@ where [refTable].[VV_VoyageId] = ?</property>
     design-time-name="Package\Load Ship">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="135.2,42.4"
           Id="Package\Load Ship\Ship Source"
@@ -4561,7 +4921,9 @@ where [refTable].[VV_VoyageId] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4629,7 +4991,9 @@ where [refTable].[VV_VoyageId] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -4748,7 +5112,9 @@ where [refTable].[VV_VoyageId] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -4902,37 +5268,69 @@ where [refTable].[VV_VoyageId] = ?</property>
     design-time-name="Package\Load WaitingTime">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="150.666666666667,42.6666666666667"
-          Id="Package\Load WaitingTime\Lookup Ship Id"
-          TopLeft="86.906249043066,188.674994126559" />
-        <NodeLayout
-          Size="172,42.6666666666667"
-          Id="Package\Load WaitingTime\OLE DB Destination"
-          TopLeft="74.4062482607552,293.712487687469" />
-        <NodeLayout
-          Size="180,41.3333333333334"
-          Id="Package\Load WaitingTime\Derived Waiting Time"
-          TopLeft="68.1249969545753,107.899994854927" />
-        <NodeLayout
-          Size="150.666666666667,42.6666666666667"
+          Size="150.4,42.4"
           Id="Package\Load WaitingTime\OLE DB Source"
-          TopLeft="80.4999966472388,26.9499989771843" />
+          TopLeft="20.3,5.50000000000005" />
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\Load WaitingTime\Lookup Port_Name"
+          TopLeft="11.5000000000001,413.5" />
+        <NodeLayout
+          Size="168.8,41.6"
+          Id="Package\Load WaitingTime\Lookup Ship_Name"
+          TopLeft="11.1,311.9" />
+        <NodeLayout
+          Size="150.4,42.4"
+          Id="Package\Load WaitingTime\Lookup Ship Id"
+          TopLeft="20.3,209.5" />
+        <NodeLayout
+          Size="172,42.4"
+          Id="Package\Load WaitingTime\OLE DB Destination"
+          TopLeft="9.50000000000006,515.1" />
+        <NodeLayout
+          Size="180,41.6"
+          Id="Package\Load WaitingTime\Derived Waiting Time"
+          TopLeft="5.50000000000001,107.9" />
         <EdgeLayout
-          Id="Package\Load WaitingTime.Paths[Derived Column Output]"
-          TopLeft="160.115622998821,149.499994854927">
+          Id="Package\Load WaitingTime.Paths[Lookup Match Output]"
+          TopLeft="95.5,251.9">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,39.174999271632"
+              EndConnector="0,60"
               Start="0,0"
-              End="0,31.674999271632">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.674999271632" />
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load WaitingTime.Paths[Derived Column Output]"
+          TopLeft="95.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4943,18 +5341,18 @@ where [refTable].[VV_VoyageId] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load WaitingTime.Paths[OLE DB Source Output]"
-          TopLeft="156.912496800907,69.3499989771843">
+          TopLeft="95.5,47.9">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,38.5499958777427"
+              EndConnector="0,60"
               Start="0,0"
-              End="0,31.0499958777427">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.0499958777427" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4964,32 +5362,115 @@ where [refTable].[VV_VoyageId] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load WaitingTime.Paths[Lookup Match Output]"
-          TopLeft="161.322915318577,231.341660793226">
+          Id="Package\Load WaitingTime.Paths[Lookup Match Output2]"
+          TopLeft="95.5000000000001,455.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,62.3708268942432"
+              EndConnector="0,59.9999999999999"
               Start="0,0"
-              End="0,54.8708268942432">
+              End="0,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,54.8708268942432" />
+                    End="0,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,21.6307259471216,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load WaitingTime.Paths[Lookup Match Output1]"
+          TopLeft="95.5000000000001,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load WaitingTime\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load WaitingTime\Lookup Port_Name">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Port]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load WaitingTime\Lookup Ship_Name">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Ship]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load WaitingTime\Lookup Ship Id">
     <Properties>
@@ -5023,19 +5504,6 @@ where [refTable].[VV_VoyageId] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load WaitingTime\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">View</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

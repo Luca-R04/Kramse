@@ -1,6 +1,7 @@
 USE [master]
 GO
 /****** Object:  Database [Kramse_ODS]    Script Date: 29-3-2023 10:02:02 ******/
+DROP DATABASE IF EXISTS [Kramse_ODS];
 CREATE DATABASE [Kramse_ODS]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -186,6 +187,8 @@ CREATE TABLE [dbo].[Dim_Waiting_Time](
 	[Ship_Id] [int] NULL,
 	[Waiting_Time] [nvarchar](10) NULL,
 	[Voyage_Id] [int] NULL,
+	[Port_Name] [nvarchar](255) NULL,
+	[Ship_Name] [nvarchar](255) NULL,
  CONSTRAINT [PK_Dim_Waiting_Time] PRIMARY KEY CLUSTERED 
 (
 	[Waiting_Time_Id] ASC

@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="Raw to Staging"
   DTS:PackageType="5"
-  DTS:VersionBuild="78"
-  DTS:VersionGUID="{7AECE654-8FD8-4323-BF51-832FBEAB003F}">
+  DTS:VersionBuild="79"
+  DTS:VersionGUID="{FB9B60A3-E1C9-4698-9E52-8FD1518E67E7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -3851,39 +3851,39 @@ where [refTable].[VV_VoyageId] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="164,42.4"
+          Size="164,42.6666666666667"
           Id="Package\Execute SQL Task"
           TopLeft="461.124979631976,22.7666653029125" />
         <NodeLayout
-          Size="152,42.4"
+          Size="152,42.6666666666667"
           Id="Package\Load Consignor"
           TopLeft="382.374988516793,152.933332279523" />
         <NodeLayout
-          Size="150.4,42.4"
+          Size="150.666666666667,42.6666666666667"
           Id="Package\Load Container"
           TopLeft="79.2499980442227,148.083328219255" />
         <NodeLayout
-          Size="128,42.4"
+          Size="128,42.6666666666667"
           Id="Package\Load Item"
           TopLeft="242.374993434176,148.283331070741" />
         <NodeLayout
-          Size="125.6,42.4"
+          Size="125.333333333334,42.6666666666667"
           Id="Package\Load Port"
           TopLeft="554.874975441025,153.701509200587" />
         <NodeLayout
-          Size="125.6,42.4"
+          Size="125.333333333334,42.6666666666667"
           Id="Package\Load Ship"
           TopLeft="744.874969629572,156.63332924207" />
         <NodeLayout
-          Size="149.6,42.4"
+          Size="149.333333333334,42.6666666666667"
           Id="Package\Load Shipment"
           TopLeft="247.374989187346,381.983315635523" />
         <NodeLayout
-          Size="166.4,42.4"
+          Size="166.666666666667,42.6666666666667"
           Id="Package\Load VoyagePort"
           TopLeft="667.374970411883,379.133316534362" />
         <NodeLayout
-          Size="164,42.4"
+          Size="164,42.6666666666667"
           Id="Package\Load WaitingTime"
           TopLeft="665.958304136373,286.949986579418" />
         <EdgeLayout
@@ -4832,7 +4832,7 @@ where [refTable].[VV_VoyageId] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -4842,7 +4842,7 @@ where [refTable].[VV_VoyageId] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4904,19 +4904,19 @@ where [refTable].[VV_VoyageId] = ?</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="150.4,42.4"
+          Size="150.666666666667,42.6666666666667"
           Id="Package\Load WaitingTime\Lookup Ship Id"
           TopLeft="86.906249043066,188.674994126559" />
         <NodeLayout
-          Size="172,42.4"
+          Size="172,42.6666666666667"
           Id="Package\Load WaitingTime\OLE DB Destination"
           TopLeft="74.4062482607552,293.712487687469" />
         <NodeLayout
-          Size="180,41.6"
+          Size="180,41.3333333333334"
           Id="Package\Load WaitingTime\Derived Waiting Time"
           TopLeft="68.1249969545753,107.899994854927" />
         <NodeLayout
-          Size="150.4,42.4"
+          Size="150.666666666667,42.6666666666667"
           Id="Package\Load WaitingTime\OLE DB Source"
           TopLeft="80.4999966472388,26.9499989771843" />
         <EdgeLayout
@@ -4933,6 +4933,28 @@ where [refTable].[VV_VoyageId] = ?</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,31.674999271632" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load WaitingTime.Paths[OLE DB Source Output]"
+          TopLeft="156.912496800907,69.3499989771843">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.5499958777427"
+              Start="0,0"
+              End="0,31.0499958777427">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.0499958777427" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4965,28 +4987,6 @@ where [refTable].[VV_VoyageId] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load WaitingTime.Paths[OLE DB Source Output]"
-          TopLeft="156.912496800907,69.3499989771843">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,38.5499958777427"
-              Start="0,0"
-              End="0,31.0499958777427">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.0499958777427" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -4996,7 +4996,7 @@ where [refTable].[VV_VoyageId] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -5006,7 +5006,7 @@ where [refTable].[VV_VoyageId] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

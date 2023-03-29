@@ -212,6 +212,7 @@ CREATE TABLE [dbo].[F_Shipment](
 	[Container_Row_Id] [int] NOT NULL,
 	[Container_Range] [nvarchar](50) NULL,
 	[Number_Containers] [int] NULL,
+	[Actual_Container_Count] [int] NULL,
  CONSTRAINT [PK_F_Shipment] PRIMARY KEY CLUSTERED 
 (
 	[Shipment_Id] ASC,

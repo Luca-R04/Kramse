@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="Raw to Staging"
   DTS:PackageType="5"
-  DTS:VersionBuild="82"
-  DTS:VersionGUID="{1A1721A2-DB72-4224-91CD-04BF63042CBE}">
+  DTS:VersionBuild="87"
+  DTS:VersionGUID="{AA20E1DE-36C5-463B-915A-02A3E29F7F11}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1678,6 +1678,198 @@
           version="1">
           <components>
             <component
+              refId="Package\Load Shipment\Actual Container Count"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Actual Container Count"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Shipment\Actual Container Count.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Shipment\Actual Container Count.Inputs[Derived Column Input].Columns[FirstContainer]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="FirstContainer"
+                      lineageId="Package\Load Shipment\Find FirstContainerNR.Outputs[Derived Column Output].Columns[FirstContainer]" />
+                    <inputColumn
+                      refId="Package\Load Shipment\Actual Container Count.Inputs[Derived Column Input].Columns[LastContainer]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="LastContainer"
+                      lineageId="Package\Load Shipment\Find FirstContainerNR.Outputs[Derived Column Output].Columns[LastContainer]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Shipment\Actual Container Count.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Shipment\Actual Container Count.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Shipment\Actual Container Count.Outputs[Derived Column Output].Columns[ContainerCount]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Shipment\Actual Container Count.Outputs[Derived Column Output].Columns[ContainerCount]"
+                      name="ContainerCount"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I4)#{Package\Load Shipment\Find FirstContainerNR.Outputs[Derived Column Output].Columns[LastContainer]} - (DT_I4)#{Package\Load Shipment\Find FirstContainerNR.Outputs[Derived Column Output].Columns[FirstContainer]} + 1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)LastContainer - (DT_I4)FirstContainer + 1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Shipment\Actual Container Count.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load Shipment\Actual Container Count.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Shipment\Actual Container Count.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Shipment\Actual Container Count.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Shipment\Actual Container Count.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Shipment\Actual Container Count.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Shipment\Find FirstContainerNR"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Find FirstContainerNR"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Shipment\Find FirstContainerNR.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Shipment\Find FirstContainerNR.Inputs[Derived Column Input].Columns[ContainerNr]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ContainerNr"
+                      lineageId="Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Output].Columns[ContainerNr]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Shipment\Find FirstContainerNR.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Shipment\Find FirstContainerNR.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Shipment\Find FirstContainerNR.Outputs[Derived Column Output].Columns[FirstContainer]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Load Shipment\Find FirstContainerNR.Outputs[Derived Column Output].Columns[FirstContainer]"
+                      name="FirstContainer"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[SUBSTRING](#{Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Output].Columns[ContainerNr]},1,[FINDSTRING](#{Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Output].Columns[ContainerNr]},"-",1) - 1)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">SUBSTRING(ContainerNr,1,FINDSTRING(ContainerNr,"-",1) - 1)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Shipment\Find FirstContainerNR.Outputs[Derived Column Output].Columns[LastContainer]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Load Shipment\Find FirstContainerNR.Outputs[Derived Column Output].Columns[LastContainer]"
+                      name="LastContainer"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[SUBSTRING](#{Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Output].Columns[ContainerNr]},[FINDSTRING](#{Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Output].Columns[ContainerNr]},"-",1) + 1,[LEN](#{Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Output].Columns[ContainerNr]}) - [FINDSTRING](#{Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Output].Columns[ContainerNr]},"-",1) + 1)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">SUBSTRING(ContainerNr,FINDSTRING(ContainerNr,"-",1) + 1,LEN(ContainerNr) - FINDSTRING(ContainerNr,"-",1) + 1)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Shipment\Find FirstContainerNR.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load Shipment\Find FirstContainerNR.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Shipment\Find FirstContainerNR.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Shipment\Find FirstContainerNR.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Shipment\Find FirstContainerNR.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Shipment\Find FirstContainerNR.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Load Shipment\Lookup ShipmentDetail"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
@@ -2037,6 +2229,12 @@ where [refTable].[ShipmentId] = ?</property>
                       cachedName="ConsignorId"
                       externalMetadataColumnId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Consignor_Id]"
                       lineageId="Package\Load Shipment\Lookup ShipmentDetail.Outputs[Lookup Match Output].Columns[ConsignorId]" />
+                    <inputColumn
+                      refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ContainerCount]"
+                      cachedDataType="i4"
+                      cachedName="ContainerCount"
+                      externalMetadataColumnId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Actual_Container_Count]"
+                      lineageId="Package\Load Shipment\Actual Container Count.Outputs[Derived Column Output].Columns[ContainerCount]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2085,6 +2283,10 @@ where [refTable].[ShipmentId] = ?</property>
                       refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
                       dataType="i4"
                       name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Actual_Container_Count]"
+                      dataType="i4"
+                      name="Actual_Container_Count" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2279,13 +2481,23 @@ where [refTable].[ShipmentId] = ?</property>
           </components>
           <paths>
             <path
+              refId="Package\Load Shipment.Paths[Derived Column Output]"
+              endId="Package\Load Shipment\Actual Container Count.Inputs[Derived Column Input]"
+              name="Derived Column Output"
+              startId="Package\Load Shipment\Find FirstContainerNR.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load Shipment.Paths[Derived Column Output1]"
+              endId="Package\Load Shipment\Lookup ShipmentDetail.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\Load Shipment\Actual Container Count.Outputs[Derived Column Output]" />
+            <path
               refId="Package\Load Shipment.Paths[Lookup Match Output]"
               endId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input]"
               name="Lookup Match Output"
               startId="Package\Load Shipment\Lookup ShipmentDetail.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Load Shipment.Paths[OLE DB Source Output]"
-              endId="Package\Load Shipment\Lookup ShipmentDetail.Inputs[Lookup Input]"
+              endId="Package\Load Shipment\Find FirstContainerNR.Inputs[Derived Column Input]"
               name="OLE DB Source Output"
               startId="Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Output]" />
           </paths>
@@ -4959,96 +5171,120 @@ where [refTable].[Ship_Id] = ?</property>
     design-time-name="Package\Load Shipment">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="160,42.4"
           Id="Package\Load Shipment\Shipment Source"
-          TopLeft="171.499995946884,26.5000002682209" />
+          TopLeft="19.5,5.50000000000005" />
+        <NodeLayout
+          Size="180.8,41.6"
+          Id="Package\Load Shipment\Find FirstContainerNR"
+          TopLeft="9.10000000000001,107.9" />
         <NodeLayout
           Size="172,42.4"
           Id="Package\Load Shipment\OLE DB Destination"
-          TopLeft="166.124992819503,207.649990360737" />
+          TopLeft="13.5,413.5" />
         <NodeLayout
           Size="188,42.4"
           Id="Package\Load Shipment\Lookup ShipmentDetail"
-          TopLeft="157.499995470047,114.166663428148" />
+          TopLeft="5.50000000000004,311.1" />
+        <NodeLayout
+          Size="186.4,41.6"
+          Id="Package\Load Shipment\Actual Container Count"
+          TopLeft="6.30000000000003,209.5" />
         <EdgeLayout
           Id="Package\Load Shipment.Paths[OLE DB Source Output]"
-          TopLeft="251.499995708466,69.1666669348876">
+          TopLeft="99.5,47.9">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,44.9999964932602"
+              EndConnector="0,60"
               Start="0,0"
-              End="0,37.4999964932602">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.4999964932602" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Shipment.Paths[Lookup Match Output]"
-          TopLeft="251.812494144775,156.833330094815">
+          TopLeft="99.5,353.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,50.8166602659225"
+              EndConnector="0,60.0000000000001"
               Start="0,0"
-              End="0,43.3166602659225">
+              End="0,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,43.3166602659225" />
+                    End="0,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,15.8536426329613,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,20.4453125000001,96.3827734375,11.609375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Shipment.Paths[Derived Column Output1]"
+          TopLeft="99.5,251.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Shipment.Paths[Derived Column Output]"
+          TopLeft="99.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Shipment\Shipment Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Shipment\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load Shipment\Lookup ShipmentDetail">
     <Properties>
@@ -5069,6 +5305,32 @@ where [refTable].[Ship_Id] = ?</property>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Shipment\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Shipment\Shipment Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -5336,7 +5598,9 @@ where [refTable].[Ship_Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5358,7 +5622,9 @@ where [refTable].[Ship_Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout

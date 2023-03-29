@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="Staging to ODS"
   DTS:PackageType="5"
-  DTS:VersionBuild="47"
-  DTS:VersionGUID="{16955A87-4ECC-4284-90DD-FC33DA4C462C}">
+  DTS:VersionBuild="48"
+  DTS:VersionGUID="{B2EE30E7-0A8F-48A4-84BD-BAE534C8554B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -4313,6 +4313,12 @@
                       cachedName="Port_Id_To"
                       externalMetadataColumnId="Package\Load Shipment\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Port_Row_Id_To]"
                       lineageId="Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Output].Columns[Port_Id_To]" />
+                    <inputColumn
+                      refId="Package\Load Shipment\Insert Destination.Inputs[OLE DB Destination Input].Columns[Actual_Container_Count]"
+                      cachedDataType="i4"
+                      cachedName="Actual_Container_Count"
+                      externalMetadataColumnId="Package\Load Shipment\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Actual_Container_Count]"
+                      lineageId="Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Output].Columns[Actual_Container_Count]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4361,6 +4367,10 @@
                       refId="Package\Load Shipment\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Port_Row_Id_To]"
                       dataType="i4"
                       name="Port_Row_Id_To" />
+                    <externalMetadataColumn
+                      refId="Package\Load Shipment\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Actual_Container_Count]"
+                      dataType="i4"
+                      name="Actual_Container_Count" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -5545,6 +5555,15 @@ AND [refTable].[END_DATE] IS NULL;</property>
                       lineageId="Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Output].Columns[Id]"
                       name="Id"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Output].Columns[Actual_Container_Count]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Output].ExternalColumns[Actual_Container_Count]"
+                      lineageId="Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Output].Columns[Actual_Container_Count]"
+                      name="Actual_Container_Count"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -5593,6 +5612,10 @@ AND [refTable].[END_DATE] IS NULL;</property>
                       refId="Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Output].ExternalColumns[Id]"
                       dataType="i4"
                       name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Output].ExternalColumns[Actual_Container_Count]"
+                      dataType="i4"
+                      name="Actual_Container_Count" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -5656,6 +5679,11 @@ AND [refTable].[END_DATE] IS NULL;</property>
                       dataType="i4"
                       lineageId="Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Error Output].Columns[Number_Containers]"
                       name="Number_Containers" />
+                    <outputColumn
+                      refId="Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Error Output].Columns[Actual_Container_Count]"
+                      dataType="i4"
+                      lineageId="Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Error Output].Columns[Actual_Container_Count]"
+                      name="Actual_Container_Count" />
                     <outputColumn
                       refId="Package\Load Shipment\Shipment Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -9631,35 +9659,35 @@ AND [refTable].[END_DATE] IS NULL;</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="202.666666666667,41.3333333333334"
+          Size="202.4,41.6"
           Id="Package\Load Shipment\Lookup Container_Row_Id"
           TopLeft="7.50000000000003,209.5" />
         <NodeLayout
-          Size="160,42.6666666666667"
+          Size="160,42.4"
           Id="Package\Load Shipment\Shipment Source"
           TopLeft="28.7,5.50000000000005" />
         <NodeLayout
-          Size="178.666666666667,41.3333333333334"
+          Size="178.4,41.6"
           Id="Package\Load Shipment\Lookup item_Row_Id"
           TopLeft="19.5,311.1" />
         <NodeLayout
-          Size="194.666666666667,41.3333333333334"
+          Size="194.4,41.6"
           Id="Package\Load Shipment\Lookup Port_Row_Id_To"
           TopLeft="11.5000000000001,514.3" />
         <NodeLayout
-          Size="204.666666666667,41.3333333333334"
+          Size="204.8,41.6"
           Id="Package\Load Shipment\Lookup Consignor_Row_Id"
           TopLeft="6.30000000000001,107.9" />
         <NodeLayout
-          Size="187.333333333334,41.3333333333334"
+          Size="187.2,41.6"
           Id="Package\Load Shipment\Lookup Fact Increment"
           TopLeft="15.1000000000001,615.9" />
         <NodeLayout
-          Size="162.666666666667,41.3333333333334"
+          Size="162.4,41.6"
           Id="Package\Load Shipment\Insert Destination"
           TopLeft="27.5000000000001,717.5" />
         <NodeLayout
-          Size="206.666666666667,41.3333333333334"
+          Size="206.4,41.6"
           Id="Package\Load Shipment\Lookup Port_Row_Id_From"
           TopLeft="5.50000000000006,412.7" />
         <EdgeLayout
@@ -9681,9 +9709,7 @@ AND [refTable].[END_DATE] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10375,13 +10401,21 @@ AND [refTable].[END_DATE] IS NULL;</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="208,41.6"
-          Id="Package\Load WaitingTime\Slowly Changing Dimension"
-          TopLeft="206.7,107.9" />
-        <NodeLayout
           Size="150.4,42.4"
           Id="Package\Load WaitingTime\OLE DB Source"
           TopLeft="235.5,5.50000000000005" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Load WaitingTime\OLE DB Command"
+          TopLeft="228.3,209.5" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Load WaitingTime\Insert Destination"
+          TopLeft="5.50000000000004,209.5" />
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\Load WaitingTime\Slowly Changing Dimension"
+          TopLeft="206.7,107.9" />
         <EdgeLayout
           Id="Package\Load WaitingTime.Paths[OLE DB Source Output]"
           TopLeft="310.7,47.9">
@@ -10401,13 +10435,11 @@ AND [refTable].[END_DATE] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="162.4,41.6"
-          Id="Package\Load WaitingTime\Insert Destination"
-          TopLeft="5.50000000000004,209.5" />
         <EdgeLayout
           Id="Package\Load WaitingTime.Paths[New Output]"
           TopLeft="277.366666666667,149.5">
@@ -10444,10 +10476,6 @@ AND [refTable].[END_DATE] IS NULL;</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Load WaitingTime\OLE DB Command"
-          TopLeft="228.3,209.5" />
         <EdgeLayout
           Id="Package\Load WaitingTime.Paths[Changing Attribute Updates Output]"
           TopLeft="344.033333333333,149.5">
@@ -10487,6 +10515,32 @@ AND [refTable].[END_DATE] IS NULL;</property>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load WaitingTime\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load WaitingTime\Insert Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load WaitingTime\Slowly Changing Dimension">
     <Properties>
@@ -10557,32 +10611,6 @@ AND [refTable].[END_DATE] IS NULL;</property>
   &lt;DateVariable /&gt;
   &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
 &lt;/SCDWizardMetadata&gt;</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load WaitingTime\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load WaitingTime\Insert Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

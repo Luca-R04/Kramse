@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="Raw to Staging"
   DTS:PackageType="5"
-  DTS:VersionBuild="81"
-  DTS:VersionGUID="{4AD1721A-6D85-42BA-B067-8A408FF059FE}">
+  DTS:VersionBuild="82"
+  DTS:VersionGUID="{1A1721A2-DB72-4224-91CD-04BF63042CBE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -3180,13 +3180,13 @@ where [refTable].[Voyage_Id] = ? and [refTable].[Port_Id] = ? and [refTable].[Sh
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[DATEDIFF]("dd",#{Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Depart]},#{Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Arrival]})</property>
+                          name="Expression">[DATEDIFF]("dd",#{Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Arrival]},#{Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Depart]})</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">DATEDIFF("dd",Depart,Arrival)</property>
+                          name="FriendlyExpression">DATEDIFF("dd",Arrival,Depart)</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -5405,7 +5405,7 @@ where [refTable].[Ship_Id] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453124999999,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>

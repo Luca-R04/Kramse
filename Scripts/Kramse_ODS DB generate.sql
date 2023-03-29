@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [Kramse_ODS]    Script Date: 29-3-2023 09:12:21 ******/
+/****** Object:  Database [Kramse_ODS]    Script Date: 29-3-2023 10:02:02 ******/
 CREATE DATABASE [Kramse_ODS]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -82,7 +82,7 @@ ALTER DATABASE [Kramse_ODS] SET QUERY_STORE = OFF
 GO
 USE [Kramse_ODS]
 GO
-/****** Object:  Table [dbo].[Dim_Consignor]    Script Date: 29-3-2023 09:12:21 ******/
+/****** Object:  Table [dbo].[Dim_Consignor]    Script Date: 29-3-2023 10:02:02 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -100,7 +100,7 @@ CREATE TABLE [dbo].[Dim_Consignor](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Dim_Container]    Script Date: 29-3-2023 09:12:21 ******/
+/****** Object:  Table [dbo].[Dim_Container]    Script Date: 29-3-2023 10:02:02 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -120,7 +120,7 @@ CREATE TABLE [dbo].[Dim_Container](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Dim_Item]    Script Date: 29-3-2023 09:12:21 ******/
+/****** Object:  Table [dbo].[Dim_Item]    Script Date: 29-3-2023 10:02:02 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -138,7 +138,7 @@ CREATE TABLE [dbo].[Dim_Item](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Dim_Port]    Script Date: 29-3-2023 09:12:21 ******/
+/****** Object:  Table [dbo].[Dim_Port]    Script Date: 29-3-2023 10:02:02 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -156,7 +156,7 @@ CREATE TABLE [dbo].[Dim_Port](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Dim_Ship]    Script Date: 29-3-2023 09:12:21 ******/
+/****** Object:  Table [dbo].[Dim_Ship]    Script Date: 29-3-2023 10:02:02 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -175,7 +175,7 @@ CREATE TABLE [dbo].[Dim_Ship](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Dim_Waiting_Time]    Script Date: 29-3-2023 09:12:21 ******/
+/****** Object:  Table [dbo].[Dim_Waiting_Time]    Script Date: 29-3-2023 10:02:02 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -192,49 +192,61 @@ CREATE TABLE [dbo].[Dim_Waiting_Time](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[F_Shipment]    Script Date: 29-3-2023 09:12:21 ******/
+/****** Object:  Table [dbo].[F_Shipment]    Script Date: 29-3-2023 10:02:02 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[F_Shipment](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Shipment_Id] [int] NULL,
-	[Item_Row_Id] [int] NULL,
-	[Consignor_Row_Id] [int] NULL,
-	[Voyage_id] [int] NULL,
-	[Port_Row_Id_From] [int] NULL,
-	[Port_Row_Id_To] [int] NULL,
+	[Shipment_Id] [int] NOT NULL,
+	[Item_Row_Id] [int] NOT NULL,
+	[Consignor_Row_Id] [int] NOT NULL,
+	[Voyage_id] [int] NOT NULL,
+	[Port_Row_Id_From] [int] NOT NULL,
+	[Port_Row_Id_To] [int] NOT NULL,
 	[Distance] [int] NULL,
-	[Container_Row_Id] [int] NULL,
+	[Container_Row_Id] [int] NOT NULL,
 	[Container_Range] [nvarchar](50) NULL,
 	[Number_Containers] [int] NULL,
- CONSTRAINT [PK_F_Shipment_1] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_F_Shipment] PRIMARY KEY CLUSTERED 
 (
-	[Id] ASC
+	[Shipment_Id] ASC,
+	[Item_Row_Id] ASC,
+	[Consignor_Row_Id] ASC,
+	[Voyage_id] ASC,
+	[Port_Row_Id_From] ASC,
+	[Port_Row_Id_To] ASC,
+	[Container_Row_Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[F_Voyage_Port]    Script Date: 29-3-2023 09:12:21 ******/
+/****** Object:  Table [dbo].[F_Voyage_Port]    Script Date: 29-3-2023 10:02:02 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[F_Voyage_Port](
 	[Voyage_Port_Id] [int] IDENTITY(1,1) NOT NULL,
-	[Voyage_Id] [int] NULL,
-	[Ship_Row_Id] [int] NULL,
-	[Port_Id_Current] [int] NULL,
-	[Port_Id_Next] [int] NULL,
-	[Port_Id_Start] [int] NULL,
-	[Port_Id_End] [int] NULL,
+	[Voyage_Id] [int] NOT NULL,
+	[Ship_Row_Id] [int] NOT NULL,
+	[Port_Id_Current] [int] NOT NULL,
+	[Port_Id_Next] [int] NOT NULL,
+	[Port_Id_Start] [int] NOT NULL,
+	[Port_Id_End] [int] NOT NULL,
 	[Date_Depart] [datetime] NULL,
 	[Leg_Date_Depart] [datetime] NULL,
 	[Leg_Date_Arrival] [datetime] NULL,
-	[Waiting_Time_Id] [int] NULL,
- CONSTRAINT [PK_F_Voyage_Port] PRIMARY KEY CLUSTERED 
+	[Waiting_Time_Id] [int] NOT NULL,
+ CONSTRAINT [PK_F_Voyage_Port_1] PRIMARY KEY CLUSTERED 
 (
-	[Voyage_Port_Id] ASC
+	[Voyage_Id] ASC,
+	[Ship_Row_Id] ASC,
+	[Port_Id_Current] ASC,
+	[Port_Id_Next] ASC,
+	[Port_Id_Start] ASC,
+	[Port_Id_End] ASC,
+	[Waiting_Time_Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO

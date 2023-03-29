@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="Staging to ODS"
   DTS:PackageType="5"
-  DTS:VersionBuild="45"
-  DTS:VersionGUID="{E30A74FC-8768-4AE3-A80A-8817A59737BB}">
+  DTS:VersionBuild="47"
+  DTS:VersionGUID="{16955A87-4ECC-4284-90DD-FC33DA4C462C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -7348,6 +7348,20 @@ AND [refTable].[END_DATE] IS NULL;</property>
                       cachedName="Voyage_Id"
                       externalMetadataColumnId="Package\Load WaitingTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Voyage_Id]"
                       lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Voyage_Id]" />
+                    <inputColumn
+                      refId="Package\Load WaitingTime\Insert Destination.Inputs[OLE DB Destination Input].Columns[Port_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Port_Name"
+                      externalMetadataColumnId="Package\Load WaitingTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Port_Name]"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Port_Name]" />
+                    <inputColumn
+                      refId="Package\Load WaitingTime\Insert Destination.Inputs[OLE DB Destination Input].Columns[Ship_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Ship_Name"
+                      externalMetadataColumnId="Package\Load WaitingTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ship_Name]"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ship_Name]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -7372,6 +7386,16 @@ AND [refTable].[END_DATE] IS NULL;</property>
                       refId="Package\Load WaitingTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Voyage_Id]"
                       dataType="i4"
                       name="Voyage_Id" />
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Port_Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Port_Name" />
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ship_Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Ship_Name" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -7393,6 +7417,156 @@ AND [refTable].[END_DATE] IS NULL;</property>
                       refId="Package\Load WaitingTime\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Load WaitingTime\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load WaitingTime\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Dim_Waiting_Time] SET [Port_Name] = ?,[Ship_Name] = ? WHERE [Voyage_Id] = ? AND [Waiting_Time_Id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load WaitingTime\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{12973B65-8439-43D3-93CF-162FDA5DCB08}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ODS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load WaitingTime\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load WaitingTime\OLE DB Command.Inputs[OLE DB Command Input].Columns[Port_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Port_Name"
+                      externalMetadataColumnId="Package\Load WaitingTime\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Port_Name]" />
+                    <inputColumn
+                      refId="Package\Load WaitingTime\OLE DB Command.Inputs[OLE DB Command Input].Columns[Ship_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Ship_Name"
+                      externalMetadataColumnId="Package\Load WaitingTime\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ship_Name]" />
+                    <inputColumn
+                      refId="Package\Load WaitingTime\OLE DB Command.Inputs[OLE DB Command Input].Columns[Voyage_Id]"
+                      cachedDataType="i4"
+                      cachedName="Voyage_Id"
+                      externalMetadataColumnId="Package\Load WaitingTime\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Voyage_Id]" />
+                    <inputColumn
+                      refId="Package\Load WaitingTime\OLE DB Command.Inputs[OLE DB Command Input].Columns[Waiting_Time_Id]"
+                      cachedDataType="i4"
+                      cachedName="Waiting_Time_Id"
+                      externalMetadataColumnId="Package\Load WaitingTime\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Waiting_Time_Id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="90"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="90"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="i4"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="i4"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load WaitingTime\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Load WaitingTime\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load WaitingTime\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Load WaitingTime\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load WaitingTime\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load WaitingTime\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load WaitingTime\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load WaitingTime\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -7507,6 +7681,26 @@ AND [refTable].[END_DATE] IS NULL;</property>
                       lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Voyage_Id]"
                       name="Voyage_Id"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Port_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Port_Name]"
+                      length="255"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Port_Name]"
+                      name="Port_Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ship_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ship_Name]"
+                      length="255"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ship_Name]"
+                      name="Ship_Name"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -7531,6 +7725,16 @@ AND [refTable].[END_DATE] IS NULL;</property>
                       refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Voyage_Id]"
                       dataType="i4"
                       name="Voyage_Id" />
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Port_Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Port_Name" />
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ship_Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Ship_Name" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -7566,6 +7770,18 @@ AND [refTable].[END_DATE] IS NULL;</property>
                       lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Voyage_Id]"
                       name="Voyage_Id" />
                     <outputColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Port_Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Port_Name]"
+                      name="Port_Name" />
+                    <outputColumn
+                      refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ship_Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ship_Name]"
+                      name="Ship_Name" />
+                    <outputColumn
                       refId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Waiting_Time]"
                       dataType="wstr"
                       length="10"
@@ -7593,7 +7809,7 @@ AND [refTable].[END_DATE] IS NULL;</property>
                   dataType="System.String"
                   description="Specifies the SELECT statement used to create a schema rowset."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Port_Id], [Ship_Id], [Voyage_Id], [Waiting_Time], [Waiting_Time_Id] FROM [dbo].[Dim_Waiting_Time]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Port_Id], [Port_Name], [Ship_Id], [Ship_Name], [Voyage_Id], [Waiting_Time], [Waiting_Time_Id] FROM [dbo].[Dim_Waiting_Time]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
@@ -7655,6 +7871,20 @@ AND [refTable].[END_DATE] IS NULL;</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
+                      refId="Package\Load WaitingTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Port_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Port_Name"
+                      externalMetadataColumnId="Package\Load WaitingTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Port_Name]"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Port_Name]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
                       refId="Package\Load WaitingTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Ship_Id]"
                       cachedDataType="i4"
                       cachedName="Ship_Id"
@@ -7665,6 +7895,20 @@ AND [refTable].[END_DATE] IS NULL;</property>
                           dataType="System.Int32"
                           name="ColumnType"
                           typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load WaitingTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Ship_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Ship_Name"
+                      externalMetadataColumnId="Package\Load WaitingTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Ship_Name]"
+                      lineageId="Package\Load WaitingTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ship_Name]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -7715,9 +7959,19 @@ AND [refTable].[END_DATE] IS NULL;</property>
                       dataType="i4"
                       name="Port_Id" />
                     <externalMetadataColumn
+                      refId="Package\Load WaitingTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Port_Name]"
+                      dataType="wstr"
+                      length="90"
+                      name="Port_Name" />
+                    <externalMetadataColumn
                       refId="Package\Load WaitingTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Ship_Id]"
                       dataType="i4"
                       name="Ship_Id" />
+                    <externalMetadataColumn
+                      refId="Package\Load WaitingTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Ship_Name]"
+                      dataType="wstr"
+                      length="90"
+                      name="Ship_Name" />
                     <externalMetadataColumn
                       refId="Package\Load WaitingTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Voyage_Id]"
                       dataType="i4"
@@ -7787,6 +8041,11 @@ AND [refTable].[END_DATE] IS NULL;</property>
             </component>
           </components>
           <paths>
+            <path
+              refId="Package\Load WaitingTime.Paths[Changing Attribute Updates Output]"
+              endId="Package\Load WaitingTime\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Changing Attribute Updates Output"
+              startId="Package\Load WaitingTime\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]" />
             <path
               refId="Package\Load WaitingTime.Paths[New Output]"
               endId="Package\Load WaitingTime\Insert Destination.Inputs[OLE DB Destination Input]"
@@ -7873,35 +8132,35 @@ AND [refTable].[END_DATE] IS NULL;</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="152,42.6666666666667"
+          Size="152,42.4"
           Id="Package\Load Consignor"
           TopLeft="364.12499047257,185.16666697661" />
         <NodeLayout
-          Size="150.666666666667,42.6666666666667"
+          Size="150.4,42.4"
           Id="Package\Load Container"
           TopLeft="60,185.316662916343" />
         <NodeLayout
-          Size="128,42.6666666666667"
+          Size="128,42.4"
           Id="Package\Load Item"
           TopLeft="223.124995389953,185.516665767829" />
         <NodeLayout
-          Size="125.333333333334,42.6666666666667"
+          Size="125.6,42.4"
           Id="Package\Load Port"
           TopLeft="538.624977396802,184.934843897675" />
         <NodeLayout
-          Size="125.333333333334,42.6666666666667"
+          Size="125.6,42.4"
           Id="Package\Load Ship"
           TopLeft="727.624971585349,185.866663939157" />
         <NodeLayout
-          Size="149.333333333334,42.6666666666667"
+          Size="149.6,42.4"
           Id="Package\Load Shipment"
           TopLeft="228.124991143123,419.216650332611" />
         <NodeLayout
-          Size="166.666666666667,42.6666666666667"
+          Size="166.4,42.4"
           Id="Package\Load VoyagePort"
           TopLeft="648.12497236766,416.36665123145" />
         <NodeLayout
-          Size="164,42.6666666666667"
+          Size="164,42.4"
           Id="Package\Load WaitingTime"
           TopLeft="646.70830609215,324.183321276506" />
         <EdgeLayout
@@ -8749,17 +9008,41 @@ AND [refTable].[END_DATE] IS NULL;</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="137.333333333334,42.6666666666667"
-          Id="Package\Load Item\Item Source"
-          TopLeft="41.5,5.50000000000005" />
+          Size="209.333333333334,41.3333333333334"
+          Id="Package\Load Item\Slowly Changing Dimension"
+          TopLeft="5.50000000000003,107.9" />
         <NodeLayout
           Size="162.666666666667,41.3333333333334"
           Id="Package\Load Item\Insert Destination"
           TopLeft="29.1,209.5" />
         <NodeLayout
-          Size="209.333333333334,41.3333333333334"
-          Id="Package\Load Item\Slowly Changing Dimension"
-          TopLeft="5.50000000000003,107.9" />
+          Size="137.333333333334,42.6666666666667"
+          Id="Package\Load Item\Item Source"
+          TopLeft="41.5,5.50000000000005" />
+        <EdgeLayout
+          Id="Package\Load Item.Paths[OLE DB Source Output]"
+          TopLeft="110.3,47.9">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Item.Paths[New Output]"
           TopLeft="110.3,149.5">
@@ -8784,57 +9067,9 @@ AND [refTable].[END_DATE] IS NULL;</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Item.Paths[OLE DB Source Output]"
-          TopLeft="110.3,47.9">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
-              Start="0,0"
-              End="0,52.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Item\Item Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Item\Insert Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load Item\Slowly Changing Dimension">
     <Properties>
@@ -8883,6 +9118,32 @@ AND [refTable].[END_DATE] IS NULL;</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Item\Insert Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Item\Item Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Load Port">
     <LayoutInfo>
@@ -8919,7 +9180,9 @@ AND [refTable].[END_DATE] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9380,6 +9643,10 @@ AND [refTable].[END_DATE] IS NULL;</property>
           Id="Package\Load Shipment\Lookup item_Row_Id"
           TopLeft="19.5,311.1" />
         <NodeLayout
+          Size="194.666666666667,41.3333333333334"
+          Id="Package\Load Shipment\Lookup Port_Row_Id_To"
+          TopLeft="11.5000000000001,514.3" />
+        <NodeLayout
           Size="204.666666666667,41.3333333333334"
           Id="Package\Load Shipment\Lookup Consignor_Row_Id"
           TopLeft="6.30000000000001,107.9" />
@@ -9391,10 +9658,6 @@ AND [refTable].[END_DATE] IS NULL;</property>
           Size="162.666666666667,41.3333333333334"
           Id="Package\Load Shipment\Insert Destination"
           TopLeft="27.5000000000001,717.5" />
-        <NodeLayout
-          Size="194.666666666667,41.3333333333334"
-          Id="Package\Load Shipment\Lookup Port_Row_Id_To"
-          TopLeft="11.5000000000001,514.3" />
         <NodeLayout
           Size="206.666666666667,41.3333333333334"
           Id="Package\Load Shipment\Lookup Port_Row_Id_From"
@@ -9418,7 +9681,9 @@ AND [refTable].[END_DATE] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9628,6 +9893,29 @@ AND [refTable].[END_DATE] IS NULL;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\Load Shipment\Lookup Port_Row_Id_To">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">true</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Port]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Load Shipment\Lookup Consignor_Row_Id">
     <Properties>
       <Property>
@@ -9656,7 +9944,7 @@ AND [refTable].[END_DATE] IS NULL;</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -9666,7 +9954,7 @@ AND [refTable].[END_DATE] IS NULL;</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -9683,29 +9971,6 @@ AND [refTable].[END_DATE] IS NULL;</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Shipment\Lookup Port_Row_Id_To">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">true</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Dim_Port]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -9746,9 +10011,9 @@ AND [refTable].[END_DATE] IS NULL;</property>
           Id="Package\Load VoyagePort\Lookup Port_Row_Id_Current"
           TopLeft="5.50000000000003,209.5" />
         <NodeLayout
-          Size="177.333333333334,41.3333333333334"
-          Id="Package\Load VoyagePort\Lookup Ship_Row_Id"
-          TopLeft="25.5000000000001,514.3" />
+          Size="200,41.3333333333334"
+          Id="Package\Load VoyagePort\Lookup Port_Row_Id_End"
+          TopLeft="14.3000000000001,412.7" />
         <NodeLayout
           Size="169.333333333334,42.6666666666667"
           Id="Package\Load VoyagePort\VoyagePort Source"
@@ -9762,13 +10027,13 @@ AND [refTable].[END_DATE] IS NULL;</property>
           Id="Package\Load VoyagePort\Lookup Fact Increment"
           TopLeft="20.7000000000001,615.9" />
         <NodeLayout
+          Size="177.333333333334,41.3333333333334"
+          Id="Package\Load VoyagePort\Lookup Ship_Row_Id"
+          TopLeft="25.5000000000001,514.3" />
+        <NodeLayout
           Size="164,42.6666666666667"
           Id="Package\Load VoyagePort\Insert Destination"
           TopLeft="32.3000000000001,717.5" />
-        <NodeLayout
-          Size="200,41.3333333333334"
-          Id="Package\Load VoyagePort\Lookup Port_Row_Id_End"
-          TopLeft="14.3000000000001,412.7" />
         <EdgeLayout
           Id="Package\Load VoyagePort.Paths[OLE DB Source Output]"
           TopLeft="114.3,47.9">
@@ -9788,7 +10053,9 @@ AND [refTable].[END_DATE] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9985,7 +10252,7 @@ AND [refTable].[END_DATE] IS NULL;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load VoyagePort\Lookup Ship_Row_Id">
+    design-time-name="Package\Load VoyagePort\Lookup Port_Row_Id_End">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -9995,7 +10262,7 @@ AND [refTable].[END_DATE] IS NULL;</property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[Dim_Ship]</Value>
+          type="q3:string">[dbo].[Dim_Port]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -10049,7 +10316,7 @@ AND [refTable].[END_DATE] IS NULL;</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -10059,7 +10326,30 @@ AND [refTable].[END_DATE] IS NULL;</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load VoyagePort\Lookup Ship_Row_Id">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">true</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Ship]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10079,49 +10369,22 @@ AND [refTable].[END_DATE] IS NULL;</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load VoyagePort\Lookup Port_Row_Id_End">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">true</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Dim_Port]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Load WaitingTime">
     <LayoutInfo>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="208,41.3333333333334"
+          Size="208,41.6"
           Id="Package\Load WaitingTime\Slowly Changing Dimension"
-          TopLeft="5.50000000000003,107.9" />
+          TopLeft="206.7,107.9" />
         <NodeLayout
-          Size="162.666666666667,41.3333333333334"
-          Id="Package\Load WaitingTime\Insert Destination"
-          TopLeft="28.3,209.5" />
-        <NodeLayout
-          Size="150.666666666667,42.6666666666667"
+          Size="150.4,42.4"
           Id="Package\Load WaitingTime\OLE DB Source"
-          TopLeft="34.3,5.50000000000005" />
+          TopLeft="235.5,5.50000000000005" />
         <EdgeLayout
           Id="Package\Load WaitingTime.Paths[OLE DB Source Output]"
-          TopLeft="109.5,47.9">
+          TopLeft="310.7,47.9">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10141,27 +10404,83 @@ AND [refTable].[END_DATE] IS NULL;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Load WaitingTime\Insert Destination"
+          TopLeft="5.50000000000004,209.5" />
         <EdgeLayout
           Id="Package\Load WaitingTime.Paths[New Output]"
-          TopLeft="109.5,149.5">
+          TopLeft="277.366666666667,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="-190.666666666667,60"
               Start="0,0"
-              End="0,52.5">
+              End="-190.666666666667,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,20.2748091603053" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2748091603053"
+                    Point2="0,24.2748091603053"
+                    Point3="-4,24.2748091603053" />
+                  <mssgle:LineSegment
+                    End="-186.666666666667,24.2748091603053" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-186.666666666667,24.2748091603053"
+                    Point2="-190.666666666667,24.2748091603053"
+                    Point3="-190.666666666667,28.2748091603053" />
+                  <mssgle:LineSegment
+                    End="-190.666666666667,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-27.09138671875,20.533203125,54.1827734375,11.43359375"
+              BoundingBox="-122.424720052083,29.2748091603053,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Load WaitingTime\OLE DB Command"
+          TopLeft="228.3,209.5" />
+        <EdgeLayout
+          Id="Package\Load WaitingTime.Paths[Changing Attribute Updates Output]"
+          TopLeft="344.033333333333,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-33.3333333333333,60"
+              Start="0,0"
+              End="-33.3333333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2748091603054" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2748091603054"
+                    Point2="0,24.2748091603054"
+                    Point3="-4,24.2748091603054" />
+                  <mssgle:LineSegment
+                    End="-29.3333333333333,24.2748091603054" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-29.3333333333333,24.2748091603054"
+                    Point2="-33.3333333333333,24.2748091603054"
+                    Point3="-33.3333333333333,28.2748091603054" />
+                  <mssgle:LineSegment
+                    End="-33.3333333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-95.2005729166667,29.2748091603054,157.0678125,11.6630859375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -10186,10 +10505,22 @@ AND [refTable].[END_DATE] IS NULL;</property>
       &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Port_Name]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Port_Name&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Ship_Id]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;Ship_Id&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Ship_Name]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Ship_Name&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Voyage_Id]&lt;/IdentificationString&gt;
@@ -10212,6 +10543,7 @@ AND [refTable].[END_DATE] IS NULL;</property>
   &lt;/InputToColumnsCollection&gt;
   &lt;GeneratedComponentsIdentificationStrings&gt;
     &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
   &lt;/GeneratedComponentsIdentificationStrings&gt;
   &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
   &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
@@ -10230,6 +10562,19 @@ AND [refTable].[END_DATE] IS NULL;</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load WaitingTime\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load WaitingTime\Insert Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

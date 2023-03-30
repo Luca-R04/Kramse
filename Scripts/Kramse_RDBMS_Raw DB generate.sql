@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [Kramse_RDBMS_Raw]    Script Date: 30-3-2023 12:45:57 ******/
+/****** Object:  Database [Kramse_RDBMS_Raw]    Script Date: 30-3-2023 15:35:22 ******/
 CREATE DATABASE [Kramse_RDBMS_Raw]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -82,7 +82,7 @@ ALTER DATABASE [Kramse_RDBMS_Raw] SET QUERY_STORE = OFF
 GO
 USE [Kramse_RDBMS_Raw]
 GO
-/****** Object:  Table [dbo].[VoyagePort]    Script Date: 30-3-2023 12:45:57 ******/
+/****** Object:  Table [dbo].[VoyagePort]    Script Date: 30-3-2023 15:35:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -96,7 +96,7 @@ CREATE TABLE [dbo].[VoyagePort](
 	[Vp_Traject_Distance] [int] NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  View [dbo].[waitingTime]    Script Date: 30-3-2023 12:45:57 ******/
+/****** Object:  View [dbo].[waitingTime]    Script Date: 30-3-2023 15:35:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -108,7 +108,7 @@ FROM     dbo.VoyagePort AS t1 INNER JOIN
                   dbo.VoyagePort AS t2 ON t1.Vp_PortIdNext = t2.VP_PortIdCurrent AND t1.VV_VoyageId = t2.VV_VoyageId
 ORDER BY Arrival
 GO
-/****** Object:  Table [dbo].[Consignor]    Script Date: 30-3-2023 12:45:57 ******/
+/****** Object:  Table [dbo].[Consignor]    Script Date: 30-3-2023 15:35:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -123,7 +123,7 @@ CREATE TABLE [dbo].[Consignor](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Container]    Script Date: 30-3-2023 12:45:57 ******/
+/****** Object:  Table [dbo].[Container]    Script Date: 30-3-2023 15:35:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -140,7 +140,7 @@ CREATE TABLE [dbo].[Container](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Item]    Script Date: 30-3-2023 12:45:57 ******/
+/****** Object:  Table [dbo].[Item]    Script Date: 30-3-2023 15:35:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -155,7 +155,7 @@ CREATE TABLE [dbo].[Item](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[MRV]    Script Date: 30-3-2023 12:45:57 ******/
+/****** Object:  Table [dbo].[MRV]    Script Date: 30-3-2023 15:35:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -168,7 +168,7 @@ CREATE TABLE [dbo].[MRV](
 	[Total time spent at sea (hours)] [float] NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Port]    Script Date: 30-3-2023 12:45:57 ******/
+/****** Object:  Table [dbo].[Port]    Script Date: 30-3-2023 15:35:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -183,7 +183,7 @@ CREATE TABLE [dbo].[Port](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Ship]    Script Date: 30-3-2023 12:45:57 ******/
+/****** Object:  Table [dbo].[Ship]    Script Date: 30-3-2023 15:35:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -203,7 +203,7 @@ CREATE TABLE [dbo].[Ship](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Shipment]    Script Date: 30-3-2023 12:45:57 ******/
+/****** Object:  Table [dbo].[Shipment]    Script Date: 30-3-2023 15:35:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -222,7 +222,7 @@ CREATE TABLE [dbo].[Shipment](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ShipmentDetail]    Script Date: 30-3-2023 12:45:57 ******/
+/****** Object:  Table [dbo].[ShipmentDetail]    Script Date: 30-3-2023 15:35:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -234,7 +234,7 @@ CREATE TABLE [dbo].[ShipmentDetail](
 	[ContainerTypeId] [int] NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Voyage]    Script Date: 30-3-2023 12:45:57 ******/
+/****** Object:  Table [dbo].[Voyage]    Script Date: 30-3-2023 15:35:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

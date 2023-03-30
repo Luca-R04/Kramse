@@ -1231,7 +1231,23 @@ The CALCULATE command controls the aggregation of leaf cells in the cube.
 If the CALCULATE command is deleted or modified, the data within the cube is affected.
 You should edit this command only if you manually specify how the cube is aggregated.
 */
-CALCULATE; </Text>
+CALCULATE; 
+CREATE MEMBER CURRENTCUBE.[Measures].[Max TEU]
+ AS [Dim Ship].[Max TEU].MEMBERVALUE, 
+FORMAT_STRING = "#,#", 
+VISIBLE = 1  ; 
+CREATE MEMBER CURRENTCUBE.[Measures].[Shipping Cost]
+ AS [Dim Ship].[Yearcost].MEMBERVALUE, 
+FORMAT_STRING = "#,#", 
+VISIBLE = 1  ; 
+CREATE MEMBER CURRENTCUBE.[Measures].[Profit]
+ AS [Measures].[Yield].MEMBERVALUE - [Measures].[Shipping Cost].MEMBERVALUE, 
+FORMAT_STRING = "#,#", 
+VISIBLE = 1  ; 
+CREATE MEMBER CURRENTCUBE.[Measures].[Yield]
+ AS [Dim Container].[Euro Price Per Km].MEMBERVALUE * [Measures].[Distance].MEMBERVALUE, 
+FORMAT_STRING = "#,#", 
+VISIBLE = 1  ; </Text>
         </Command>
       </Commands>
     </MdxScript>

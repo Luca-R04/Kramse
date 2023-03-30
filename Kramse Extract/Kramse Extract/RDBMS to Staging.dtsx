@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="Raw to Staging"
   DTS:PackageType="5"
-  DTS:VersionBuild="87"
-  DTS:VersionGUID="{AA20E1DE-36C5-463B-915A-02A3E29F7F11}">
+  DTS:VersionBuild="88"
+  DTS:VersionGUID="{1FC68E71-8C28-4CA9-871B-015C3B5200F2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2206,18 +2206,6 @@ where [refTable].[ShipmentId] = ?</property>
                       externalMetadataColumnId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Distance]"
                       lineageId="Package\Load Shipment\Lookup ShipmentDetail.Outputs[Lookup Match Output].Columns[Distance]" />
                     <inputColumn
-                      refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PortIdTo]"
-                      cachedDataType="i4"
-                      cachedName="PortIdTo"
-                      externalMetadataColumnId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Port_Id_To]"
-                      lineageId="Package\Load Shipment\Lookup ShipmentDetail.Outputs[Lookup Match Output].Columns[PortIdTo]" />
-                    <inputColumn
-                      refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PortIdFrom]"
-                      cachedDataType="i4"
-                      cachedName="PortIdFrom"
-                      externalMetadataColumnId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Port_Id_From]"
-                      lineageId="Package\Load Shipment\Lookup ShipmentDetail.Outputs[Lookup Match Output].Columns[PortIdFrom]" />
-                    <inputColumn
                       refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[VoyageId]"
                       cachedDataType="i4"
                       cachedName="VoyageId"
@@ -2235,6 +2223,18 @@ where [refTable].[ShipmentId] = ?</property>
                       cachedName="ContainerCount"
                       externalMetadataColumnId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Actual_Container_Count]"
                       lineageId="Package\Load Shipment\Actual Container Count.Outputs[Derived Column Output].Columns[ContainerCount]" />
+                    <inputColumn
+                      refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PortIdFrom]"
+                      cachedDataType="i4"
+                      cachedName="PortIdFrom"
+                      externalMetadataColumnId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Port_Id_Current]"
+                      lineageId="Package\Load Shipment\Lookup ShipmentDetail.Outputs[Lookup Match Output].Columns[PortIdFrom]" />
+                    <inputColumn
+                      refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PortIdTo]"
+                      cachedDataType="i4"
+                      cachedName="PortIdTo"
+                      externalMetadataColumnId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Port_Id_Next]"
+                      lineageId="Package\Load Shipment\Lookup ShipmentDetail.Outputs[Lookup Match Output].Columns[PortIdTo]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2254,14 +2254,6 @@ where [refTable].[ShipmentId] = ?</property>
                       refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Voyage_id]"
                       dataType="i4"
                       name="Voyage_id" />
-                    <externalMetadataColumn
-                      refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Port_Id_From]"
-                      dataType="i4"
-                      name="Port_Id_From" />
-                    <externalMetadataColumn
-                      refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Port_Id_To]"
-                      dataType="i4"
-                      name="Port_Id_To" />
                     <externalMetadataColumn
                       refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Distance]"
                       dataType="i4"
@@ -2287,6 +2279,14 @@ where [refTable].[ShipmentId] = ?</property>
                       refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Actual_Container_Count]"
                       dataType="i4"
                       name="Actual_Container_Count" />
+                    <externalMetadataColumn
+                      refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Port_Id_Current]"
+                      dataType="i4"
+                      name="Port_Id_Current" />
+                    <externalMetadataColumn
+                      refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Port_Id_Next]"
+                      dataType="i4"
+                      name="Port_Id_Next" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -4415,39 +4415,39 @@ where [refTable].[Ship_Id] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="164,42.4"
+          Size="164,42.6666666666667"
           Id="Package\Execute SQL Task"
           TopLeft="461.124979631976,22.7666653029125" />
         <NodeLayout
-          Size="152,42.4"
+          Size="152,42.6666666666667"
           Id="Package\Load Consignor"
           TopLeft="382.374988516793,152.933332279523" />
         <NodeLayout
-          Size="150.4,42.4"
+          Size="150.666666666667,42.6666666666667"
           Id="Package\Load Container"
           TopLeft="79.2499980442227,148.083328219255" />
         <NodeLayout
-          Size="128,42.4"
+          Size="128,42.6666666666667"
           Id="Package\Load Item"
           TopLeft="242.374993434176,148.283331070741" />
         <NodeLayout
-          Size="125.6,42.4"
+          Size="125.333333333334,42.6666666666667"
           Id="Package\Load Port"
           TopLeft="554.874975441025,153.701509200587" />
         <NodeLayout
-          Size="125.6,42.4"
+          Size="125.333333333334,42.6666666666667"
           Id="Package\Load Ship"
           TopLeft="744.874969629572,156.63332924207" />
         <NodeLayout
-          Size="149.6,42.4"
+          Size="149.333333333334,42.6666666666667"
           Id="Package\Load Shipment"
           TopLeft="247.374989187346,381.983315635523" />
         <NodeLayout
-          Size="166.4,42.4"
+          Size="166.666666666667,42.6666666666667"
           Id="Package\Load VoyagePort"
           TopLeft="667.374970411883,379.133316534362" />
         <NodeLayout
-          Size="164,42.4"
+          Size="164,42.6666666666667"
           Id="Package\Load WaitingTime"
           TopLeft="665.958304136373,286.949986579418" />
         <EdgeLayout
@@ -5173,23 +5173,23 @@ where [refTable].[Ship_Id] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="160,42.4"
+          Size="160,42.6666666666667"
           Id="Package\Load Shipment\Shipment Source"
           TopLeft="19.5,5.50000000000005" />
         <NodeLayout
-          Size="180.8,41.6"
+          Size="180.666666666667,41.3333333333334"
           Id="Package\Load Shipment\Find FirstContainerNR"
           TopLeft="9.10000000000001,107.9" />
         <NodeLayout
-          Size="172,42.4"
+          Size="172,42.6666666666667"
           Id="Package\Load Shipment\OLE DB Destination"
           TopLeft="13.5,413.5" />
         <NodeLayout
-          Size="188,42.4"
+          Size="188,42.6666666666667"
           Id="Package\Load Shipment\Lookup ShipmentDetail"
           TopLeft="5.50000000000004,311.1" />
         <NodeLayout
-          Size="186.4,41.6"
+          Size="186.666666666667,41.3333333333334"
           Id="Package\Load Shipment\Actual Container Count"
           TopLeft="6.30000000000003,209.5" />
         <EdgeLayout

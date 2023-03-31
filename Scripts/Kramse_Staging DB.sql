@@ -1,5 +1,6 @@
 USE [master]
 GO
+DROP DATABASE IF EXISTS [Kramse_Staging];
 /****** Object:  Database [Kramse_Staging]    Script Date: 30-3-2023 15:33:13 ******/
 CREATE DATABASE [Kramse_Staging]
  CONTAINMENT = NONE

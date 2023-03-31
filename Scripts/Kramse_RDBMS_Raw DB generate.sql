@@ -1,5 +1,6 @@
 USE [master]
 GO
+DROP DATABASE IF EXISTS [Kramse_RDBMS_Raw];
 /****** Object:  Database [Kramse_RDBMS_Raw]    Script Date: 30-3-2023 15:35:22 ******/
 DROP DATABASE IF EXISTS [Kramse_RDBMS_Raw]
 CREATE DATABASE [Kramse_RDBMS_Raw]

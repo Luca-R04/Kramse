@@ -2,7 +2,6 @@ USE [master]
 GO
 /****** Object:  Database [Kramse_raw]    Script Date: 16-3-2023 09:37:45 ******/
 DROP DATABASE IF EXISTS [Kramse_raw];
-
 CREATE DATABASE [Kramse_raw]
 GO
 ALTER DATABASE [Kramse_raw] SET COMPATIBILITY_LEVEL = 150

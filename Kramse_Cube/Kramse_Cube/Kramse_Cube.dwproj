@@ -17,16 +17,6 @@
         </ProjectItem>
       </Dependencies>
     </ProjectItem>
-    <ProjectItem>
-      <Name>Kramse ODS 1.cube</Name>
-      <FullPath>Kramse ODS 1.cube</FullPath>
-      <Dependencies>
-        <ProjectItem>
-          <Name>Kramse ODS 1.partitions</Name>
-          <FullPath>Kramse ODS 1.partitions</FullPath>
-        </ProjectItem>
-      </Dependencies>
-    </ProjectItem>
   </Cubes>
   <Dimensions>
     <ProjectItem>

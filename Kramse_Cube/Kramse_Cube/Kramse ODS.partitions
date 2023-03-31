@@ -1,17 +1,17 @@
-﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="420e7128-33a8-4f6c-b84e-ccc32d14b79b" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
-  <ID>Kramse ODS</ID>
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="f76b2667-b088-4fef-8241-ee1303021ec7" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Kramse ODS 1</ID>
   <MeasureGroups>
     <MeasureGroup>
       <ID>F Shipment</ID>
       <Partitions>
-        <Partition dwd:design-time-name="584c8147-2d1b-4ad0-81c9-ef9194839657">
+        <Partition dwd:design-time-name="902ba1c9-950c-4777-9d83-8365f1f35975">
           <ID>F Shipment</ID>
           <Name>F Shipment</Name>
           <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
           <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
           <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
           <State>Unprocessed</State>
-          <Source xsi:type="DsvTableBinding" dwd:design-time-name="9e639191-b66c-483d-b205-1085910a537a">
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="2b65a81d-451c-478b-91e2-e9c93291ea0a">
             <DataSourceViewID>Kramse ODS</DataSourceViewID>
             <TableID>dbo_F_Shipment</TableID>
           </Source>
@@ -24,14 +24,14 @@
     <MeasureGroup>
       <ID>F Voyage Port</ID>
       <Partitions>
-        <Partition dwd:design-time-name="c6207ab6-402f-447b-92a8-295bfde46125">
+        <Partition dwd:design-time-name="6e3f637a-9a50-4a3e-9d4e-e053833300aa">
           <ID>F Voyage Port</ID>
           <Name>F Voyage Port</Name>
           <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
           <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
           <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
           <State>Unprocessed</State>
-          <Source xsi:type="DsvTableBinding" dwd:design-time-name="d419110d-f981-497a-9523-71ed1223ee73">
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="e068ff40-8adf-477e-9113-899fa454f3aa">
             <DataSourceViewID>Kramse ODS</DataSourceViewID>
             <TableID>dbo_F_Voyage_Port</TableID>
           </Source>

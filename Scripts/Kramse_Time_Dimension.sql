@@ -5,39 +5,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[Dim_Time](
-	[PK_Date] [datetime] NOT NULL,
-	[Date_Name] [nvarchar](50) NULL,
-	[Year] [datetime] NULL,
-	[Year_Name] [nvarchar](50) NULL,
-	[Quarter] [datetime] NULL,
-	[Quarter_Name] [nvarchar](50) NULL,
-	[Month] [datetime] NULL,
-	[Month_Name] [nvarchar](50) NULL,
-	[Week] [datetime] NULL,
-	[Week_Name] [nvarchar](50) NULL,
-	[Day_Of_Year] [int] NULL,
-	[Day_Of_Year_Name] [nvarchar](50) NULL,
-	[Day_Of_Quarter] [int] NULL,
-	[Day_Of_Quarter_Name] [nvarchar](50) NULL,
-	[Day_Of_Month] [int] NULL,
-	[Day_Of_Month_Name] [nvarchar](50) NULL,
-	[Day_Of_Week] [int] NULL,
-	[Day_Of_Week_Name] [nvarchar](50) NULL,
-	[Week_Of_Year] [int] NULL,
-	[Week_Of_Year_Name] [nvarchar](50) NULL,
-	[Month_Of_Year] [int] NULL,
-	[Month_Of_Year_Name] [nvarchar](50) NULL,
-	[Month_Of_Quarter] [int] NULL,
-	[Month_Of_Quarter_Name] [nvarchar](50) NULL,
-	[Quarter_Of_Year] [int] NULL,
-	[Quarter_Of_Year_Name] [nvarchar](50) NULL,
- CONSTRAINT [PK_Dim_Time] PRIMARY KEY CLUSTERED 
-(
-	[PK_Date] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
+
 INSERT [dbo].[Dim_Time] ([PK_Date], [Date_Name], [Year], [Year_Name], [Quarter], [Quarter_Name], [Month], [Month_Name], [Week], [Week_Name], [Day_Of_Year], [Day_Of_Year_Name], [Day_Of_Quarter], [Day_Of_Quarter_Name], [Day_Of_Month], [Day_Of_Month_Name], [Day_Of_Week], [Day_Of_Week_Name], [Week_Of_Year], [Week_Of_Year_Name], [Month_Of_Year], [Month_Of_Year_Name], [Month_Of_Quarter], [Month_Of_Quarter_Name], [Quarter_Of_Year], [Quarter_Of_Year_Name]) VALUES (CAST(N'2016-01-01T00:00:00.000' AS DateTime), N'Friday, January 01 2016', CAST(N'2016-01-01T00:00:00.000' AS DateTime), N'Calendar 2016', CAST(N'2016-01-01T00:00:00.000' AS DateTime), N'Quarter 1, 2016', CAST(N'2016-01-01T00:00:00.000' AS DateTime), N'January 2016', CAST(N'2016-01-01T00:00:00.000' AS DateTime), N'Week 1, 2016', 1, N'Day 1', 1, N'Day 1', 1, N'Day 1', 6, N'Day 6', 1, N'Week 1', 1, N'Month 1', 1, N'Month 1', 1, N'Quarter 1')
 GO
 INSERT [dbo].[Dim_Time] ([PK_Date], [Date_Name], [Year], [Year_Name], [Quarter], [Quarter_Name], [Month], [Month_Name], [Week], [Week_Name], [Day_Of_Year], [Day_Of_Year_Name], [Day_Of_Quarter], [Day_Of_Quarter_Name], [Day_Of_Month], [Day_Of_Month_Name], [Day_Of_Week], [Day_Of_Week_Name], [Week_Of_Year], [Week_Of_Year_Name], [Month_Of_Year], [Month_Of_Year_Name], [Month_Of_Quarter], [Month_Of_Quarter_Name], [Quarter_Of_Year], [Quarter_Of_Year_Name]) VALUES (CAST(N'2016-01-02T00:00:00.000' AS DateTime), N'Saturday, January 02 2016', CAST(N'2016-01-01T00:00:00.000' AS DateTime), N'Calendar 2016', CAST(N'2016-01-01T00:00:00.000' AS DateTime), N'Quarter 1, 2016', CAST(N'2016-01-01T00:00:00.000' AS DateTime), N'January 2016', CAST(N'2016-01-01T00:00:00.000' AS DateTime), N'Week 1, 2016', 2, N'Day 2', 2, N'Day 2', 2, N'Day 2', 7, N'Day 7', 1, N'Week 1', 1, N'Month 1', 1, N'Month 1', 1, N'Quarter 1')

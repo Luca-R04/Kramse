@@ -1,13 +1,8 @@
 USE [master]
 GO
 /****** Object:  Database [Kramse_Staging]    Script Date: 30-3-2023 15:33:13 ******/
+DROP DATABASE IF EXISTS [Kramse_Staging]
 CREATE DATABASE [Kramse_Staging]
- CONTAINMENT = NONE
- ON  PRIMARY 
-( NAME = N'Kramse_Staging', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLDEV2019\MSSQL\DATA\Kramse_Staging.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
- LOG ON 
-( NAME = N'Kramse_Staging_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLDEV2019\MSSQL\DATA\Kramse_Staging_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
- WITH CATALOG_COLLATION = DATABASE_DEFAULT
 GO
 ALTER DATABASE [Kramse_Staging] SET COMPATIBILITY_LEVEL = 150
 GO
@@ -214,6 +209,8 @@ CREATE TABLE [dbo].[F_Shipment](
 	[Actual_Container_Count] [int] NULL,
 	[Ship_Id] [int] NULL,
 	[Load_Factor] [float] NULL,
+	[ReveneuEUR] [float] NULL,
+	[DiscountEUR] [float] NULL,
  CONSTRAINT [PK_F_Shipment_1] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

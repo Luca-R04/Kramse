@@ -7,12 +7,12 @@
   DTS:CreatorName="DESKTOP-KOKBI2K\Martijn"
   DTS:DTSID="{8D0CDD4D-4FA1-4273-BEC2-EDDE49B2F073}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="16.0.5131.0"
+  DTS:LastModifiedProductVersion="16.0.5035.3"
   DTS:LocaleID="1043"
   DTS:ObjectName="Staging to ODS"
   DTS:PackageType="5"
-  DTS:VersionBuild="68"
-  DTS:VersionGUID="{9A1C9174-3137-4430-8E32-43B186005D62}">
+  DTS:VersionBuild="69"
+  DTS:VersionGUID="{37C47659-E204-4E5E-9BC4-1C8847998E46}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -7210,35 +7210,35 @@ AND [refTable].[END_DATE] IS NULL;</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="152,42.4"
+          Size="152,42.6666666666667"
           Id="Package\Load Consignor"
           TopLeft="479.74998530373,185.16666697661" />
         <NodeLayout
-          Size="150.4,42.4"
+          Size="150.666666666667,42.6666666666667"
           Id="Package\Load Container"
           TopLeft="175.62499483116,185.316662916343" />
         <NodeLayout
-          Size="128,42.4"
+          Size="128,42.6666666666667"
           Id="Package\Load Item"
           TopLeft="338.749990221113,185.516665767829" />
         <NodeLayout
-          Size="125.6,42.4"
+          Size="125.333333333334,42.6666666666667"
           Id="Package\Load Port"
           TopLeft="654.249972227962,184.934843897675" />
         <NodeLayout
-          Size="125.6,42.4"
+          Size="125.333333333334,42.6666666666667"
           Id="Package\Load Ship"
           TopLeft="843.249966416509,185.866663939157" />
         <NodeLayout
-          Size="149.6,42.4"
+          Size="149.333333333334,42.6666666666667"
           Id="Package\Load Shipment"
           TopLeft="343.749985974283,419.216650332611" />
         <NodeLayout
-          Size="140,42.4"
+          Size="140,42.6666666666667"
           Id="Package\Load Voyage"
           TopLeft="5.49999999999999,185.333325274786" />
         <NodeLayout
-          Size="166.4,42.4"
+          Size="166.666666666667,42.6666666666667"
           Id="Package\Load VoyagePort"
           TopLeft="763.74996719882,416.36665123145" />
         <EdgeLayout
@@ -7301,6 +7301,74 @@ AND [refTable].[END_DATE] IS NULL;</property>
                     Point3="723.138856087709,98.3930920718252" />
                   <mssgle:LineSegment
                     End="723.138856087709,180.866659289998" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="736.649972227962,227.334843897675">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="136.699994970858,189.031807333775"
+              Start="0,0"
+              End="136.699994970858,181.531807333775">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,90.8748943193601" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,90.8748943193601"
+                    Point2="0,94.8748943193601"
+                    Point3="4,94.8748943193601" />
+                  <mssgle:LineSegment
+                    End="132.699994970858,94.8748943193601" />
+                  <mssgle:CubicBezierSegment
+                    Point1="132.699994970858,94.8748943193601"
+                    Point2="136.699994970858,94.8748943193601"
+                    Point3="136.699994970858,98.8748943193601" />
+                  <mssgle:LineSegment
+                    End="136.699994970858,181.531807333775" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="906.049966416509,228.266663939157">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-19.4999992176889,188.099987292293"
+              Start="0,0"
+              End="-19.4999992176889,180.599987292293">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,119.422073680747" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,119.422073680747"
+                    Point2="0,123.422073680747"
+                    Point3="-4,123.422073680747" />
+                  <mssgle:LineSegment
+                    End="-15.4999992176889,123.422073680747" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-15.4999992176889,123.422073680747"
+                    Point2="-19.4999992176889,123.422073680747"
+                    Point3="-19.4999992176889,127.422073680747" />
+                  <mssgle:LineSegment
+                    End="-19.4999992176889,180.599987292293" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7425,74 +7493,6 @@ AND [refTable].[END_DATE] IS NULL;</property>
                     Point3="-236.699986253679,121.47915393296" />
                   <mssgle:LineSegment
                     End="-236.699986253679,183.781806434936" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="736.649972227962,227.334843897675">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="136.699994970858,189.031807333775"
-              Start="0,0"
-              End="136.699994970858,181.531807333775">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,90.8748943193601" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,90.8748943193601"
-                    Point2="0,94.8748943193601"
-                    Point3="4,94.8748943193601" />
-                  <mssgle:LineSegment
-                    End="132.699994970858,94.8748943193601" />
-                  <mssgle:CubicBezierSegment
-                    Point1="132.699994970858,94.8748943193601"
-                    Point2="136.699994970858,94.8748943193601"
-                    Point3="136.699994970858,98.8748943193601" />
-                  <mssgle:LineSegment
-                    End="136.699994970858,181.531807333775" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="906.049966416509,228.266663939157">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-19.4999992176889,188.099987292293"
-              Start="0,0"
-              End="-19.4999992176889,180.599987292293">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,119.422073680747" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,119.422073680747"
-                    Point2="0,123.422073680747"
-                    Point3="-4,123.422073680747" />
-                  <mssgle:LineSegment
-                    End="-15.4999992176889,123.422073680747" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-15.4999992176889,123.422073680747"
-                    Point2="-19.4999992176889,123.422073680747"
-                    Point3="-19.4999992176889,127.422073680747" />
-                  <mssgle:LineSegment
-                    End="-19.4999992176889,180.599987292293" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8768,31 +8768,31 @@ AND [refTable].[END_DATE] IS NULL;</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="204.8,41.6"
+          Size="204.666666666667,41.3333333333334"
           Id="Package\Load Shipment\Lookup Consignor_Row_Id"
           TopLeft="5.50000000000001,108.166666666667" />
         <NodeLayout
-          Size="178.4,42.4"
+          Size="178.666666666667,42.6666666666667"
           Id="Package\Load Shipment\Lookup Ship_Row_Id"
           TopLeft="18.5000000000001,412.166666666667" />
         <NodeLayout
-          Size="187.2,41.6"
+          Size="187.333333333334,41.3333333333334"
           Id="Package\Load Shipment\Lookup Fact Increment"
           TopLeft="14.1666666666667,514.833333333333" />
         <NodeLayout
-          Size="202.4,41.6"
+          Size="202.666666666667,41.3333333333334"
           Id="Package\Load Shipment\Lookup Container_Row_Id"
           TopLeft="6.50000000000003,209.5" />
         <NodeLayout
-          Size="178.4,41.6"
+          Size="178.666666666667,41.3333333333334"
           Id="Package\Load Shipment\Lookup item_Row_Id"
           TopLeft="18.5,310.833333333333" />
         <NodeLayout
-          Size="160,42.4"
+          Size="160,42.6666666666667"
           Id="Package\Load Shipment\Shipment Source"
           TopLeft="27.8333333333333,5.49999999999993" />
         <NodeLayout
-          Size="162.4,41.6"
+          Size="162.666666666667,41.3333333333334"
           Id="Package\Load Shipment\Insert Destination"
           TopLeft="25.7857142841938,616.166666666667" />
         <EdgeLayout
@@ -8814,9 +8814,7 @@ AND [refTable].[END_DATE] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8911,7 +8909,7 @@ AND [refTable].[END_DATE] IS NULL;</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453124999999,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -9224,21 +9222,43 @@ AND [refTable].[END_DATE] IS NULL;</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="169.6,42.4"
-          Id="Package\Load VoyagePort\VoyagePort Source"
-          TopLeft="14.5,5.50000000000004" />
-        <NodeLayout
-          Size="187.2,41.6"
+          Size="187.333333333334,41.3333333333334"
           Id="Package\Load VoyagePort\Lookup Fact Increment"
           TopLeft="5.50000000000003,209.5" />
         <NodeLayout
-          Size="177.6,41.6"
-          Id="Package\Load VoyagePort\Lookup Ship_Row_Id"
-          TopLeft="10.5,108.166666666667" />
+          Size="169.333333333334,42.6666666666667"
+          Id="Package\Load VoyagePort\VoyagePort Source"
+          TopLeft="14.5,5.50000000000004" />
         <NodeLayout
-          Size="164,42.4"
+          Size="164,42.6666666666667"
           Id="Package\Load VoyagePort\Insert Destination"
           TopLeft="17.1666666666667,310.833333333333" />
+        <NodeLayout
+          Size="177.333333333334,41.3333333333334"
+          Id="Package\Load VoyagePort\Lookup Ship_Row_Id"
+          TopLeft="10.5,108.166666666667" />
+        <EdgeLayout
+          Id="Package\Load VoyagePort.Paths[OLE DB Source Output]"
+          TopLeft="99.1666666666667,48.1666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load VoyagePort.Paths[Lookup No Match Output]"
           TopLeft="99.1666666666667,250.833333333333">
@@ -9287,31 +9307,32 @@ AND [refTable].[END_DATE] IS NULL;</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load VoyagePort.Paths[OLE DB Source Output]"
-          TopLeft="99.1666666666667,48.1666666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load VoyagePort\Lookup Fact Increment">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[F_Voyage_Port]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load VoyagePort\VoyagePort Source">
     <Properties>
@@ -9326,25 +9347,15 @@ AND [refTable].[END_DATE] IS NULL;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load VoyagePort\Lookup Fact Increment">
+    design-time-name="Package\Load VoyagePort\Insert Destination">
     <Properties>
       <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[F_Voyage_Port]</Value>
+        <Name>DataSourceViewID</Name>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -9368,19 +9379,6 @@ AND [refTable].[END_DATE] IS NULL;</property>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load VoyagePort\Insert Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
